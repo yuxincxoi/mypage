@@ -1,8 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  mode: "production", // 또는 "develop"
+  mode: "development",
   entry: "./src/index.tsx",
   output: {
     filename: "index.bundle.js",
@@ -21,7 +22,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(ts|tsx)$/, // 타스인지 확인할거야
+        test: /\.(ts|tsx)$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
@@ -34,6 +35,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "src/index.html",
       filename: "index.html",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "public/img", to: "img" }],
     }),
   ],
 };
