@@ -1,9 +1,10 @@
 import React from "react";
+import { ProjectIconProps } from "../interfaces/components/ProjectIcon.interface";
 
-const ProjectIcon: React.FC = () => {
+const ProjectIcon: React.FC<ProjectIconProps> = ({ projectTitle }) => {
   return (
     <div>
-      <h1>프로젝트 이름</h1>
+      <p>{projectTitle}</p>
       <p>자세히 보기</p>
     </div>
   );

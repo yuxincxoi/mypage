@@ -5,7 +5,7 @@ const ProjectListPage: React.FC = () => {
   return (
     <div>
       <h1>Project</h1>
-      <ProjectIcon />
+      <ProjectIcon projectTitle="프로젝트 이름" />
     </div>
   );
 };
