@@ -1,10 +1,11 @@
 import React from "react";
 import MyPage from "./pages/myPage";
+import ProjectListPage from "./pages/ProjectListPage";
 
 const App: React.FC = () => {
   return (
     <div>
-      <MyPage />
+      <ProjectListPage />
     </div>
   );
 };
