@@ -3,9 +3,11 @@ import { ProjectIconProps } from "../interfaces/components/ProjectIcon.interface
 
 const ProjectIcon: React.FC<ProjectIconProps> = ({ projectTitle }) => {
   return (
-    <div>
-      <p>{projectTitle}</p>
-      <p>자세히 보기</p>
+    <div className="w-52 h-52 bg-slate-600 rounded-full flex items-center justify-center flex-col group">
+      <div className="hidden group-hover:block text-center">
+        <p>{projectTitle}</p>
+        <p>자세히 보기</p>
+      </div>
     </div>
   );
 };
