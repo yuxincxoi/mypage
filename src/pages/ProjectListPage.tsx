@@ -57,12 +57,14 @@ const ProjectListPage: React.FC = () => {
   return (
     <div>
       <h1>Project</h1>
-      {bubblePositions.map((bubble, index) => (
-        <ProjectIcon
-          projectTitle={projects[index].title}
-          style={bubble.style}
-        />
-      ))}
+      <div className="relative w-5/6 h-screen mx-auto">
+        {bubblePositions.map((bubble, index) => (
+          <ProjectIcon
+            projectTitle={projects[index].title}
+            style={bubble.style}
+          />
+        ))}
+      </div>
     </div>
   );
 };
