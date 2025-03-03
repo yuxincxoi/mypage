@@ -57,8 +57,11 @@ const ProjectListPage: React.FC = () => {
   return (
     <div>
       <h1>Project</h1>
-      {bubblePositions.map((bubble) => (
-        <ProjectIcon projectTitle="프로젝트 이름" style={bubble.style} />
+      {bubblePositions.map((bubble, index) => (
+        <ProjectIcon
+          projectTitle={projects[index].title}
+          style={bubble.style}
+        />
       ))}
     </div>
   );
