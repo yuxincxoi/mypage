@@ -54,6 +54,14 @@ const ProjectListPage: React.FC = () => {
     setBubblePositions(generateBubblePositions());
   }, [projects.length]);
 
+  const handleIconClick = (index: number) => {
+    window.scrollTo({
+      top: 600,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div>
       <h1>Project</h1>
@@ -62,6 +70,7 @@ const ProjectListPage: React.FC = () => {
           <ProjectIcon
             projectTitle={projects[index].title}
             style={bubble.style}
+            onClick={() => handleIconClick(index)}
           />
         ))}
       </div>
