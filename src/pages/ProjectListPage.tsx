@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProjectIcon from "../components/ProjectIcon";
 
 const ProjectListPage: React.FC = () => {
+  const [bubblePositions, setBubblePositions] = useState<any[]>([]);
   const [projects, setProjects] = useState([
     { id: 1, title: "프로젝트 1" },
     { id: 2, title: "프로젝트 2" },
@@ -29,10 +30,36 @@ const ProjectListPage: React.FC = () => {
     { x: 980, y: 250 },
   ];
 
+  // 각 프로젝트 아이콘 위치 및 애니메이션 설정
+  const generateBubblePositions = () => {
+    return projects.map((project, index) => {
+      const { x, y } = fixedPositions[index];
+
+      // 애니메이션
+      const floatDuration = 3 + Math.random() * 4;
+      const delay = Math.random() * 5;
+
+      return {
+        id: project.id,
+        style: {
+          left: `${x}px`,
+          top: `${y}px`,
+          animation: `float ${floatDuration}s ease-in-out ${delay}s infinite alternate`,
+        },
+      };
+    });
+  };
+
+  useEffect(() => {
+    setBubblePositions(generateBubblePositions());
+  }, [projects.length]);
+
   return (
     <div>
       <h1>Project</h1>
-      <ProjectIcon projectTitle="프로젝트 이름" />
+      {bubblePositions.map((bubble) => (
+        <ProjectIcon projectTitle="프로젝트 이름" style={bubble.style} />
+      ))}
     </div>
   );
 };
