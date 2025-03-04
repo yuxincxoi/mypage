@@ -6,10 +6,31 @@ const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
   onTypeChange,
 }) => {
   return (
-    <div className="flex w-80 mx-auto justify-between text-2xl font-thin">
-      <div className="hover:font-semibold">All</div>
-      <div className="hover:font-semibold">Personal</div>
-      <div className="hover:font-semibold">Team</div>
+    <div className="flex w-80 mx-auto justify-between text-2xl">
+      <div
+        className={`cursor-pointer ${
+          selectedType === "all" ? "font-semibold" : "font-thin"
+        }`}
+        onClick={() => onTypeChange("all")}
+      >
+        All
+      </div>
+      <div
+        className={`cursor-pointer ${
+          selectedType === "personal" ? "font-semibold" : "font-thin"
+        }`}
+        onClick={() => onTypeChange("personal")}
+      >
+        Personal
+      </div>
+      <div
+        className={`cursor-pointer ${
+          selectedType === "team" ? "font-semibold" : "font-thin"
+        }`}
+        onClick={() => onTypeChange("team")}
+      >
+        Team
+      </div>
     </div>
   );
 };

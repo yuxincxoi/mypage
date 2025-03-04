@@ -4,6 +4,7 @@ import TypeChechBox from "../components/TypeCheckBox";
 import ProjectDetail from "../components/ProjectDetail";
 
 const ProjectListPage: React.FC = () => {
+  const [selectedType, setSelectedType] = useState<string>("all");
   const [bubblePositions, setBubblePositions] = useState<any[]>([]);
   const [projects, setProjects] = useState([
     { id: 1, title: "프로젝트 1", type: "personal" },
@@ -64,16 +65,24 @@ const ProjectListPage: React.FC = () => {
     });
   };
 
+  const handleTypeChange = (type: string) => {
+    setSelectedType(type);
+  };
+
   return (
     <div>
       <h1>Project</h1>
-      <TypeChechBox />
+      <TypeChechBox
+        selectedType={selectedType}
+        onTypeChange={handleTypeChange}
+      />
       <div className="relative w-5/6 h-screen mx-auto">
         {bubblePositions.map((bubble, index) => (
           <ProjectIcon
             projectTitle={projects[index].title}
             style={bubble.style}
             onClick={() => handleIconClick(index)}
+            projectType={projects[index].type}
           />
         ))}
       </div>
