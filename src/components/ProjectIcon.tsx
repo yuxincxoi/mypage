@@ -5,6 +5,8 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
   projectTitle,
   style,
   onClick,
+  isBlurred = false,
+  projectType,
 }) => {
   return (
     <div
