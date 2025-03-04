@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProjectIcon from "../components/ProjectIcon";
+import TypeChechBox from "../components/TypeCheckBox";
 
 const ProjectListPage: React.FC = () => {
   const [bubblePositions, setBubblePositions] = useState<any[]>([]);
@@ -65,6 +66,7 @@ const ProjectListPage: React.FC = () => {
   return (
     <div>
       <h1>Project</h1>
+      <TypeChechBox />
       <div className="relative w-5/6 h-screen mx-auto">
         {bubblePositions.map((bubble, index) => (
           <ProjectIcon
