@@ -69,6 +69,11 @@ const ProjectListPage: React.FC = () => {
     setSelectedType(type);
   };
 
+  const shouldBlurIcon = (projectType: string) => {
+    if (selectedType === "all") return false;
+    return projectType !== selectedType;
+  };
+
   return (
     <div>
       <h1>Project</h1>
@@ -82,6 +87,7 @@ const ProjectListPage: React.FC = () => {
             projectTitle={projects[index].title}
             style={bubble.style}
             onClick={() => handleIconClick(index)}
+            isBlurred={shouldBlurIcon(projects[index].type)}
             projectType={projects[index].type}
           />
         ))}
