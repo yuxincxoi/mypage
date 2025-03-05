@@ -3,6 +3,7 @@ import ProjectIcon from "../components/ProjectIcon";
 import TypeChechBox from "../components/TypeCheckBox";
 import ProjectDetail from "../components/ProjectDetail";
 import ScrollToTopButton from "../components/ScrollToTopBtn";
+import Footer from "../components/Footer";
 
 const ProjectListPage: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("all");
@@ -95,6 +96,7 @@ const ProjectListPage: React.FC = () => {
       </div>
       <ProjectDetail projects={projects} />
       <ScrollToTopButton />
+      <Footer />
     </div>
   );
 };
