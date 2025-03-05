@@ -1,4 +1,6 @@
 import React from "react";
+import ProjectImg from "./ProjectImg";
+import Stacks from "./Stacks";
 
 interface Project {
   id: number;
@@ -18,12 +20,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
       <div className="w-5/6 mx-auto text-center">
         <div>
           <div className="text-3xl">프로젝트 이름</div>
+          <Stacks />
           <div className="mt-4">
             프로젝트 설명입니다. 이렇고저런 프로젝트이고 이렇고저래서
             만들었습니다.
           </div>
-          <div className="bg-slate-500 w-4/5 h-60 mx-auto mt-4">사진</div>
-          <div className="mt-4">스택</div>
+          <ProjectImg images={projectImages} />
         </div>
         <div className="mt-12">
           <div className="text-2xl">주요 기능</div>
