@@ -5,7 +5,7 @@ const ScrollToTopButton: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 500);
+      setIsVisible(window.scrollY > 1600);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -13,7 +13,7 @@ const ScrollToTopButton: React.FC = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 780, behavior: "smooth" });
   };
 
   return (
