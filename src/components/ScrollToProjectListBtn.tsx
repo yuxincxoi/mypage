@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ScrollToTopButton: React.FC = () => {
+const ScrollToProjectListBtn: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -28,4 +28,4 @@ const ScrollToTopButton: React.FC = () => {
   );
 };
 
-export default ScrollToTopButton;
+export default ScrollToProjectListBtn;
