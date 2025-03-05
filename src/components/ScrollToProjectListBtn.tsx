@@ -5,7 +5,11 @@ const ScrollToProjectListBtn: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 1600);
+      if (window.scrollY > 1600 && window.scrollY < 2900) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
