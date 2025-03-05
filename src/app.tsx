@@ -1,10 +1,11 @@
 import React from "react";
-import MyPage from "./pages/myPage";
+import IntroPage from "./pages/IntroPage";
 import ProjectListPage from "./pages/ProjectListPage";
 
 const App: React.FC = () => {
   return (
     <div>
+      <IntroPage />
       <ProjectListPage />
     </div>
   );
