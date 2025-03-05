@@ -19,6 +19,8 @@ const ProjectListPage: React.FC = () => {
     { id: 9, title: "프로젝트 9", type: "personal" },
     { id: 10, title: "프로젝트 10", type: "team" },
   ]);
+  const [isProjectDetailVisible, setIsProjectDetailVisible] =
+    useState<boolean>(false);
 
   // 고정된 위치를 지정한 배열
   const fixedPositions = [
@@ -59,6 +61,7 @@ const ProjectListPage: React.FC = () => {
   }, [projects.length]);
 
   const handleIconClick = (index: number) => {
+    setIsProjectDetailVisible(true);
     window.scrollTo({
       top: 1500,
       left: 0,
@@ -93,7 +96,7 @@ const ProjectListPage: React.FC = () => {
           />
         ))}
       </div>
-      <ProjectDetail projects={projects} />
+      {isProjectDetailVisible && <ProjectDetail projects={projects} />}
       <ScrollToProjectListBtn />
     </div>
   );
