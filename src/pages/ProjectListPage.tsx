@@ -3,7 +3,6 @@ import ProjectIcon from "../components/ProjectIcon";
 import TypeChechBox from "../components/TypeCheckBox";
 import ProjectDetail from "../components/ProjectDetail";
 import ScrollToTopButton from "../components/ScrollToTopBtn";
-import Footer from "../components/Footer";
 
 const ProjectListPage: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("all");
@@ -78,12 +77,11 @@ const ProjectListPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Project</h1>
       <TypeChechBox
         selectedType={selectedType}
         onTypeChange={handleTypeChange}
       />
-      <div className="relative w-5/6 h-screen mx-auto">
+      <div className="relative w-5/6 h-screen mx-auto mt-16">
         {bubblePositions.map((bubble, index) => (
           <ProjectIcon
             projectTitle={projects[index].title}
@@ -96,7 +94,6 @@ const ProjectListPage: React.FC = () => {
       </div>
       <ProjectDetail projects={projects} />
       <ScrollToTopButton />
-      <Footer />
     </div>
   );
 };
