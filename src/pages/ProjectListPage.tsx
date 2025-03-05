@@ -84,6 +84,7 @@ const ProjectListPage: React.FC = () => {
       <div className="relative w-5/6 h-screen mx-auto mt-16">
         {bubblePositions.map((bubble, index) => (
           <ProjectIcon
+            key={projects[index].id}
             projectTitle={projects[index].title}
             style={bubble.style}
             onClick={() => handleIconClick(index)}
