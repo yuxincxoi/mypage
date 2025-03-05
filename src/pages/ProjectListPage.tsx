@@ -59,7 +59,7 @@ const ProjectListPage: React.FC = () => {
 
   const handleIconClick = (index: number) => {
     window.scrollTo({
-      top: 600,
+      top: 650,
       left: 0,
       behavior: "smooth",
     });
