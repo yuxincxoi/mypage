@@ -2,19 +2,39 @@ import React, { useEffect, useState } from "react";
 
 const ScrollToProjectListBtn: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [documentHeight, setDocumentHeight] = useState<number>(0);
 
   useEffect(() => {
+    const updateDocumentHeight = () => {
+      setDocumentHeight(document.documentElement.scrollHeight);
+    };
+
     const handleScroll = () => {
-      if (window.scrollY > 1600 && window.scrollY < 2900) {
+      const isShortDocument = documentHeight <= 4000;
+      const visibleRange = isShortDocument ? [0, 0] : [1600, 2900];
+
+      if (
+        window.scrollY > visibleRange[0] &&
+        window.scrollY < visibleRange[1]
+      ) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
 
+    updateDocumentHeight();
+
+    const resizeObserver = new ResizeObserver(updateDocumentHeight);
+    resizeObserver.observe(document.documentElement);
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      resizeObserver.disconnect();
+    };
+  }, [documentHeight]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 780, behavior: "smooth" });
