@@ -26,7 +26,13 @@ const IntroPage: React.FC = () => {
         <div>반갑습니다</div>
         <div>최유진입니다.</div>
       </div>
-      {isVisible && <ScrollIndicator />}
+      <div
+        className={`transition-opacity duration-300 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <ScrollIndicator />
+      </div>
     </div>
   );
 };
