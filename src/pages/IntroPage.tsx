@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ScrollIndicator from "../components/ScrollIndicator";
 
 const IntroPage: React.FC = () => {
@@ -21,9 +21,11 @@ const IntroPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen text-9xl font-extrabold">
-      <div>반갑습니다</div>
-      <div>최유진입니다.</div>
+    <div className="w-full h-screen flex flex-col justify-center text-9xl font-extrabold">
+      <div>
+        <div>반갑습니다</div>
+        <div>최유진입니다.</div>
+      </div>
       {isVisible && <ScrollIndicator />}
     </div>
   );
