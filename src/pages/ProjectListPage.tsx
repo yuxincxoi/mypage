@@ -3,6 +3,7 @@ import ProjectIcon from "../components/ProjectIcon";
 import TypeChechBox from "../components/TypeCheckBox";
 import ProjectDetail from "../components/ProjectDetail";
 import ScrollToProjectListBtn from "../components/ScrollToProjectListBtn";
+import FadeInSection from "../FadeInSection";
 
 const ProjectListPage: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("all");
@@ -80,22 +81,26 @@ const ProjectListPage: React.FC = () => {
 
   return (
     <div>
-      <TypeChechBox
-        selectedType={selectedType}
-        onTypeChange={handleTypeChange}
-      />
-      <div className="relative w-5/6 h-screen mx-auto mt-16">
-        {bubblePositions.map((bubble, index) => (
-          <ProjectIcon
-            key={projects[index].id}
-            projectTitle={projects[index].title}
-            style={bubble.style}
-            onClick={() => handleIconClick(index)}
-            isBlurred={shouldBlurIcon(projects[index].type)}
-            projectType={projects[index].type}
-          />
-        ))}
-      </div>
+      <FadeInSection>
+        <TypeChechBox
+          selectedType={selectedType}
+          onTypeChange={handleTypeChange}
+        />
+      </FadeInSection>
+      <FadeInSection>
+        <div className="relative w-5/6 h-screen mx-auto mt-16">
+          {bubblePositions.map((bubble, index) => (
+            <ProjectIcon
+              key={projects[index].id}
+              projectTitle={projects[index].title}
+              style={bubble.style}
+              onClick={() => handleIconClick(index)}
+              isBlurred={shouldBlurIcon(projects[index].type)}
+              projectType={projects[index].type}
+            />
+          ))}
+        </div>
+      </FadeInSection>
       {isProjectDetailVisible && <ProjectDetail projects={projects} />}
       <ScrollToProjectListBtn />
     </div>
