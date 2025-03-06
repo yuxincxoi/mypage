@@ -1,9 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
   const [startIndex, setStartIndex] = useState(0);
-  const visibleImages = images.slice(startIndex, startIndex + 3);
+  const [itemWidth, setItemWidth] = useState(0);
+  const [gapWidth, setGapWidth] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // 아이템 너비와 gap 크기 계산
+    const calculateWidths = () => {
+      if (containerRef.current && carouselRef.current) {
+        const container = containerRef.current;
+        const carousel = carouselRef.current;
+        const items = container.querySelectorAll(".carousel-item");
+
+        if (items.length > 0) {
+          const carouselWidth = carousel.offsetWidth;
+          const gap = 8 * 2;
+
+          const calculatedItemWidth = (carouselWidth - gap) / 3;
+
+          setItemWidth(calculatedItemWidth);
+          setGapWidth(gap);
+        }
+      }
+    };
+
+    calculateWidths();
+
+    window.addEventListener("resize", calculateWidths);
+    return () => window.removeEventListener("resize", calculateWidths);
+  }, [images.length]);
 
   const handlePrev = () => {
     if (startIndex > 0) setStartIndex(startIndex - 1);
@@ -13,18 +42,26 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
     if (startIndex + 3 < images.length) setStartIndex(startIndex + 1);
   };
 
+  // 이동 거리
+  const getTranslateX = () => {
+    if (itemWidth === 0) return 0;
+    return startIndex * (itemWidth + gapWidth);
+  };
+
   return (
-    <div className="relative w-4/5 mx-auto mt-4">
+    <div className="relative w-4/5 mx-auto mt-4" ref={carouselRef}>
       {/* 이미지 컨테이너 */}
       <div className="overflow-hidden">
         <div
+          ref={containerRef}
           className="flex gap-2 transition-transform duration-300 ease-in-out"
-          style={{ transform: `translateX(-${startIndex * (100 / 3)}%)` }}
+          style={{ transform: `translateX(-${getTranslateX()}px)` }}
         >
           {images.map((image, index) => (
             <div
               key={index}
-              className="w-1/3 min-w-[33%] h-60 bg-slate-500 flex items-center justify-center rounded-xl"
+              className="carousel-item flex-shrink-0 h-60 bg-slate-500 flex items-center justify-center rounded-xl"
+              style={{ width: `${itemWidth}px` }}
             >
               {image}
             </div>
