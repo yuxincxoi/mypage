@@ -3,25 +3,50 @@ import React, { useState, useEffect } from "react";
 const Nav: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
+  const [documentHeight, setDocumentHeight] = useState<number>(0);
 
-  const navItems = [
-    { label: "Home", id: "home", range: [0, 600], scrollTo: 0 },
-    { label: "Projects", id: "projects", range: [600, 3200], scrollTo: 780 },
-    {
-      label: "Contact",
-      id: "contact",
-      range: [3200, Infinity],
-      scrollTo: 3300,
-    },
-  ];
+  const calculateNavRanges = () => {
+    const isShortDocument = documentHeight <= 4000;
+
+    return [
+      { label: "Home", id: "home", range: [0, 600], scrollTo: 0 },
+      {
+        label: "Projects",
+        id: "projects",
+        range: [600, isShortDocument ? 1500 : 3200],
+        scrollTo: 780,
+      },
+      {
+        label: "Contact",
+        id: "contact",
+        range: [isShortDocument ? 1500 : 3200, Infinity],
+        scrollTo: isShortDocument ? 1800 : 3300,
+      },
+    ];
+  };
+
+  const navItems = calculateNavRanges();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
     };
 
+    const updateDocumentHeight = () => {
+      setDocumentHeight(document.documentElement.scrollHeight);
+    };
+
+    updateDocumentHeight();
+
+    const resizeObserver = new ResizeObserver(updateDocumentHeight);
+    resizeObserver.observe(document.documentElement);
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      resizeObserver.disconnect();
+    };
   }, []);
 
   const getActiveSection = () => {
@@ -30,7 +55,6 @@ const Nav: React.FC = () => {
         return item.id;
       }
     }
-    return null;
   };
 
   const handleScrollTo = (position: number) => {
