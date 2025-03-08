@@ -1,5 +1,6 @@
 import React from "react";
 import { ProjectIconProps } from "../../interfaces/components/project/ProjectIcon.interface";
+import { projectIconStatics } from "../../../statics/project/projectIcon.static";
 
 const ProjectIcon: React.FC<ProjectIconProps> = ({
   projectTitle,
@@ -23,7 +24,7 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
         }`}
       >
         <p>{projectTitle}</p>
-        <p>자세히 보기</p>
+        <p>{projectIconStatics.showDetail}</p>
       </div>
     </div>
   );

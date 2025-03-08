@@ -1,5 +1,6 @@
 import React from "react";
 import { TypeCheckBoxProps } from "../../interfaces/components/project/TypeCheckBox.interface";
+import { typeStatics } from "../../../statics/project/typeCheck.static";
 
 const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
   selectedType,
@@ -13,7 +14,7 @@ const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
         } transition-all duration-300 ease-in-out`}
         onClick={() => onTypeChange("all")}
       >
-        All
+        {typeStatics.all}
       </div>
       <div
         className={`cursor-pointer ${
@@ -21,7 +22,7 @@ const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
         } transition-all duration-300 ease-in-out`}
         onClick={() => onTypeChange("personal")}
       >
-        Personal
+        {typeStatics.personal}
       </div>
       <div
         className={`cursor-pointer ${
@@ -29,7 +30,7 @@ const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
         } transition-all duration-300 ease-in-out`}
         onClick={() => onTypeChange("team")}
       >
-        Team
+        {typeStatics.team}
       </div>
     </div>
   );

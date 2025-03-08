@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { navStatics } from "../../statics/nav.static";
 
 const Nav: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
@@ -9,16 +10,21 @@ const Nav: React.FC = () => {
     const isShortDocument = documentHeight <= 4000;
 
     return [
-      { label: "Home", id: "home", range: [0, 600], scrollTo: 0 },
       {
-        label: "Projects",
-        id: "projects",
+        label: navStatics.home.label,
+        id: navStatics.home.id,
+        range: [0, 600],
+        scrollTo: 0,
+      },
+      {
+        label: navStatics.projects.label,
+        id: navStatics.projects.id,
         range: [600, isShortDocument ? 1500 : 3200],
         scrollTo: 780,
       },
       {
-        label: "Contact",
-        id: "contact",
+        label: navStatics.contact.label,
+        id: navStatics.contact.id,
         range: [isShortDocument ? 1500 : 3200, Infinity],
         scrollTo: isShortDocument ? 1800 : 3300,
       },

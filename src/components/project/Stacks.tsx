@@ -1,17 +1,7 @@
 import React, { useState } from "react";
+import { stackStatics } from "../../../statics/project/stack.static";
 
-const stackData = [
-  { name: "React", description: "이래서 저래서 React를 사용했습니다." },
-  {
-    name: "TypeScript",
-    description: "이래서 저래서 TypeScript를 사용했습니다.",
-  },
-  {
-    name: "Tailwind CSS",
-    description: "이래서 저래서 Tailwind CSS를 사용했습니다.",
-  },
-  { name: "Next.js", description: "이래서 저래서 Next.js를 사용했습니다." },
-];
+const stackData = [stackStatics.react, stackStatics.ts];
 
 const Stacks: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
