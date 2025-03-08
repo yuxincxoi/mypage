@@ -2,7 +2,7 @@ import React from "react";
 import ProjectImg from "./ProjectImg";
 import Stacks from "./Stacks";
 import FadeInSection from "../../FadeInSection";
-import { ProjectDetailProps } from "../../interfaces/components/ProjectDetail.interface";
+import { ProjectDetailProps } from "../../interfaces/components/project/ProjectDetail.interface";
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const projectImages = ["사진1", "사진2", "사진3", "사진4", "사진5"];
