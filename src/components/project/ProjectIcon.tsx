@@ -1,5 +1,5 @@
 import React from "react";
-import { ProjectIconProps } from "../../interfaces/components/ProjectIcon.interface";
+import { ProjectIconProps } from "../../interfaces/components/project/ProjectIcon.interface";
 
 const ProjectIcon: React.FC<ProjectIconProps> = ({
   projectTitle,

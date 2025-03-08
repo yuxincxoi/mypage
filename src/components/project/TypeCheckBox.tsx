@@ -1,5 +1,5 @@
 import React from "react";
-import { TypeCheckBoxProps } from "../../interfaces/components/TypeCheckBox.interface";
+import { TypeCheckBoxProps } from "../../interfaces/components/project/TypeCheckBox.interface";
 
 const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
   selectedType,
