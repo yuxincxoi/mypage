@@ -4,24 +4,20 @@ import TypeChechBox from "../components/project/TypeCheckBox";
 import ProjectDetail from "./ProjectDetail";
 import ScrollToProjectListBtn from "../components/ScrollToProjectListBtn";
 import FadeInSection from "../FadeInSection";
+import { projectStatics } from "../../statics/project/project.static";
 
 const ProjectListPage: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("all");
   const [bubblePositions, setBubblePositions] = useState<any[]>([]);
-  const [projects, setProjects] = useState([
-    { id: 1, title: "프로젝트 1", type: "personal" },
-    { id: 2, title: "프로젝트 2", type: "team" },
-    { id: 3, title: "프로젝트 3", type: "personal" },
-    { id: 4, title: "프로젝트 4", type: "personal" },
-    { id: 5, title: "프로젝트 5", type: "team" },
-    { id: 6, title: "프로젝트 6", type: "team" },
-    { id: 7, title: "프로젝트 7", type: "personal" },
-    { id: 8, title: "프로젝트 8", type: "personal" },
-    { id: 9, title: "프로젝트 9", type: "personal" },
-    { id: 10, title: "프로젝트 10", type: "team" },
-  ]);
   const [isProjectDetailVisible, setIsProjectDetailVisible] =
     useState<boolean>(false);
+
+  const [projects, setProjects] = useState(
+    Array.from({ length: 10 }, (_, i) => {
+      const key = `project_${i + 1}` as keyof typeof projectStatics;
+      return projectStatics[key];
+    })
+  );
 
   // 고정된 위치를 지정한 배열
   const fixedPositions = [
