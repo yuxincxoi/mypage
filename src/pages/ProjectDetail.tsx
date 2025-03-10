@@ -14,7 +14,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         <FadeInSection>
           <div>
             <div className="text-3xl">{projects.title}</div>
-            <Stacks />
+            <Stacks stacks={projects.stack} />
             <div className="mt-4">{projects.exp}</div>
             <ProjectImg images={projectImages} />
           </div>
