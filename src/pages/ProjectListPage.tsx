@@ -5,10 +5,12 @@ import ProjectDetail from "./ProjectDetail";
 import ScrollToProjectListBtn from "../components/ScrollToProjectListBtn";
 import FadeInSection from "../FadeInSection";
 import { projectStatics } from "../../statics/project/project.static";
+import { Project } from "../interfaces/components/project/Project.interface";
 
 const ProjectListPage: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("all");
   const [bubblePositions, setBubblePositions] = useState<any[]>([]);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isProjectDetailVisible, setIsProjectDetailVisible] =
     useState<boolean>(false);
 
@@ -57,13 +59,17 @@ const ProjectListPage: React.FC = () => {
     setBubblePositions(generateBubblePositions());
   }, [projects.length]);
 
-  const handleIconClick = (index: number) => {
-    setIsProjectDetailVisible(true);
-    window.scrollTo({
-      top: 1500,
-      left: 0,
-      behavior: "smooth",
-    });
+  const handleIconClick = (projectId: number) => {
+    const projectData = projects.find((p) => p.id === projectId);
+    if (projectData) {
+      setSelectedProject(projectData);
+      setIsProjectDetailVisible(true);
+      window.scrollTo({
+        top: 1500,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   const handleTypeChange = (type: string) => {
@@ -90,14 +96,16 @@ const ProjectListPage: React.FC = () => {
               key={projects[index].id}
               projectTitle={projects[index].title}
               style={bubble.style}
-              onClick={() => handleIconClick(index)}
+              onClick={() => handleIconClick(projects[index].id)}
               isBlurred={shouldBlurIcon(projects[index].type)}
               projectType={projects[index].type}
             />
           ))}
         </div>
       </FadeInSection>
-      {isProjectDetailVisible && <ProjectDetail projects={projects} />}
+      {isProjectDetailVisible && selectedProject && (
+        <ProjectDetail projects={selectedProject} />
+      )}
       <ScrollToProjectListBtn />
     </div>
   );
