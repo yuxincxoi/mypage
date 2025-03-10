@@ -4,7 +4,6 @@ import Stacks from "../components/project/Stacks";
 import FadeInSection from "../FadeInSection";
 import { ProjectDetailProps } from "../interfaces/components/project/ProjectDetail.interface";
 import { projectDetailStatics } from "../../statics/project/projectDetail.static";
-import { projectStatics } from "../../statics/project/project.static";
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const projectImages = ["사진1", "사진2", "사진3", "사진4", "사진5"];
@@ -14,9 +13,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
       <div className="w-5/6 mx-auto text-center">
         <FadeInSection>
           <div>
-            <div className="text-3xl">{projectStatics.project_1.title}</div>
+            <div className="text-3xl">{projects.title}</div>
             <Stacks />
-            <div className="mt-4">{projectStatics.project_1.exp}</div>
+            <div className="mt-4">{projects.exp}</div>
             <ProjectImg images={projectImages} />
           </div>
         </FadeInSection>
@@ -28,30 +27,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                 {projectDetailStatics.function}
               </h2>
               <div className="bg-gray-800 p-6 rounded-2xl text-start">
-                <div>
-                  <p className="text-lg font-medium text-white mb-2">
-                    🎯 {projectDetailStatics.functionList[0]}
-                  </p>
-                  <p className="text-gray-300 text-start">
-                    {projectStatics.project_1.function[0]}
-                  </p>
-                </div>
-                <div className="mt-4">
-                  <p className="text-lg font-medium text-white mb-2">
-                    🕐 {projectDetailStatics.functionList[1]}
-                  </p>
-                  <p className="text-gray-300 text-start">
-                    {projectStatics.project_1.function[1]}
-                  </p>
-                </div>
-                <div className="mt-4">
-                  <p className="text-lg font-medium text-white mb-2">
-                    📚 {projectDetailStatics.functionList[2]}
-                  </p>
-                  <p className="text-gray-300 text-start">
-                    {projectStatics.project_1.function[2]}
-                  </p>
-                </div>
+                {projects.function?.map((func: string, idx: number) => (
+                  <div key={idx} className="mt-4">
+                    <p className="text-lg font-medium text-white mb-2">
+                      🎯 {func}
+                    </p>
+                  </div>
+                ))}
               </div>
             </section>
 
@@ -61,63 +43,64 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                 {projectDetailStatics.character}
               </h2>
               <div className="bg-gray-800 p-6 rounded-2xl text-start">
-                <div>
-                  <p className="text-white font-medium text-lg mb-2">
-                    🥳 {projectDetailStatics.characterList[0]}
-                  </p>
-                  <p className="text-gray-300">
-                    {projectStatics.project_1.character[0]}
-                  </p>
-                </div>
-                <div className="mt-4">
-                  <p className="text-lg font-medium text-white mb-2">
-                    💪 {projectDetailStatics.characterList[1]}
-                  </p>
-                  <p className="text-gray-300 text-start">
-                    {projectStatics.project_1.character[1]}
-                  </p>
-                </div>
+                {projects.character?.map((char: string, idx: number) => (
+                  <div key={idx} className="mt-4">
+                    <p className="text-lg font-medium text-white mb-2">
+                      ✨ {char}
+                    </p>
+                  </div>
+                ))}
               </div>
             </section>
           </div>
         </FadeInSection>
-        <FadeInSection>
-          <div className="mt-20">
-            <div className="text-2xl font-semibold text-center text-white">
-              {projectDetailStatics.troubleShooting.title}
-            </div>
-            <div className="bg-gray-800 p-10 rounded-2xl mt-4 text-start">
-              <div>
-                <div className="text-lg text-white mb-2">
-                  {projectDetailStatics.troubleShooting.trouble}
+        {projects.troubleShooting && (
+          <FadeInSection>
+            <div className="mt-20">
+              <section className="space-y-4">
+                <h2 className="text-2xl font-semibold text-center text-white">
+                  {projectDetailStatics.troubleShooting.title}
+                </h2>
+                <div className="bg-gray-800 p-6 rounded-2xl text-start">
+                  <div className="mt-4">
+                    <p className="text-lg font-medium text-white mb-2">
+                      {projectDetailStatics.troubleShooting.trouble}
+                    </p>
+                    <p className="text-gray-300 mb-4">
+                      {projects.troubleShooting.trouble}
+                    </p>
+                    <p className="text-lg font-medium text-white mb-2">
+                      {projectDetailStatics.troubleShooting.shooting}
+                    </p>
+                    <p className="text-gray-300 mb-4">
+                      {projects.troubleShooting.shooting}
+                    </p>
+                    <p className="text-lg font-medium text-white mb-2">
+                      {projectDetailStatics.troubleShooting.result}
+                    </p>
+                    <p className="text-gray-300">
+                      {projects.troubleShooting.result}
+                    </p>
+                  </div>
                 </div>
-                <div>{projectStatics.project_1.troubleShooting.trouble}</div>
-              </div>
-              <div className="mt-4">
-                <div className="text-lg text-white mb-2">
-                  {projectDetailStatics.troubleShooting.shooting}
+              </section>
+            </div>
+          </FadeInSection>
+        )}
+        {projects.comment && (
+          <FadeInSection>
+            <div className="mt-20">
+              <section className="space-y-4">
+                <h2 className="text-2xl font-semibold text-center text-white">
+                  {projectDetailStatics.comment}
+                </h2>
+                <div className="bg-gray-800 p-6 rounded-2xl text-start">
+                  <p className="text-gray-300">{projects.comment}</p>
                 </div>
-                <div>{projectStatics.project_1.troubleShooting.shooting}</div>
-              </div>
-              <div className="mt-4">
-                <div className="text-lg text-white mb-2">
-                  {projectDetailStatics.troubleShooting.result}
-                </div>
-                <div>{projectStatics.project_1.troubleShooting.result}</div>
-              </div>
+              </section>
             </div>
-          </div>
-        </FadeInSection>
-        <FadeInSection>
-          <div className="mt-20">
-            <div className="text-2xl font-semibold text-center text-white">
-              {projectDetailStatics.comment}
-            </div>
-            <div className="bg-gray-800 p-10 rounded-2xl mt-4 text-start">
-              {projectStatics.project_1.comment}
-            </div>
-          </div>
-        </FadeInSection>
+          </FadeInSection>
+        )}
       </div>
     </div>
   );
