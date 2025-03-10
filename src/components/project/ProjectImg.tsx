@@ -18,9 +18,9 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
 
         if (items.length > 0) {
           const carouselWidth = carousel.offsetWidth;
-          const gap = 8 * 2;
+          const gap = 8;
 
-          const calculatedItemWidth = (carouselWidth - gap) / 3;
+          const calculatedItemWidth = (carouselWidth - gap * 2) / 3;
 
           setItemWidth(calculatedItemWidth);
           setGapWidth(gap);
