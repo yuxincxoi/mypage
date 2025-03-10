@@ -9,7 +9,16 @@ import { Project } from "../interfaces/components/project/Project.interface";
 
 const ProjectListPage: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("all");
-  const [bubblePositions, setBubblePositions] = useState<any[]>([]);
+  const [bubblePositions, setBubblePositions] = useState<
+    {
+      id: number;
+      style: {
+        left: string;
+        top: string;
+        animation: string;
+      };
+    }[]
+  >([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isProjectDetailVisible, setIsProjectDetailVisible] =
     useState<boolean>(false);
