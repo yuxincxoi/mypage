@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ProjectIcon from "../components/project/ProjectIcon";
 import TypeChechBox from "../components/project/TypeCheckBox";
 import ProjectDetail from "./ProjectDetail";
@@ -22,6 +22,8 @@ const ProjectListPage: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isProjectDetailVisible, setIsProjectDetailVisible] =
     useState<boolean>(false);
+  const detailRef = useRef<HTMLDivElement>(null); // ProjectDetail 요소의 ref
+  const [isDetailVisible, setIsDetailVisible] = useState(false);
 
   const [projects, setProjects] = useState(
     Array.from({ length: 10 }, (_, i) => {
@@ -90,6 +92,29 @@ const ProjectListPage: React.FC = () => {
     return projectType !== selectedType;
   };
 
+  useEffect(() => {
+    // IntersectionObserver를 사용하여 ProjectDetail이 화면에 보일 때 감지
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // entry.isIntersecting이 true일 경우, ProjectDetail이 화면에 보이는 상태
+        setIsDetailVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.4, // 요소가 40% 이상 보일 때 isVisible을 true로 설정
+      }
+    );
+
+    if (detailRef.current) {
+      observer.observe(detailRef.current); // ProjectDetail 요소를 관찰
+    }
+
+    return () => {
+      if (detailRef.current) {
+        observer.unobserve(detailRef.current); // 컴포넌트가 언마운트될 때 관찰 중지
+      }
+    };
+  }, [isProjectDetailVisible]);
+
   return (
     <div>
       <FadeInSection>
@@ -113,9 +138,11 @@ const ProjectListPage: React.FC = () => {
         </div>
       </FadeInSection>
       {isProjectDetailVisible && selectedProject && (
-        <ProjectDetail projects={selectedProject} />
+        <div ref={detailRef}>
+          <ProjectDetail projects={selectedProject} />
+        </div>
       )}
-      <ScrollToProjectListBtn />
+      <ScrollToProjectListBtn isVisible={isDetailVisible} />
     </div>
   );
 };
