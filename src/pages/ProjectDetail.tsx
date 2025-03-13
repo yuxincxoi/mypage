@@ -32,7 +32,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                 {projects.function?.map((func: string, idx: number) => (
                   <div key={idx} className="mt-4">
                     <p className="text-lg font-medium text-white mb-2">
-                      🎯 {func}
+                      {func}
                     </p>
                   </div>
                 ))}
@@ -48,7 +48,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                 {projects.character?.map((char: string, idx: number) => (
                   <div key={idx} className="mt-4">
                     <p className="text-lg font-medium text-white mb-2">
-                      ✨ {char}
+                      {char}
                     </p>
                   </div>
                 ))}
