@@ -7,8 +7,7 @@ import { projectDetailStatics } from "../../statics/project/projectDetail.static
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const projectImages = ["사진1", "사진2", "사진3", "사진4", "사진5"];
-  const [isTroubleOpen, setIsTroubleOpen] = useState(false);
-  const [isCommentOpen, setIsCommentOpen] = useState(false);
+  const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
 
   return (
     <div className="w-full bg-black text-white py-20">
@@ -56,59 +55,58 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             </section>
           </div>
         </FadeInSection>
-        {projects.troubleShooting && (
+        {(projects.troubleShooting || projects.comment) && (
           <FadeInSection>
             <div className="mt-20">
-              <section className="space-y-4">
-                <button
-                  className="text-2xl font-semibold text-center text-white"
-                  onClick={() => setIsTroubleOpen(!isTroubleOpen)}
-                >
-                  {projectDetailStatics.troubleShooting.title}{" "}
-                  {isTroubleOpen ? "▲" : "▼"}
-                </button>
-                {isTroubleOpen && (
-                  <div className="bg-gray-800 p-6 rounded-2xl text-start">
-                    <p className="text-lg font-medium text-white mb-2">
-                      {projectDetailStatics.troubleShooting.trouble}
-                    </p>
-                    <p className="text-gray-300 mb-4">
-                      {projects.troubleShooting.trouble}
-                    </p>
-                    <p className="text-lg font-medium text-white mb-2">
-                      {projectDetailStatics.troubleShooting.shooting}
-                    </p>
-                    <p className="text-gray-300 mb-4">
-                      {projects.troubleShooting.shooting}
-                    </p>
-                    <p className="text-lg font-medium text-white mb-2">
-                      {projectDetailStatics.troubleShooting.result}
-                    </p>
-                    <p className="text-gray-300">
-                      {projects.troubleShooting.result}
-                    </p>
-                  </div>
-                )}
-              </section>
-            </div>
-          </FadeInSection>
-        )}
-        {projects.comment && (
-          <FadeInSection>
-            <div className="mt-20">
-              <section className="space-y-4">
-                <button
-                  className="text-2xl font-semibold text-center text-white"
-                  onClick={() => setIsCommentOpen(!isCommentOpen)}
-                >
-                  {projectDetailStatics.comment} {isCommentOpen ? "▲" : "▼"}
-                </button>
-                {isCommentOpen && (
-                  <div className="bg-gray-800 p-6 rounded-2xl text-start">
-                    <p className="text-gray-300">{projects.comment}</p>
-                  </div>
-                )}
-              </section>
+              <button
+                className="text-md text-center font-thin text-white hover:text-slate-200"
+                onClick={() => setIsMoreSectionOpen(!isMoreSectionOpen)}
+              >
+                더보기 {isMoreSectionOpen ? "▲" : "▼"}
+              </button>
+              {isMoreSectionOpen && (
+                <div className="mt-8 space-y-16 transition-all duration-300">
+                  {projects.troubleShooting && (
+                    <section className="space-y-4">
+                      <h2 className="text-2xl font-semibold text-center text-white">
+                        {projectDetailStatics.troubleShooting.title}
+                      </h2>
+                      <div className="bg-gray-800 p-6 rounded-2xl text-start">
+                        <div>
+                          <p className="text-lg font-medium text-white mb-2">
+                            {projectDetailStatics.troubleShooting.trouble}
+                          </p>
+                          <p className="text-gray-300 mb-4">
+                            {projects.troubleShooting.trouble}
+                          </p>
+                          <p className="text-lg font-medium text-white mb-2">
+                            {projectDetailStatics.troubleShooting.shooting}
+                          </p>
+                          <p className="text-gray-300 mb-4">
+                            {projects.troubleShooting.shooting}
+                          </p>
+                          <p className="text-lg font-medium text-white mb-2">
+                            {projectDetailStatics.troubleShooting.result}
+                          </p>
+                          <p className="text-gray-300">
+                            {projects.troubleShooting.result}
+                          </p>
+                        </div>
+                      </div>
+                    </section>
+                  )}
+                  {projects.comment && (
+                    <section className="space-y-4">
+                      <h2 className="text-2xl font-semibold text-center text-white">
+                        {projectDetailStatics.comment}
+                      </h2>
+                      <div className="bg-gray-800 p-6 rounded-2xl text-start">
+                        <p className="text-gray-300">{projects.comment}</p>
+                      </div>
+                    </section>
+                  )}
+                </div>
+              )}
             </div>
           </FadeInSection>
         )}
