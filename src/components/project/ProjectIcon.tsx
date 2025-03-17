@@ -4,6 +4,7 @@ import { projectIconStatics } from "../../../statics/project/projectIcon.static"
 
 const ProjectIcon: React.FC<ProjectIconProps> = ({
   projectTitle,
+  projectId,
   style,
   onClick,
   isBlurred = false,
@@ -11,10 +12,15 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
 }) => {
   return (
     <div
-      className={`w-52 h-52 bg-slate-600 rounded-full flex items-center justify-center flex-col group absolute transition-transform ${
+      className={`w-52 h-52 bg-slate-600 rounded-full flex items-center justify-center flex-col group absolute transition-transform shadow-lg ${
         isBlurred ? "opacity-90 blur-sm" : "opacity-100 blur-none"
       } transition-all duration-500 ease-in-out animate-float cursor-pointer`}
-      style={style}
+      style={{
+        ...style,
+        backgroundImage: `url(/img/project${projectId}/img1.png)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
       onClick={isBlurred ? undefined : onClick}
       data-type={projectType}
     >
