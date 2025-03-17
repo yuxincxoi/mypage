@@ -1,3 +1,5 @@
+import { imagePaths } from "../imagePaths";
+
 export const projectStatics = {
   project_1: {
     id: 1,
@@ -5,6 +7,7 @@ export const projectStatics = {
     type: "personal",
     stack: ["React", "TypeScript", "Express.js", "TailwindCSS", "MongoDB"],
     exp: "I LIKE 짬뽕은 전국의 짬뽕 맛집을 쉽게 찾고, 나만의 맛집 리스트를 관리할 수 있는 웹 애플리케이션입니다. 사용자들은 지도를 활용하여 주변의 짬뽕집을 검색하고, 즐겨찾기 기능을 통해 자신만의 리스트를 만들어 관리할 수 있습니다.",
+    img: ["사진1", "사진2", "사진3", "사진4", "사진5"],
     function: [
       "🔍 짬뽕집 위치 검색: 카카오 지도 API를 활용한 지도 및 검색 기능을 활용하여 사용자가 원하는 지역의 짬뽕집을 쉽게 찾을 수 있습니다.",
       "❤️ 나의 장소 관리: 사용자가 관심 있는 짬뽕집을 나만의 리스트에 추가하고, 언제든지 다시 확인할 수 있습니다.",
@@ -37,6 +40,7 @@ export const projectStatics = {
       "SQLite3",
     ],
     exp: "사용자는 꿈 자판기에서 원하는 꿈을 구매하고, 관리자는 제품의 재고와 매출을 관리할 수 있도록 한 웹 애플리케이션입니다. 세상에 존재하지 않는 자판기를 주제로 만든 mini ERP 프로젝트입니다.",
+    img: imagePaths.project_2,
     function: [
       "💰 입금하기: 꿈을 구매하기 위해 잔액을 충전합니다.",
       "🛒 구매하기: 장바구니에 원하는 꿈을 담아 구매할 수 있습니다.",
@@ -69,6 +73,7 @@ export const projectStatics = {
     type: "team",
     stack: ["Nest.js", "Nest.js", "TypeScript", "MongoDB", "TailwindCSS"],
     exp: "크랩크랩 버거는 '만약 스폰지밥 속 집게리아가 실제로 존재한다면?'이라는 발상에서 시작된 햄버거 구매 및 재고 관리 ERP 시스템입니다. 이 프로젝트는 mini 프로젝트 ‘꿈 자판기’를 기반으로 확장하여 제작했습니다.",
+    img: imagePaths.project_3,
     function: [
       "🛒 사용자 페이지: 빵, 패티, 사이드, 음료를 직접 선택하여 맞춤형 햄버거를 주문할 수 있습니다.",
       "📦 재고 관리 페이지: 제품 정보를 수정하거나 제품 발주를 넣습니다.",
@@ -112,6 +117,7 @@ export const projectStatics = {
       "Flask",
     ],
     exp: "AI 기반으로 실시간 야생동물 모니터링 및 출몰 알림을 제공하는 서비스입니다. 머신러닝을 활용해 야생동물의 종을 식별하고, 위해동물로 분류될 경우 해당 위치를 제보할 수 있습니다. 제보가 완료되면 해당 지역을 중심으로 위험 반경에 위치한 사용자들에게 출몰 알림을 전송합니다. 또한 실시간 데이터 분석을 통해 멸종위기종 및 야생동물 보호 연구에도 활용됩니다. 야생동물의 출몰이 빈번한 지역 및 피해 농가, 연구자들에게 실질적인 도움을 주기 위한 서비스를 목표로 개발했습니다.",
+    img: ["사진1", "사진2", "사진3"],
     function: [
       "📸 출몰 제보: 사진을 첨부하여 야생동물종을 식별합니다. 위해 동물로 분류가 되면 위치 제보 페이지로 바로 이동할 수 있습니다.",
       "📍 위치 제보: 출몰 지역의 키워드나 장소를 검색하면 해당 장소에 마커가 표시됩니다. 마커를 클릭하면 해당 장소를 중심으로한 위험 반경이 표시되고 제보하기 버튼이 활성화됩니다. 제보하기 버튼을 누르면 위험 반경 지역의 사용자들에게 알림이 전송됩니다. 기존 제보된 출몰 정보는 표 형태로 제공하여 출몰 현황을 쉽게 확인 가능합니다.",
@@ -144,6 +150,7 @@ export const projectStatics = {
     type: "personal",
     stack: ["React", "TypeScript", "TailwindCSS"],
     exp: "최유진의 포트폴리오 사이트입니다.",
+    img: ["사진1", "사진2", "사진3"],
     function: ["기능"],
     character: ["특징"],
     troubleShooting: {
@@ -159,6 +166,7 @@ export const projectStatics = {
     type: "personal",
     stack: ["Angular", "MySQL", "Express.js"],
     exp: "프로젝트 6: 프로젝트 설명입니다. 이렇고저런 프로젝트이고 이렇고저래서 만들었습니다.",
+    img: ["사진1"],
     function: [
       "프로젝트 6: 기능 1에 대한 상세 설명을 여기에 작성합니다. 어떤 문제를 해결하고 어떤 가치를 제공하는지 설명합니다.",
       "프로젝트 6: 기능 2에 대한 상세 설명을 여기에 작성합니다. 어떤 문제를 해결하고 어떤 가치를 제공하는지 설명합니다.",
@@ -184,6 +192,7 @@ export const projectStatics = {
     type: "personal",
     stack: ["HTML", "CSS", "JavaScript", "Express.js"],
     exp: "Cota는 코드 타자연습 게임으로, 주어진 코드를 빠르고 정확하게 입력하는 게임입니다. 이 게임을 통해 보다 빠른 작업 속도를 기르고, 새로운 프로그래밍 문법을 학습할 수 있습니다.",
+    img: imagePaths.project_7,
     function: [
       "⏱️ 타이머: 게임이 시작되면 시간이 자동으로 카운트 됩니다.",
       "❤️ 하트: 게임이 시작되면 3개의 하트가 주어집니다. 코드와 다르게 입력할 때마다 하트 하나가 사라집니다.",
@@ -204,6 +213,7 @@ export const projectStatics = {
     type: "personal",
     stack: ["React", "TypeScript", "TailwindCSS"],
     exp: "Chord Clip은 사용자가 노래를 녹음하고, 그것을 기준으로 3도 위의 음을 생성하여 재생하는 웹 애플리케이션입니다. 3도 화음의 가이드가 되어 화음 연습에 도움이 되고자 만들었습니다.",
+    img: ["사진1", "사진2", "사진3"],
     function: [
       "🎙 녹음: 사용자가 노래를 녹음합니다.",
       "🎼 3도 화음 가이드 생성: 녹음된 음을 1도음으로 설정하여 이에 맞는 3도 위의 음을 생성합니다.",
@@ -230,6 +240,7 @@ export const projectStatics = {
     type: "personal",
     stack: ["Next.js", "TypeScript", "TailwindCSS"],
     exp: "Tone-deaf Mic는 음성 변조 기능을 활용한 마이크입니다. 이 마이크로 노래를 하면 누구든 음치가 될 수 있습니다!",
+    img: imagePaths.project_9,
     function: [
       "🔌 전원 on/off 기능: 마이크의 전원을 켜고 끌 수 있는 기능을 제공합니다.",
       "🎶 피치 조절 기능: 목소리의 피치를 조절하여 음성 변조 효과를 제공합니다.",
@@ -248,6 +259,7 @@ export const projectStatics = {
     type: "personal",
     stack: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL"],
     exp: "여행 플래너의 일부로 활용될 일정 관리 애플리케이션입니다. 일정을 시간 단위로 관리하고, 하루하루의 일정을 한눈에 확인할 수 있습니다.",
+    img: imagePaths.project_10,
     function: [
       "📅 월별 캘린더: 이전, 다음 달로 이동할 수 있는 캘린더 기능을 제공합니다.",
       "🗓️ 일정 표시: 캘린더에는 각 날짜에 추가되어 있는 일정이 표시됩니다.",

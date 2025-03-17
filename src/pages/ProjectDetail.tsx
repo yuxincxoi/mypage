@@ -6,7 +6,6 @@ import { ProjectDetailProps } from "../interfaces/components/project/ProjectDeta
 import { projectDetailStatics } from "../../statics/project/projectDetail.static";
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
-  const projectImages = ["사진1", "사진2", "사진3", "사진4", "사진5"];
   const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
 
   return (
@@ -17,7 +16,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             <div className="text-3xl">{projects.title}</div>
             <Stacks stacks={projects.stack} />
             <div className="mt-4">{projects.exp}</div>
-            <ProjectImg images={projectImages} />
+            <ProjectImg images={projects.img} />
           </div>
         </FadeInSection>
         <FadeInSection>

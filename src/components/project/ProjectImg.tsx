@@ -73,7 +73,7 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
               className="carousel-item flex-shrink-0 h-60 bg-slate-500 flex items-center justify-center rounded-xl"
               style={{ width: `${itemWidth}px` }}
             >
-              {image}
+              <img src={image} alt="project-image" />
             </div>
           ))}
         </div>
