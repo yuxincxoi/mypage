@@ -51,7 +51,17 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
   return (
     <div className="relative w-4/5 mx-auto mt-4" ref={carouselRef}>
       {/* 이미지 컨테이너 */}
-      <div className="overflow-hidden">
+      <div
+        className="overflow-hidden bg-slate-200 mx-auto"
+        style={{
+          width:
+            images.length >= 3
+              ? "100%"
+              : `${
+                  itemWidth * images.length + gapWidth * (images.length - 1)
+                }px`,
+        }}
+      >
         <div
           ref={containerRef}
           className="flex gap-2 transition-transform duration-300 ease-in-out"
