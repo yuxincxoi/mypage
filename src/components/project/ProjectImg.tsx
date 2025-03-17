@@ -52,7 +52,7 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
     <div className="relative w-4/5 mx-auto mt-4" ref={carouselRef}>
       {/* 이미지 컨테이너 */}
       <div
-        className="overflow-hidden bg-slate-200 mx-auto"
+        className="overflow-hidden mx-auto"
         style={{
           width:
             images.length >= 3
@@ -70,7 +70,7 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
           {images.map((image, index) => (
             <div
               key={index}
-              className="carousel-item flex-shrink-0 h-60 bg-slate-500 flex items-center justify-center rounded-xl"
+              className="carousel-item flex-shrink-0 h-60 bg-cover flex items-center justify-center rounded-xl"
               style={{ width: `${itemWidth}px` }}
             >
               <img src={image} alt="project-image" />
