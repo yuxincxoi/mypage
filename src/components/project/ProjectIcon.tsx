@@ -17,7 +17,7 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
       } transition-all duration-500 ease-in-out animate-float cursor-pointer`}
       style={{
         ...style,
-        backgroundImage: `url(/img/project${projectId}/img1.png)`,
+        backgroundImage: `url(/img/project${projectId}/cover.png)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
