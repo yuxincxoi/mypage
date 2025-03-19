@@ -16,7 +16,7 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
         isBlurred
           ? "opacity-90 blur-lg cursor-default"
           : "opacity-100 blur-none cursor-pointer"
-      } transition-all duration-1000 ease-in-out animate-float`}
+      } transition duration-1000 ease-in-out animate-float`}
       style={{
         ...style,
         backgroundImage: `url(/img/project${projectId}/cover.png)`,
