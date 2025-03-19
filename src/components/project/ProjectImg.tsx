@@ -84,7 +84,9 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
         <>
           <button
             aria-label="Previous Images"
-            className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1"
+            className={`absolute left-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 ${
+              startIndex <= 0 ? "hidden" : ""
+            }`}
             onClick={handlePrev}
             disabled={startIndex === 0}
           >
@@ -92,7 +94,9 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
           </button>
           <button
             aria-label="Next Images"
-            className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1"
+            className={`absolute right-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 ${
+              startIndex + 3 >= images.length ? "hidden" : ""
+            }`}
             onClick={handleNext}
             disabled={startIndex + 3 >= images.length}
           >
