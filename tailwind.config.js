@@ -8,19 +8,23 @@ module.exports = {
           "50%": { transform: "translateY(-5px)" },
         },
         bounceUp: {
-          "0%": { transform: "translateY(0) rotate(0deg)" },
-          "50%": { transform: "translateY(-10px) rotate(0deg)" },
-          "100%": { transform: "translateY(0) rotate(0deg)" },
+          "0%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+          "100%": { transform: "translateY(0)" },
         },
-        smileCurve: {
-          "0%": { opacity: "0", transform: "translateX(-5px) translateY(0)" },
-          "100%": { opacity: "1", transform: "translateX(0) translateY(0)" },
+        blindReveal: {
+          "0%": {
+            clipPath: "inset(100% 0 0 0)",
+          },
+          "100%": {
+            clipPath: "inset(0 0 0 0)",
+          },
         },
       },
       animation: {
         float: "float 3s ease-in-out infinite",
         "bounce-up": "bounceUp 0.5s ease-in-out",
-        "smile-curve": "smileCurve 0.5s ease-in-out forwards",
+        "blind-reveal": "blindReveal 0.7s ease-in-out forwards",
       },
     },
   },

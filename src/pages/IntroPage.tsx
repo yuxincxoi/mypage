@@ -70,7 +70,9 @@ const IntroPage: React.FC = () => {
         animatedPart = (
           <span className="inline-block">
             <span className="inline-block">:</span>
-            <span className="inline-block animate-smile-curve">)</span>
+            <span className="inline-block animate-blind-reveal overflow-hidden">
+              )
+            </span>
           </span>
         ); // 웃는 표정으로 변경 애니메이션
         break;
