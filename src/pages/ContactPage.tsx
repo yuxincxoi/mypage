@@ -5,7 +5,7 @@ import { ContactMessage } from "../../statics/contact.static";
 
 const ContactPage: React.FC = () => {
   return (
-    <div className="w-full h-[65vh] bg-black text-white">
+    <div className="w-full h-[65vh] text-black">
       <div className="flex flex-col items-center justify-center">
         <FadeInSection>
           <div className="text-6xl font-extrabold my-20">
