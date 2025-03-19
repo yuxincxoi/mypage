@@ -18,7 +18,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   };
 
   return (
-    <div className="w-[95%] mx-auto bg-black text-white py-20 rounded-3xl">
+    <div className="w-[95%] mx-auto bg-black text-white py-32 rounded-3xl">
       <div className="w-5/6 mx-auto text-center">
         <FadeInSection>
           <div>
@@ -65,7 +65,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         </FadeInSection>
         {(projects.troubleShooting || projects.comment) && (
           <FadeInSection>
-            <div className="mt-20">
+            <div className="mt-32">
               {!isMoreSectionOpen && (
                 <div className="h-16">
                   <button
