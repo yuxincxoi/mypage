@@ -7,6 +7,15 @@ import { projectDetailStatics } from "../../statics/project/projectDetail.static
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  const handleMoreSectionOpen = () => {
+    setIsButtonVisible(false);
+
+    setTimeout(() => {
+      setIsMoreSectionOpen(true);
+    });
+  };
 
   return (
     <div className="w-[95%] mx-auto bg-black text-white py-20 rounded-3xl">
@@ -57,12 +66,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         {(projects.troubleShooting || projects.comment) && (
           <FadeInSection>
             <div className="mt-20">
-              <button
-                className="text-md text-center font-thin text-white hover:text-slate-200"
-                onClick={() => setIsMoreSectionOpen(!isMoreSectionOpen)}
-              >
-                더보기 {isMoreSectionOpen ? "▲" : "▼"}
-              </button>
+              {!isMoreSectionOpen && (
+                <div className="h-16">
+                  <button
+                    className={`text-lg text-center font-semibold bg-neutral-500 w-3/12 p-4 rounded-full text-white hover:bg-neutral-600 transition-opacity duration-600 ease-in-out ${
+                      isButtonVisible ? "opacity-100" : "opacity-0"
+                    }`}
+                    onClick={handleMoreSectionOpen}
+                  >
+                    트러블슈팅 및 회고
+                  </button>
+                </div>
+              )}
               {isMoreSectionOpen && (
                 <div className="mt-8 space-y-16 transition-all duration-300">
                   {projects.troubleShooting && (
