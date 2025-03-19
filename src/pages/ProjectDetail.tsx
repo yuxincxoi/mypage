@@ -9,7 +9,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
 
   return (
-    <div className="w-11/12 mx-auto bg-black text-white py-20 rounded-3xl">
+    <div className="w-[95%] mx-auto bg-black text-white py-20 rounded-3xl">
       <div className="w-5/6 mx-auto text-center">
         <FadeInSection>
           <div>
