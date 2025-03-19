@@ -13,8 +13,10 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
   return (
     <div
       className={`w-52 h-52 bg-slate-600 rounded-full flex items-center justify-center flex-col group absolute transition-transform shadow-lg ${
-        isBlurred ? "opacity-90 blur-sm" : "opacity-100 blur-none"
-      } transition-all duration-500 ease-in-out animate-float cursor-pointer`}
+        isBlurred
+          ? "opacity-90 blur-lg cursor-default"
+          : "opacity-100 blur-none cursor-pointer"
+      } transition duration-1000 ease-in-out animate-float`}
       style={{
         ...style,
         backgroundImage: `url(/img/project${projectId}/cover.png)`,
