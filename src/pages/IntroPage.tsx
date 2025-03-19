@@ -22,7 +22,7 @@ const IntroPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center text-9xl font-extrabold">
+    <div className="w-full h-screen mb-40 flex flex-col justify-center text-9xl font-extrabold">
       <div>
         <div>{introMessage.first}</div>
         <div>{introMessage.second}</div>
