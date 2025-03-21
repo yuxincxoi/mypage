@@ -12,11 +12,7 @@ const IntroPage: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
+      setIsVisible(window.scrollY === 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -32,12 +28,12 @@ const IntroPage: React.FC = () => {
     // 두 번째 메시지가 표시된 후 애니메이션 시작
     const animStartTimeout = setTimeout(() => {
       setMessageState((prev) => ({ ...prev, animationStage: 1 }));
-    }, 2500);
+    }, 2800);
 
     // 콜론으로 변경 후 웃는 표정으로 변경
     const smileTimeout = setTimeout(() => {
       setMessageState((prev) => ({ ...prev, animationStage: 2 }));
-    }, 3000);
+    }, 3200);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -50,13 +46,12 @@ const IntroPage: React.FC = () => {
 
   // 애니메이션을 위한 텍스트 렌더링 함수
   const renderSecondMessage = () => {
-    if (!messageState.second) return null;
-
     // 원본 텍스트에서 마지막 "." 부분을 제외한 부분
     const textWithoutDot = introMessage.second.slice(0, -1);
 
     // 애니메이션 단계에 따라 다른 내용 표시
     let animatedPart;
+
     switch (messageState.animationStage) {
       case 0:
         animatedPart = "."; // 기본 상태
@@ -93,10 +88,10 @@ const IntroPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen mb-40 flex flex-col justify-center text-9xl font-extrabold">
+    <div className="w-full h-screen mb-40 flex flex-col justify-center text-8xl font-bold">
       <div className="overflow-hidden">
         <div
-          className={`transform transition-transform duration-1000 ease-out overflow-hidden ${
+          className={`transform transition-transform duration-1000 ease-out ${
             messageState.first
               ? "translate-y-0 opacity-100"
               : "translate-y-full opacity-0"
@@ -106,7 +101,9 @@ const IntroPage: React.FC = () => {
         </div>
         <div
           className={`transform transition-transform duration-1000 ease-out ${
-            messageState.second ? "translate-y-0" : "translate-y-full"
+            messageState.second
+              ? "translate-y-0 opacity-100"
+              : "opacity-0 invisible translate-y-full"
           }`}
         >
           {renderSecondMessage()}
