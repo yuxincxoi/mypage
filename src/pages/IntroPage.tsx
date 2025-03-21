@@ -58,18 +58,18 @@ const IntroPage: React.FC = () => {
         break;
       case 1:
         animatedPart = (
-          <span className=" animate-bounce-up bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400  font-extrabold bg-clip-text text-transparent leading-none">
+          <span className="animate-bounce-up bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400 font-extrabold bg-clip-text text-transparent leading-none">
             :
           </span>
         ); // 콜론으로 변경 애니메이션
         break;
       case 2:
         animatedPart = (
-          <span className="">
-            <span className=" bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400  font-extrabold bg-clip-text text-transparent leading-none">
+          <span>
+            <span className="bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400 font-extrabold bg-clip-text text-transparent leading-none">
               :
             </span>
-            <span className=" animate-blind-reveal overflow-hidden bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400  font-extrabold bg-clip-text text-transparent leading-none">
+            <span className="animate-blind-reveal overflow-hidden bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400 font-extrabold bg-clip-text text-transparent leading-none">
               )
             </span>
           </span>
