@@ -8,29 +8,67 @@ const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
 }) => {
   return (
     <div className="flex w-80 mx-auto justify-between text-2xl">
-      <div
-        className={`cursor-pointer ${
-          selectedType === "all" ? "font-semibold" : "font-thin"
-        } transition-all duration-300 ease-in-out`}
-        onClick={() => onTypeChange("all")}
-      >
-        {typeStatics.all}
+      <div>
+        <div
+          className={`cursor-pointer ${
+            selectedType === "all" ? "font-bold" : "text-gray-300 font-light"
+          } transition-all duration-300 ease-in-out`}
+          onClick={() => onTypeChange("all")}
+        >
+          {typeStatics.all}
+        </div>
+        <div
+          className={`
+              w-2 h-2 rounded-full transition-all duration-300 ease-in-out mt-1 mx-auto
+              ${
+                selectedType === "all"
+                  ? "bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400"
+                  : ""
+              }
+            `}
+        ></div>
       </div>
-      <div
-        className={`cursor-pointer ${
-          selectedType === "personal" ? "font-semibold" : "font-thin"
-        } transition-all duration-300 ease-in-out`}
-        onClick={() => onTypeChange("personal")}
-      >
-        {typeStatics.personal}
+      <div>
+        <div
+          className={`cursor-pointer ${
+            selectedType === "personal"
+              ? "font-bold"
+              : "text-gray-300 font-light"
+          } transition-all duration-300 ease-in-out`}
+          onClick={() => onTypeChange("personal")}
+        >
+          {typeStatics.personal}
+        </div>
+        <div
+          className={`
+              w-2 h-2 rounded-full transition-all duration-300 ease-in-out mt-1 mx-auto
+              ${
+                selectedType === "personal"
+                  ? "bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400"
+                  : ""
+              }
+            `}
+        ></div>
       </div>
-      <div
-        className={`cursor-pointer ${
-          selectedType === "team" ? "font-semibold" : "font-thin"
-        } transition-all duration-300 ease-in-out`}
-        onClick={() => onTypeChange("team")}
-      >
-        {typeStatics.team}
+      <div>
+        <div
+          className={`cursor-pointer ${
+            selectedType === "team" ? "font-bold" : "text-gray-300 font-light"
+          } transition-all duration-300 ease-in-out`}
+          onClick={() => onTypeChange("team")}
+        >
+          {typeStatics.team}
+        </div>
+        <div
+          className={`
+              w-2 h-2 rounded-full transition-all duration-300 ease-in-out mt-1 mx-auto
+              ${
+                selectedType === "team"
+                  ? "bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400"
+                  : ""
+              }
+            `}
+        ></div>
       </div>
     </div>
   );
