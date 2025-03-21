@@ -12,7 +12,7 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
 }) => {
   return (
     <div
-      className={`w-52 h-52 bg-slate-600 rounded-full flex items-center justify-center flex-col group absolute shadow-lg ${
+      className={`w-52 h-52 bg-zinc-300 rounded-full flex items-center justify-center flex-col group absolute shadow-lg ${
         isBlurred
           ? "opacity-90 blur-lg cursor-default"
           : "opacity-100 blur-none cursor-pointer"

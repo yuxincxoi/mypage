@@ -112,7 +112,9 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
             <div
               key={index}
               className={`w-2 h-2 rounded-full transition-colors ${
-                index === startIndex ? "bg-white" : "bg-gray-400"
+                index === startIndex
+                  ? " bg-gradient-to-r to-amber-200 from-red-300"
+                  : "bg-zinc-200"
               }`}
             />
           )
