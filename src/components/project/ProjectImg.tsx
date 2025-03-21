@@ -115,7 +115,7 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
                 index === startIndex
                   ? " bg-gradient-to-r to-amber-200 from-red-300"
                   : "bg-zinc-200"
-              }`}
+              } ${images.length <= 3 ? "hidden" : ""}`}
             />
           )
         )}
