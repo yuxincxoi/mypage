@@ -27,17 +27,17 @@ const IntroPage: React.FC = () => {
 
     const secondTimeout = setTimeout(() => {
       setMessageState((prev) => ({ ...prev, second: true }));
-    }, 1200);
+    }, 1500);
 
     // 두 번째 메시지가 표시된 후 애니메이션 시작
     const animStartTimeout = setTimeout(() => {
       setMessageState((prev) => ({ ...prev, animationStage: 1 }));
-    }, 2000);
+    }, 2500);
 
     // 콜론으로 변경 후 웃는 표정으로 변경
     const smileTimeout = setTimeout(() => {
       setMessageState((prev) => ({ ...prev, animationStage: 2 }));
-    }, 2500);
+    }, 3000);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -63,14 +63,18 @@ const IntroPage: React.FC = () => {
         break;
       case 1:
         animatedPart = (
-          <span className="inline-block animate-bounce-up">:</span>
+          <span className=" animate-bounce-up bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400  font-extrabold bg-clip-text text-transparent leading-none">
+            :
+          </span>
         ); // 콜론으로 변경 애니메이션
         break;
       case 2:
         animatedPart = (
-          <span className="inline-block">
-            <span className="inline-block">:</span>
-            <span className="inline-block animate-blind-reveal overflow-hidden">
+          <span className="">
+            <span className=" bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400  font-extrabold bg-clip-text text-transparent leading-none">
+              :
+            </span>
+            <span className=" animate-blind-reveal overflow-hidden bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400  font-extrabold bg-clip-text text-transparent leading-none">
               )
             </span>
           </span>
