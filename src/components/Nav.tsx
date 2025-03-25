@@ -71,7 +71,7 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center space-y-8 justify-center bg-neutral-200 px-3 py-5 rounded-full opacity-60">
+    <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center space-y-8 justify-center bg-neutral-200 px-3 py-5 rounded-full opacity-60 font-pretendard">
       {navItems.map((item) => (
         <div
           key={item.id}

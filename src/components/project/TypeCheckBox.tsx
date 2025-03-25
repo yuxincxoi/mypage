@@ -11,7 +11,9 @@ const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
       <div>
         <div
           className={`cursor-pointer ${
-            selectedType === "all" ? "font-bold" : "text-gray-300 font-light"
+            selectedType === "all"
+              ? "font-pretendardBold"
+              : "text-gray-300 font-pretendardExtraLight"
           } transition-all duration-300 ease-in-out`}
           onClick={() => onTypeChange("all")}
         >
@@ -32,8 +34,8 @@ const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
         <div
           className={`cursor-pointer ${
             selectedType === "personal"
-              ? "font-bold"
-              : "text-gray-300 font-light"
+              ? "font-pretendardBold"
+              : "text-gray-300 font-pretendardExtraLight"
           } transition-all duration-300 ease-in-out`}
           onClick={() => onTypeChange("personal")}
         >
@@ -53,7 +55,9 @@ const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
       <div>
         <div
           className={`cursor-pointer ${
-            selectedType === "team" ? "font-bold" : "text-gray-300 font-light"
+            selectedType === "team"
+              ? "font-pretendardBold"
+              : "text-gray-300 font-pretendardExtraLight"
           } transition-all duration-300 ease-in-out`}
           onClick={() => onTypeChange("team")}
         >
