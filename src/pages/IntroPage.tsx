@@ -54,7 +54,7 @@ const IntroPage: React.FC = () => {
 
     switch (messageState.animationStage) {
       case 0:
-        animatedPart = "."; // 기본 상태
+        animatedPart = " "; // 기본 상태
         break;
       case 1:
         animatedPart = (
@@ -76,12 +76,13 @@ const IntroPage: React.FC = () => {
         ); // 웃는 표정으로 변경 애니메이션
         break;
       default:
-        animatedPart = ".";
+        animatedPart = " ";
     }
 
     return (
       <>
         {textWithoutDot}
+        <span className="inline-block w-6"></span>
         <span className="relative inline-flex">{animatedPart}</span>
       </>
     );
