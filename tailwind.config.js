@@ -4,6 +4,9 @@ module.exports = {
     extend: {
       fontFamily: {
         pretendard: ["Pretendard-Regular"],
+        pretendardExtraLight: ["Pretendard-ExtraLight"],
+        pretendardSemiBold: ["Pretendard-SemiBold"],
+        pretendardBold: ["Pretendard-Bold"],
         gumi: ["GumiRomanceTTF"],
       },
       keyframes: {
