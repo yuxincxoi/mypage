@@ -27,7 +27,7 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
       data-type={projectType}
     >
       <div
-        className={`text-center ${
+        className={`text-center font-pretendard ${
           isBlurred ? "hidden" : "hidden group-hover:block"
         }`}
       >
