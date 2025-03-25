@@ -2,6 +2,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        pretendard: ["Pretendard-Regular"],
+        gumi: ["GumiRomanceTTF"],
+      },
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },

@@ -58,7 +58,7 @@ const IntroPage: React.FC = () => {
         break;
       case 1:
         animatedPart = (
-          <span className="animate-bounce-up bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400 font-extrabold bg-clip-text text-transparent leading-none">
+          <span className="animate-bounce-up bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400 font-extrabold bg-clip-text text-transparent leading-none font-gumi">
             :
           </span>
         ); // 콜론으로 변경 애니메이션
@@ -66,10 +66,10 @@ const IntroPage: React.FC = () => {
       case 2:
         animatedPart = (
           <span>
-            <span className="bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400 font-extrabold bg-clip-text text-transparent leading-none">
+            <span className="bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400 font-extrabold bg-clip-text text-transparent leading-none font-gumi">
               :
             </span>
-            <span className="animate-blind-reveal overflow-hidden bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400 font-extrabold bg-clip-text text-transparent leading-none">
+            <span className="animate-blind-reveal overflow-hidden bg-gradient-to-t from-cyan-500 to-amber-400 via-red-400 font-extrabold bg-clip-text text-transparent leading-none font-gumi">
               )
             </span>
           </span>
@@ -88,7 +88,7 @@ const IntroPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen mb-40 flex flex-col justify-center text-8xl font-bold">
+    <div className="w-full h-screen mb-40 flex flex-col justify-center text-8xl font-bold font-pretendard">
       <div className="overflow-hidden">
         <div
           className={`transform transition-transform duration-1000 ease-out ${
