@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProjectImg from "../components/project/ProjectImg";
 import Stacks from "../components/project/Stacks";
 import FadeInSection from "../FadeInSection";
@@ -8,6 +8,12 @@ import { projectDetailStatics } from "../../statics/project/projectDetail.static
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  // 새로운 프로젝트 선택 시 상태 초기화
+  useEffect(() => {
+    setIsMoreSectionOpen(false);
+    setIsButtonVisible(true);
+  }, [projects]);
 
   const handleMoreSectionOpen = () => {
     setIsButtonVisible(false);
