@@ -12,11 +12,12 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
 }) => {
   return (
     <div
-      className={`w-52 h-52 bg-zinc-300 rounded-full flex items-center justify-center flex-col group absolute shadow-lg ${
-        isBlurred
-          ? "opacity-90 blur-lg cursor-default"
-          : "opacity-100 blur-none cursor-pointer"
-      } transition duration-1000 ease-in-out animate-float`}
+      className={`w-52 h-52 rounded-full flex items-center justify-center flex-col group absolute shadow-lg 
+        ${
+          isBlurred
+            ? "opacity-90 blur-lg cursor-default"
+            : "opacity-100 blur-none cursor-pointer"
+        } transition duration-1000 ease-in-out`}
       style={{
         ...style,
         backgroundImage: `url(/img/project${projectId}/cover.png)`,
@@ -27,12 +28,15 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
       data-type={projectType}
     >
       <div
-        className={`text-center font-pretendard ${
+        className={`absolute inset-0 bg-zinc-400 opacity-0 group-hover:opacity-95 transition-all duration-500 rounded-full`}
+      ></div>
+      <div
+        className={`text-center font-pretendard text-white z-10 ${
           isBlurred ? "hidden" : "hidden group-hover:block"
         }`}
       >
         <p>{projectTitle}</p>
-        <p>{projectIconStatics.showDetail}</p>
+        <p className="mt-4">{projectIconStatics.showDetail}</p>
       </div>
     </div>
   );
