@@ -71,7 +71,7 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center space-y-8 justify-center bg-neutral-200 px-3 py-5 rounded-full opacity-60 font-pretendard">
+    <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center space-y-8 justify-center px-3 py-5 font-pretendard">
       {navItems.map((item) => (
         <div
           key={item.id}
@@ -90,7 +90,7 @@ const Nav: React.FC = () => {
               rounded-full transition-all duration-300 ease-in-out
               ${
                 getActiveSection() === item.id
-                  ? "w-3 h-3 bg-slate-50 scale-125 shadow-lg"
+                  ? "w-3 h-3 bg-gray-100 scale-125 shadow-lg"
                   : "w-2 h-2 bg-gray-400"
               }
             `}
