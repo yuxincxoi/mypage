@@ -23,9 +23,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         <FadeInSection>
           <div className="w-[20%] h-[2px] mx-auto mb-4 bg-gradient-to-l from-cyan-300 to-amber-400 via-red-400"></div>
           <div>
-            <div className="text-3xl">{projects.title}</div>
+            <div className="text-3xl font-semibold">{projects.title}</div>
             <Stacks stacks={projects.stack} />
-            <div className="mt-4">{projects.exp}</div>
+            <div className="mt-4 whitespace-pre-wrap">{projects.exp}</div>
             <ProjectImg images={projects.img} />
           </div>
         </FadeInSection>
