@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import ProjectImg from "../components/project/ProjectImg";
 import Stacks from "../components/project/Stacks";
 import FadeInSection from "../FadeInSection";
@@ -199,17 +199,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                 <>
                   <button
                     aria-label="Previous Images"
-                    className={`absolute left-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 ${
+                    className={`absolute left-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 text-white hover:text-gray-300 transition-colors duration-100 ${
                       selectedImageIndex <= 0 ? "hidden" : ""
                     }`}
                     onClick={handlePrevImage}
                     disabled={selectedImageIndex === 0}
                   >
-                    <ChevronLeft />
+                    <ChevronLeft size={32} strokeWidth={2} />
                   </button>
                   <button
                     aria-label="Next Images"
-                    className={`absolute right-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 ${
+                    className={`absolute right-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 text-white hover:text-gray-300 transition-colors duration-100 ${
                       selectedImageIndex >= projects.img.length - 1
                         ? "hidden"
                         : ""
@@ -217,7 +217,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                     onClick={handleNextImage}
                     disabled={selectedImageIndex === projects.img.length - 1}
                   >
-                    <ChevronRight />
+                    <ChevronRight size={32} strokeWidth={2} />
                   </button>
                 </>
               )}
