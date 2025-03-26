@@ -89,7 +89,7 @@ const IntroPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen mb-40 flex flex-col justify-center text-8xl font-bold">
+    <div className="w-full h-screen mb-32 flex flex-col justify-center text-8xl font-bold">
       <div className="overflow-hidden font-pretendardSemiBold">
         <div
           className={`transform transition-transform duration-1000 ease-out ${

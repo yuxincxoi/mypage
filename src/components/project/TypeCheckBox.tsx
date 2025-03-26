@@ -5,9 +5,14 @@ import { typeStatics } from "../../../statics/project/typeCheck.static";
 const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
   selectedType,
   onTypeChange,
+  isVisible,
 }) => {
   return (
-    <div className="flex w-72 mx-auto text-black justify-between text-md bg-neutral-100 px-2 py-2 rounded-full opacity-95">
+    <div
+      className={`flex w-72 text-black bg-neutral-100 justify-between text-md px-2 py-2 rounded-full fixed top-5 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-300 ${
+        isVisible ? "opacity-95" : "opacity-0 pointer-events-none"
+      }`}
+    >
       <div>
         <div
           className={`cursor-pointer font-pretendard transition-all duration-500 ease-in-out w-16 h-10 text-center flex items-center justify-center ${

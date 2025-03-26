@@ -23,7 +23,9 @@ const ProjectListPage: React.FC = () => {
   const [isProjectDetailVisible, setIsProjectDetailVisible] =
     useState<boolean>(false);
   const detailRef = useRef<HTMLDivElement>(null); // ProjectDetail 요소의 ref
+  const listRef = useRef<HTMLDivElement>(null);
   const [isDetailVisible, setIsDetailVisible] = useState(false);
+  const [isListVisible, setIsListVisible] = useState(false);
 
   const [projects, setProjects] = useState(
     Array.from({ length: 10 }, (_, i) => {
@@ -97,6 +99,28 @@ const ProjectListPage: React.FC = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         // entry.isIntersecting이 true일 경우, ProjectDetail이 화면에 보이는 상태
+        setIsListVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.75, // 요소가 75% 이상 보일 때 isVisible을 true로 설정
+      }
+    );
+
+    if (listRef.current) {
+      observer.observe(listRef.current); // ProjectIcon 요소를 관찰
+    }
+
+    return () => {
+      if (listRef.current) {
+        observer.unobserve(listRef.current); // 컴포넌트가 언마운트될 때 관찰 중지
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // IntersectionObserver를 사용하여 ProjectDetail이 화면에 보일 때 감지
+    const observer = new IntersectionObserver(
+      ([entry]) => {
         setIsDetailVisible(entry.isIntersecting);
       },
       {
@@ -121,10 +145,11 @@ const ProjectListPage: React.FC = () => {
         <TypeChechBox
           selectedType={selectedType}
           onTypeChange={handleTypeChange}
+          isVisible={isListVisible}
         />
       </FadeInSection>
       <FadeInSection>
-        <div className="relative w-5/6 h-screen mx-auto mt-16">
+        <div ref={listRef} className="relative w-5/6 h-screen mx-auto mt-16">
           {bubblePositions.map((bubble, index) => (
             <ProjectIcon
               key={projects[index].id}
