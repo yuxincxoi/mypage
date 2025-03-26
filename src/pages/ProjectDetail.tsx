@@ -182,7 +182,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         {/* 이미지 모달 */}
         {isModalOpen && selectedImageIndex !== null && (
           <div
-            className="fixed top-0 left-0 right-0 bottom-0 bg-black backdrop-blur-sm bg-opacity-50 flex justify-center items-center z-50"
+            className="fixed top-0 left-0 right-0 bottom-0 bg-black backdrop-blur-lg bg-opacity-30 flex justify-center items-center z-50"
             onClick={closeModal}
           >
             <div
