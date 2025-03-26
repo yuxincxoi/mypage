@@ -124,9 +124,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
           <FadeInSection>
             <div className="mt-32">
               {!isMoreSectionOpen && (
-                <div className="h-16">
+                <div className="w-full mx-auto flex justify-center items-center">
                   <button
-                    className={`text-lg text-center font-pretendardSemiBold bg-neutral-500 w-3/12 p-4 rounded-full text-white hover:bg-neutral-600 transition-opacity duration-600 ease-in-out ${
+                    className={`text-center font-pretendardSemiBold bg-neutral-500 px-10 py-4 rounded-full text-white hover:bg-neutral-600 transition-opacity duration-600 ease-in-out ${
                       isButtonVisible ? "opacity-100" : "opacity-0"
                     }`}
                     onClick={handleMoreSectionOpen}
