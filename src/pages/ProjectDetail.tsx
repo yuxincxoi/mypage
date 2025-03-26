@@ -69,11 +69,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
 
   return (
     <div className="w-[95%] mx-auto bg-zinc-50 text-zinc-800 py-32 rounded-3xl">
-      <div className="w-5/6 mx-auto text-center">
+      <div className="w-5/6 mx-auto">
         <FadeInSection>
           <div className="w-[20%] h-[2px] mx-auto mb-4 bg-gradient-to-l from-cyan-300 to-amber-400 via-red-400"></div>
           <div>
-            <div className="text-3xl font-pretendardSemiBold">
+            <div className="text-3xl text-center font-pretendardSemiBold">
               {projects.title}
             </div>
             <Stacks stacks={projects.stack} />
@@ -81,39 +81,35 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
           </div>
         </FadeInSection>
         <FadeInSection>
-          <div className="mt-20 whitespace-pre-wrap font-pretendard">
+          <div className="mt-20 whitespace-pre-wrap font-pretendard text-center">
             {projects.exp}
           </div>
         </FadeInSection>
         <FadeInSection>
-          <div className="mt-20 grid md:grid-cols-2 gap-8">
+          <div className="mx-auto mt-40 w-[70%]">
             {/* 주요 기능 */}
             <section className="space-y-4">
-              <h2 className="text-2xl font-pretendardSemiBold text-center text-black">
+              <h2 className="text-2xl font-pretendardSemiBold text-black">
                 {projectDetailStatics.function}
               </h2>
-              <div className="bg-zinc-100 p-6 rounded-2xl text-start">
+              <div className="p-1">
                 {projects.function?.map((func: string, idx: number) => (
-                  <div key={idx} className="mt-4">
-                    <p className="text-lg font-pretendard text-black mb-2">
-                      {func}
-                    </p>
+                  <div key={idx} className="mt-1">
+                    <p className="font-pretendard text-black mb-2">{func}</p>
                   </div>
                 ))}
               </div>
             </section>
 
             {/* 특징 */}
-            <section className="space-y-4">
-              <h2 className="text-2xl font-pretendardSemiBold text-center text-black">
+            <section className="space-y-4 mt-20">
+              <h2 className="text-2xl font-pretendardSemiBold text-black">
                 {projectDetailStatics.character}
               </h2>
-              <div className="bg-zinc-100 p-6 rounded-2xl text-start">
+              <div className="p-2">
                 {projects.character?.map((char: string, idx: number) => (
-                  <div key={idx} className="mt-4">
-                    <p className="text-lg font-pretendard text-black mb-2">
-                      {char}
-                    </p>
+                  <div key={idx} className="mt-1">
+                    <p className="font-pretendard text-black mb-2">{char}</p>
                   </div>
                 ))}
               </div>
@@ -139,24 +135,24 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                 <div className="mt-8 space-y-16 transition-all duration-300">
                   {projects.troubleShooting && (
                     <section className="space-y-4">
-                      <h2 className="text-2xl font-pretendardSemiBold text-center text-black">
+                      <h2 className="text-2xl font-pretendardSemiBold text-black">
                         {projectDetailStatics.troubleShooting.title}
                       </h2>
                       <div className="bg-zinc-100 p-6 rounded-2xl text-start">
                         <div>
-                          <p className="text-lg font-pretendardSemiBold text-black mb-2">
+                          <p className="font-pretendardSemiBold text-black mb-2">
                             {projectDetailStatics.troubleShooting.trouble}
                           </p>
                           <p className="mb-4 font-pretendard">
                             {projects.troubleShooting.trouble}
                           </p>
-                          <p className="text-lg font-pretendardSemiBold text-black mb-2">
+                          <p className="font-pretendardSemiBold text-black mb-2">
                             {projectDetailStatics.troubleShooting.shooting}
                           </p>
                           <p className="mb-4 font-pretendard">
                             {projects.troubleShooting.shooting}
                           </p>
-                          <p className="text-lg font-pretendardSemiBold text-black mb-2">
+                          <p className="font-pretendardSemiBold text-black mb-2">
                             {projectDetailStatics.troubleShooting.result}
                           </p>
                           <p className="font-pretendard">
@@ -168,7 +164,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                   )}
                   {projects.comment && (
                     <section className="space-y-4">
-                      <h2 className="text-2xl font-pretendardSemiBold text-center text-black">
+                      <h2 className="text-2xl font-pretendardSemiBold text-black">
                         {projectDetailStatics.comment}
                       </h2>
                       <div className="bg-zinc-100 p-6 rounded-2xl text-start font-pretendard">
