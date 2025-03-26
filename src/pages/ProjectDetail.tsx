@@ -77,16 +77,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               {projects.title}
             </div>
             <Stacks stacks={projects.stack} />
+            <div className="my-14 whitespace-pre-wrap font-pretendard text-center">
+              {projects.exp}
+            </div>
             <ProjectImg images={projects.img} onClick={openModal} />
           </div>
         </FadeInSection>
         <FadeInSection>
-          <div className="mt-20 whitespace-pre-wrap font-pretendard text-center">
-            {projects.exp}
-          </div>
-        </FadeInSection>
-        <FadeInSection>
-          <div className="mx-auto mt-40 w-[70%]">
+          <div className="mx-auto mt-36 w-[70%]">
             {/* 주요 기능 */}
             <section className="space-y-4">
               <h2 className="text-2xl font-pretendardSemiBold text-black">
