@@ -77,10 +77,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               {projects.title}
             </div>
             <Stacks stacks={projects.stack} />
-            <div className="mt-4 whitespace-pre-wrap font-pretendard">
-              {projects.exp}
-            </div>
             <ProjectImg images={projects.img} onClick={openModal} />
+          </div>
+        </FadeInSection>
+        <FadeInSection>
+          <div className="mt-20 whitespace-pre-wrap font-pretendard">
+            {projects.exp}
           </div>
         </FadeInSection>
         <FadeInSection>

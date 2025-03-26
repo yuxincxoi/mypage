@@ -74,7 +74,7 @@ const ProjectImg: React.FC<{
             <div
               key={index}
               onClick={() => onClick(image)}
-              className="carousel-item flex-shrink-0 h-60 bg-cover flex items-center justify-center rounded-xl"
+              className="carousel-item flex-shrink-0 h-44 bg-cover flex items-center justify-center rounded-xl"
               style={{ width: `${itemWidth}px` }}
             >
               <img src={image} alt="project-image" />
