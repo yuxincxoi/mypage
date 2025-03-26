@@ -94,47 +94,48 @@ const ProjectListPage: React.FC = () => {
     return projectType !== selectedType;
   };
 
+  // ProjectIcon을 감지하여 isListVisible 상태 업데이트
+  // TypeCheckBox 표시 여부 제어
   useEffect(() => {
-    // IntersectionObserver를 사용하여 ProjectDetail이 화면에 보일 때 감지
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // entry.isIntersecting이 true일 경우, ProjectDetail이 화면에 보이는 상태
         setIsListVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.75, // 요소가 75% 이상 보일 때 isVisible을 true로 설정
+        threshold: 0.75, // 75% 이상 보일 때
       }
     );
 
     if (listRef.current) {
-      observer.observe(listRef.current); // ProjectIcon 요소를 관찰
+      observer.observe(listRef.current); // ProjectIcon 관찰
     }
 
     return () => {
       if (listRef.current) {
-        observer.unobserve(listRef.current); // 컴포넌트가 언마운트될 때 관찰 중지
+        observer.unobserve(listRef.current); // 언마운트될 때 관찰 중지
       }
     };
   }, []);
 
+  // ProjectDetail을 감지하여 isDetailVisible 상태 업데이트
+  // ScrollToProjectListBtn 표시 여부 제어
   useEffect(() => {
-    // IntersectionObserver를 사용하여 ProjectDetail이 화면에 보일 때 감지
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsDetailVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.4, // 요소가 40% 이상 보일 때 isVisible을 true로 설정
+        threshold: 0.4, // 40% 이상 보일 때
       }
     );
 
     if (detailRef.current) {
-      observer.observe(detailRef.current); // ProjectDetail 요소를 관찰
+      observer.observe(detailRef.current); // ProjectDetail 관찰
     }
 
     return () => {
       if (detailRef.current) {
-        observer.unobserve(detailRef.current); // 컴포넌트가 언마운트될 때 관찰 중지
+        observer.unobserve(detailRef.current); // 언마운트될 때 관찰 중지
       }
     };
   }, [isProjectDetailVisible]);
