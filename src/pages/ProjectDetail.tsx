@@ -89,7 +89,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             onClick={closeModal}
           >
             <div
-              className="relative bg-white rounded-xl max-w-[90%] max-h-[90%] flex flex-col items-center"
+              className="relative max-w-[90%] max-h-[90%] flex flex-col items-center"
               onClick={(e) => e.stopPropagation()} // 모달 클릭 시 닫히지 않도록 방지
             >
               {/* 좌우 화살표 */}
@@ -124,7 +124,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               <img
                 src={projects.img[selectedImageIndex]}
                 alt={`Project Image ${selectedImageIndex + 1}`}
-                className="w-[60vw] h-[60vh] object-contain rounded-lg"
+                className="w-[60vw] h-[60vh] object-contain"
               />
             </div>
           </div>
