@@ -75,7 +75,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             onClick={closeModal}
           >
             <div
-              className="relative bg-white p-4 rounded-xl max-w-[90%] max-h-[90%] flex flex-col items-center"
+              className="relative bg-white rounded-xl max-w-[90%] max-h-[90%] flex flex-col items-center"
               onClick={(e) => e.stopPropagation()} // 모달 클릭 시 닫히지 않도록 방지
             >
               {/* 좌우 화살표 */}
@@ -112,22 +112,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                 alt={`Project Image ${selectedImageIndex + 1}`}
                 className="max-w-full max-h-[80vh] object-contain"
               />
-
-              {/* 인디케이터 */}
-              {projects.img.length > 1 && (
-                <div className="flex justify-center mt-4 space-x-2">
-                  {projects.img.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        index === selectedImageIndex
-                          ? "bg-gradient-to-r to-amber-200 from-red-300"
-                          : "bg-zinc-200"
-                      }`}
-                    />
-                  ))}
-                </div>
-              )}
             </div>
           </div>
         )}
