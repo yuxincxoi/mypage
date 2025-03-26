@@ -4,6 +4,7 @@ import ProjectImg from "../components/project/ProjectImg";
 import Stacks from "../components/project/Stacks";
 import FadeInSection from "../FadeInSection";
 import { ProjectDetailProps } from "../interfaces/components/project/ProjectDetail.interface";
+import { projectDetailStatics } from "../../statics/project/projectDetail.static";
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
@@ -82,6 +83,102 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             <ProjectImg images={projects.img} onClick={openModal} />
           </div>
         </FadeInSection>
+        <FadeInSection>
+          <div className="mt-20 grid md:grid-cols-2 gap-8">
+            {/* 주요 기능 */}
+            <section className="space-y-4">
+              <h2 className="text-2xl font-pretendardSemiBold text-center text-black">
+                {projectDetailStatics.function}
+              </h2>
+              <div className="bg-zinc-100 p-6 rounded-2xl text-start">
+                {projects.function?.map((func: string, idx: number) => (
+                  <div key={idx} className="mt-4">
+                    <p className="text-lg font-pretendard text-black mb-2">
+                      {func}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* 특징 */}
+            <section className="space-y-4">
+              <h2 className="text-2xl font-pretendardSemiBold text-center text-black">
+                {projectDetailStatics.character}
+              </h2>
+              <div className="bg-zinc-100 p-6 rounded-2xl text-start">
+                {projects.character?.map((char: string, idx: number) => (
+                  <div key={idx} className="mt-4">
+                    <p className="text-lg font-pretendard text-black mb-2">
+                      {char}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </FadeInSection>
+        {(projects.troubleShooting || projects.comment) && (
+          <FadeInSection>
+            <div className="mt-32">
+              {!isMoreSectionOpen && (
+                <div className="h-16">
+                  <button
+                    className={`text-lg text-center font-pretendardSemiBold bg-neutral-500 w-3/12 p-4 rounded-full text-white hover:bg-neutral-600 transition-opacity duration-600 ease-in-out ${
+                      isButtonVisible ? "opacity-100" : "opacity-0"
+                    }`}
+                    onClick={handleMoreSectionOpen}
+                  >
+                    트러블슈팅 및 회고
+                  </button>
+                </div>
+              )}
+              {isMoreSectionOpen && (
+                <div className="mt-8 space-y-16 transition-all duration-300">
+                  {projects.troubleShooting && (
+                    <section className="space-y-4">
+                      <h2 className="text-2xl font-pretendardSemiBold text-center text-black">
+                        {projectDetailStatics.troubleShooting.title}
+                      </h2>
+                      <div className="bg-zinc-100 p-6 rounded-2xl text-start">
+                        <div>
+                          <p className="text-lg font-pretendardSemiBold text-black mb-2">
+                            {projectDetailStatics.troubleShooting.trouble}
+                          </p>
+                          <p className="mb-4 font-pretendard">
+                            {projects.troubleShooting.trouble}
+                          </p>
+                          <p className="text-lg font-pretendardSemiBold text-black mb-2">
+                            {projectDetailStatics.troubleShooting.shooting}
+                          </p>
+                          <p className="mb-4 font-pretendard">
+                            {projects.troubleShooting.shooting}
+                          </p>
+                          <p className="text-lg font-pretendardSemiBold text-black mb-2">
+                            {projectDetailStatics.troubleShooting.result}
+                          </p>
+                          <p className="font-pretendard">
+                            {projects.troubleShooting.result}
+                          </p>
+                        </div>
+                      </div>
+                    </section>
+                  )}
+                  {projects.comment && (
+                    <section className="space-y-4">
+                      <h2 className="text-2xl font-pretendardSemiBold text-center text-black">
+                        {projectDetailStatics.comment}
+                      </h2>
+                      <div className="bg-zinc-100 p-6 rounded-2xl text-start font-pretendard">
+                        <p className="">{projects.comment}</p>
+                      </div>
+                    </section>
+                  )}
+                </div>
+              )}
+            </div>
+          </FadeInSection>
+        )}
         {/* 이미지 모달 */}
         {isModalOpen && selectedImageIndex !== null && (
           <div
