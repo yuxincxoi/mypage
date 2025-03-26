@@ -11,7 +11,7 @@ const ScrollToProjectListBtn: React.FC<ScrollToProjectListBtnProps> = ({
   return (
     <button
       onClick={scrollToTop}
-      className={`w-16 h-16 fixed bottom-10 right-10 p-3 bg-white hover:bg-slate-100 text-black text-2xl rounded-full shadow-lg transition-opacity z-50 ${
+      className={`w-16 h-16 fixed bottom-10 right-10 p-3 bg-white hover:bg-slate-100 text-black text-2xl rounded-full shadow-lg transition-opacity z-30 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
