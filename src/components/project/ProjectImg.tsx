@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
+const ProjectImg: React.FC<{
+  images: string[];
+  onClick: (image: string) => void;
+}> = ({ images, onClick }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
   const [gapWidth, setGapWidth] = useState(0);
@@ -70,6 +73,7 @@ const ProjectImg: React.FC<{ images: string[] }> = ({ images }) => {
           {images.map((image, index) => (
             <div
               key={index}
+              onClick={() => onClick(image)}
               className="carousel-item flex-shrink-0 h-60 bg-cover flex items-center justify-center rounded-xl"
               style={{ width: `${itemWidth}px` }}
             >
