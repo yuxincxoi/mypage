@@ -185,6 +185,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               className="relative max-w-[90%] max-h-[90%] flex flex-col items-center"
               onClick={(e) => e.stopPropagation()} // 모달 클릭 시 닫히지 않도록 방지
             >
+              {/* 닫기 버튼 */}
+              <button
+                aria-label="Close Modal"
+                className="absolute -top-7 right-0 text-white hover:text-gray-300 transition-colors duration-100"
+                onClick={closeModal}
+              >
+                <X size={22} strokeWidth={2} />
+              </button>
+
               {/* 좌우 화살표 */}
               {projects.img.length > 1 && (
                 <>
