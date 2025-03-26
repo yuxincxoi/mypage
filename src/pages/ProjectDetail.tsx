@@ -124,7 +124,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               <img
                 src={projects.img[selectedImageIndex]}
                 alt={`Project Image ${selectedImageIndex + 1}`}
-                className="max-w-full max-h-[80vh] object-contain"
+                className="w-[60vw] h-[60vh] object-contain rounded-lg"
               />
             </div>
           </div>
