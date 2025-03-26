@@ -74,10 +74,14 @@ const ProjectImg: React.FC<{
             <div
               key={index}
               onClick={() => onClick(image)}
-              className="carousel-item flex-shrink-0 h-44 bg-cover flex items-center justify-center rounded-xl"
+              className="carousel-item flex-shrink-0 h-44 bg-cover flex items-center justify-center rounded-xl cursor-pointer"
               style={{ width: `${itemWidth}px` }}
             >
-              <img src={image} alt="project-image" />
+              <img
+                src={image}
+                alt="project-image"
+                className="transition-opacity duration-100 hover:opacity-70"
+              />
             </div>
           ))}
         </div>
