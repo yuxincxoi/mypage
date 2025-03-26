@@ -13,6 +13,20 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
     null
   );
 
+  // 모달 상태에 따른 스크롤 제어
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // 컴포넌트가 언마운트되거나 모달 상태 변경될 때 초기화
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isModalOpen]);
+
   // 새로운 프로젝트 선택 시 상태 초기화
   useEffect(() => {
     setIsMoreSectionOpen(false);
@@ -71,7 +85,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         {/* 이미지 모달 */}
         {isModalOpen && selectedImageIndex !== null && (
           <div
-            className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+            className="fixed top-0 left-0 right-0 bottom-0 bg-black backdrop-blur-sm bg-opacity-50 flex justify-center items-center z-50"
             onClick={closeModal}
           >
             <div
