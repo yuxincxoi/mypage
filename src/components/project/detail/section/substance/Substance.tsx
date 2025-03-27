@@ -4,7 +4,15 @@ import Paragraph from "./Paragraph";
 import SubTitle from "./SubTitle";
 
 export const BasicSubstance: React.FC<SubstanceProps> = ({ para }) => {
-  return <Paragraph para={para[0]} />;
+  return (
+    <div className="p-1">
+      {para.map((text, idx) => (
+        <div key={idx} className="mt-1">
+          <Paragraph key={idx} para={text} />
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export const TroubleShootingSubstance: React.FC<SubstanceProps> = ({
