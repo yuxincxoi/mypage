@@ -86,32 +86,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         <FadeInSection>
           <div className="mx-auto mt-32 w-[80%]">
             {/* 주요 기능 */}
-            <section className="grid grid-cols-[1fr_5fr] gap-10">
-              <h2 className="text-3xl font-pretendardSemiBold text-black">
-                {projectDetailStatics.function}
-              </h2>
-              <div className="p-1">
-                {projects.function?.map((func: string, idx: number) => (
-                  <div key={idx} className="mt-1">
-                    <p className="font-pretendard text-black mb-2">{func}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
+            <Section
+              sectionTitle={projectDetailStatics.function}
+              isBasic={true}
+              para={projects.function}
+            />
             {/* 특징 */}
-            <section className="grid grid-cols-[1fr_5fr] gap-10 mt-20">
-              <h2 className="text-3xl font-pretendardSemiBold text-black">
-                {projectDetailStatics.character}
-              </h2>
-              <div className="p-1">
-                {projects.character?.map((char: string, idx: number) => (
-                  <div key={idx} className="mt-1">
-                    <p className="font-pretendard text-black mb-2">{char}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
+            <Section
+              sectionTitle={projectDetailStatics.character}
+              isBasic={true}
+              para={projects.character}
+              className="mt-20"
+            />
           </div>
         </FadeInSection>
         {(projects.troubleShooting || projects.comment) && (
