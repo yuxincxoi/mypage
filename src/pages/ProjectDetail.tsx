@@ -84,9 +84,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
           </div>
         </FadeInSection>
         <FadeInSection>
-          <div className="mx-auto mt-36 w-[70%]">
+          <div className="mx-auto mt-28 w-[80%]">
             {/* 주요 기능 */}
-            <section className="space-y-4">
+            <section className="space-y-1">
               <h2 className="text-2xl font-pretendardSemiBold text-black">
                 {projectDetailStatics.function}
               </h2>
@@ -100,11 +100,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             </section>
 
             {/* 특징 */}
-            <section className="space-y-4 mt-20">
+            <section className="space-y-1 mt-20">
               <h2 className="text-2xl font-pretendardSemiBold text-black">
                 {projectDetailStatics.character}
               </h2>
-              <div className="p-2">
+              <div className="p-1">
                 {projects.character?.map((char: string, idx: number) => (
                   <div key={idx} className="mt-1">
                     <p className="font-pretendard text-black mb-2">{char}</p>
@@ -116,7 +116,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         </FadeInSection>
         {(projects.troubleShooting || projects.comment) && (
           <FadeInSection>
-            <div className="mt-32">
+            <div className="mt-28">
               {!isMoreSectionOpen && (
                 <div className="w-full mx-auto flex justify-center items-center">
                   <button
@@ -130,13 +130,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                 </div>
               )}
               {isMoreSectionOpen && (
-                <div className="mt-8 space-y-16 transition-all duration-300">
+                <div className="w-[80%] mx-auto transition-all duration-300">
                   {projects.troubleShooting && (
-                    <section className="space-y-4">
+                    <section className="space-y-1">
                       <h2 className="text-2xl font-pretendardSemiBold text-black">
                         {projectDetailStatics.troubleShooting.title}
                       </h2>
-                      <div className="bg-zinc-100 p-6 rounded-2xl text-start">
+                      <div className="font-pretendard p-1">
                         <div>
                           <p className="font-pretendardSemiBold text-black mb-2">
                             {projectDetailStatics.troubleShooting.trouble}
@@ -161,11 +161,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                     </section>
                   )}
                   {projects.comment && (
-                    <section className="space-y-4">
-                      <h2 className="text-2xl font-pretendardSemiBold text-black">
+                    <section className="space-y-1">
+                      <h2 className="text-2xl font-pretendardSemiBold text-black mt-20">
                         {projectDetailStatics.comment}
                       </h2>
-                      <div className="bg-zinc-100 p-6 rounded-2xl text-start font-pretendard">
+                      <div className="font-pretendard p-1">
                         <p className="">{projects.comment}</p>
                       </div>
                     </section>
