@@ -5,6 +5,10 @@ import Stacks from "../components/project/Stacks";
 import FadeInSection from "../FadeInSection";
 import { ProjectDetailProps } from "../interfaces/components/project/ProjectDetail.interface";
 import { projectDetailStatics } from "../../statics/project/projectDetail.static";
+import DetailTitle from "../components/project/detail/DetailTitle";
+import Explanation from "../components/project/detail/Explanation";
+import Section from "../components/project/detail/Section";
+import MoreBtn from "../components/project/detail/MoreBtn";
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
