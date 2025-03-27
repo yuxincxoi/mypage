@@ -77,9 +77,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         <FadeInSection>
           <div className="w-[20%] h-[2px] mx-auto mb-4 bg-gradient-to-l from-cyan-300 to-amber-400 via-red-400"></div>
           <div>
-            <div className="text-4xl text-center font-pretendardBold">
-              {projects.title}
-            </div>
+            <DetailTitle projects={projects} />
             <Stacks stacks={projects.stack} />
             <div className="my-14 whitespace-pre-wrap font-pretendard text-center">
               {projects.exp}
