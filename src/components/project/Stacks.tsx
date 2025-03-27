@@ -35,7 +35,7 @@ const Stacks: React.FC<StacksProps> = ({ stacks }) => {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <span className="px-4 py-1 bg-zinc-600 hover:bg-gray-500 rounded-full text-sm text-gray-200 cursor-pointer">
+            <span className="px-4 py-1 bg-neutral-200 text-stone-700 hover:bg-neutral-300 rounded-md text-sm cursor-pointer">
               {stack.name}
             </span>
             {hoveredIndex === index && (
