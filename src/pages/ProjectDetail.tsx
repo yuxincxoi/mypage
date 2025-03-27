@@ -7,7 +7,7 @@ import { ProjectDetailProps } from "../interfaces/components/project/ProjectDeta
 import { projectDetailStatics } from "../../statics/project/projectDetail.static";
 import DetailTitle from "../components/project/detail/DetailTitle";
 import Explanation from "../components/project/detail/Explanation";
-import Section from "../components/project/detail/Section";
+import Section from "../components/project/detail/section/Section";
 import MoreBtn from "../components/project/detail/MoreBtn";
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
