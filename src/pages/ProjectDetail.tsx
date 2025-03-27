@@ -73,7 +73,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         <FadeInSection>
           <div className="w-[20%] h-[2px] mx-auto mb-4 bg-gradient-to-l from-cyan-300 to-amber-400 via-red-400"></div>
           <div>
-            <div className="text-3xl text-center font-pretendardSemiBold">
+            <div className="text-4xl text-center font-pretendardBold">
               {projects.title}
             </div>
             <Stacks stacks={projects.stack} />
@@ -84,10 +84,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
           </div>
         </FadeInSection>
         <FadeInSection>
-          <div className="mx-auto mt-28 w-[80%]">
+          <div className="mx-auto mt-32 w-[80%]">
             {/* 주요 기능 */}
-            <section className="space-y-1">
-              <h2 className="text-2xl font-pretendardSemiBold text-black">
+            <section className="grid grid-cols-[1fr_5fr] gap-10">
+              <h2 className="text-3xl font-pretendardSemiBold text-black">
                 {projectDetailStatics.function}
               </h2>
               <div className="p-1">
@@ -100,8 +100,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             </section>
 
             {/* 특징 */}
-            <section className="space-y-1 mt-20">
-              <h2 className="text-2xl font-pretendardSemiBold text-black">
+            <section className="grid grid-cols-[1fr_5fr] gap-10 mt-20">
+              <h2 className="text-3xl font-pretendardSemiBold text-black">
                 {projectDetailStatics.character}
               </h2>
               <div className="p-1">
@@ -132,25 +132,25 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               {isMoreSectionOpen && (
                 <div className="w-[80%] mx-auto transition-all duration-300">
                   {projects.troubleShooting && (
-                    <section className="space-y-1">
-                      <h2 className="text-2xl font-pretendardSemiBold text-black">
+                    <section className="grid grid-cols-[1fr_5fr] gap-10">
+                      <h2 className="text-3xl font-pretendardSemiBold text-black">
                         {projectDetailStatics.troubleShooting.title}
                       </h2>
                       <div className="font-pretendard p-1">
                         <div>
-                          <p className="font-pretendardSemiBold text-black mb-2">
+                          <p className="font-pretendardSemiBold text-black text-lg mb-2">
                             {projectDetailStatics.troubleShooting.trouble}
                           </p>
                           <p className="mb-4 font-pretendard">
                             {projects.troubleShooting.trouble}
                           </p>
-                          <p className="font-pretendardSemiBold text-black mb-2">
+                          <p className="font-pretendardSemiBold text-black text-lg mb-2">
                             {projectDetailStatics.troubleShooting.shooting}
                           </p>
                           <p className="mb-4 font-pretendard">
                             {projects.troubleShooting.shooting}
                           </p>
-                          <p className="font-pretendardSemiBold text-black mb-2">
+                          <p className="font-pretendardSemiBold text-black text-lg mb-2">
                             {projectDetailStatics.troubleShooting.result}
                           </p>
                           <p className="font-pretendard">
@@ -161,8 +161,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                     </section>
                   )}
                   {projects.comment && (
-                    <section className="space-y-1">
-                      <h2 className="text-2xl font-pretendardSemiBold text-black mt-20">
+                    <section className="grid grid-cols-[1fr_5fr] gap-10 mt-20">
+                      <h2 className="text-3xl font-pretendardSemiBold text-black">
                         {projectDetailStatics.comment}
                       </h2>
                       <div className="font-pretendard p-1">
