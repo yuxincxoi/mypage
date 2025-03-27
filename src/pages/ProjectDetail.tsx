@@ -79,9 +79,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
           <div>
             <DetailTitle projects={projects} />
             <Stacks stacks={projects.stack} />
-            <div className="my-14 whitespace-pre-wrap font-pretendard text-center">
-              {projects.exp}
-            </div>
+            <Explanation projects={projects} />
             <ProjectImg images={projects.img} onClick={openModal} />
           </div>
         </FadeInSection>
