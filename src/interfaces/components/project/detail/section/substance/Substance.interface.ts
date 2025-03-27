@@ -1,4 +1,4 @@
 export interface SubstanceProps {
-  para: string;
-  subTitle?: string;
+  para: string[];
+  subTitle?: string[];
 }
