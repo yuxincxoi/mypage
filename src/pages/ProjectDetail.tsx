@@ -77,10 +77,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         <FadeInSection>
           <div className="w-[20%] h-[2px] mx-auto mb-4 bg-gradient-to-l from-cyan-300 to-amber-400 via-red-400"></div>
           <div>
-            <DetailTitle projects={projects} />
-            <Stacks stacks={projects.stack} />
-            <Explanation projects={projects} />
-            <ProjectImg images={projects.img} onClick={openModal} />
+            <DetailTitle projects={projects} /> {/* 프로젝트 제목 */}
+            <Stacks stacks={projects.stack} /> {/* 프로젝트 스택 */}
+            <Explanation projects={projects} /> {/* 프로젝트 설명 */}
+            <ProjectImg images={projects.img} onClick={openModal} />{" "}
+            {/* 프로젝트 사진 */}
           </div>
         </FadeInSection>
         <FadeInSection>
@@ -103,6 +104,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         {(projects.troubleShooting || projects.comment) && (
           <FadeInSection>
             <div className="mt-28">
+              {/* 더보기 버튼 */}
               {!isMoreSectionOpen && (
                 <MoreBtn
                   isButtonVisible={isButtonVisible}
@@ -111,6 +113,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               )}
               {isMoreSectionOpen && (
                 <div className="w-[80%] mx-auto transition-all duration-300">
+                  {/* 트러블슈팅 */}
                   {projects.troubleShooting && (
                     <Section
                       sectionTitle={projectDetailStatics.function}
@@ -127,6 +130,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                       ]}
                     />
                   )}
+                  {/* 회고 */}
                   {projects.comment && (
                     <Section
                       sectionTitle={projectDetailStatics.comment}
