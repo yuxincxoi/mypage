@@ -118,16 +118,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
           <FadeInSection>
             <div className="mt-28">
               {!isMoreSectionOpen && (
-                <div className="w-full mx-auto flex justify-center items-center">
-                  <button
-                    className={`text-center font-pretendardSemiBold bg-neutral-500 px-10 py-4 rounded-full text-white hover:bg-neutral-600 transition-opacity duration-600 ease-in-out ${
-                      isButtonVisible ? "opacity-100" : "opacity-0"
-                    }`}
-                    onClick={handleMoreSectionOpen}
-                  >
-                    트러블슈팅 및 회고
-                  </button>
-                </div>
+                <MoreBtn
+                  isButtonVisible={isButtonVisible}
+                  handleMoreSectionOpen={handleMoreSectionOpen}
+                />
               )}
               {isMoreSectionOpen && (
                 <div className="w-[80%] mx-auto transition-all duration-300">
