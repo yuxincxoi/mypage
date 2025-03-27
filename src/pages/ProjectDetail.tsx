@@ -126,43 +126,28 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               {isMoreSectionOpen && (
                 <div className="w-[80%] mx-auto transition-all duration-300">
                   {projects.troubleShooting && (
-                    <section className="grid grid-cols-[1fr_5fr] gap-10">
-                      <h2 className="text-3xl font-pretendardSemiBold text-black">
-                        {projectDetailStatics.troubleShooting.title}
-                      </h2>
-                      <div className="font-pretendard p-1">
-                        <div>
-                          <p className="font-pretendardSemiBold text-black text-lg mb-2">
-                            {projectDetailStatics.troubleShooting.trouble}
-                          </p>
-                          <p className="mb-4 font-pretendard">
-                            {projects.troubleShooting.trouble}
-                          </p>
-                          <p className="font-pretendardSemiBold text-black text-lg mb-2">
-                            {projectDetailStatics.troubleShooting.shooting}
-                          </p>
-                          <p className="mb-4 font-pretendard">
-                            {projects.troubleShooting.shooting}
-                          </p>
-                          <p className="font-pretendardSemiBold text-black text-lg mb-2">
-                            {projectDetailStatics.troubleShooting.result}
-                          </p>
-                          <p className="font-pretendard">
-                            {projects.troubleShooting.result}
-                          </p>
-                        </div>
-                      </div>
-                    </section>
+                    <Section
+                      sectionTitle={projectDetailStatics.function}
+                      isBasic={false}
+                      subTitle={[
+                        projectDetailStatics.troubleShooting.trouble,
+                        projectDetailStatics.troubleShooting.shooting,
+                        projectDetailStatics.troubleShooting.result,
+                      ]}
+                      para={[
+                        projects.troubleShooting.trouble,
+                        projects.troubleShooting.shooting,
+                        projects.troubleShooting.result,
+                      ]}
+                    />
                   )}
                   {projects.comment && (
-                    <section className="grid grid-cols-[1fr_5fr] gap-10 mt-20">
-                      <h2 className="text-3xl font-pretendardSemiBold text-black">
-                        {projectDetailStatics.comment}
-                      </h2>
-                      <div className="font-pretendard p-1">
-                        <p className="">{projects.comment}</p>
-                      </div>
-                    </section>
+                    <Section
+                      sectionTitle={projectDetailStatics.comment}
+                      isBasic={true}
+                      para={[projects.comment]}
+                      className="mt-20"
+                    />
                   )}
                 </div>
               )}
