@@ -13,8 +13,8 @@ const Section: React.FC<SectionProps> = ({
   subTitle,
 }) => {
   return (
-    <>
-      <p className={`text-3xl font-pretendardSemiBold text-black ${className}`}>
+    <div className={`grid grid-cols-[1fr_5fr] gap-10 ${className}`}>
+      <p className="text-3xl font-pretendardSemiBold text-black">
         {sectionTitle}
       </p>
       {isBasic ? (
@@ -22,7 +22,7 @@ const Section: React.FC<SectionProps> = ({
       ) : (
         <TroubleShootingSubstance subTitle={subTitle} para={para} />
       )}
-    </>
+    </div>
   );
 };
 
