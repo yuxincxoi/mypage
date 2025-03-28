@@ -58,8 +58,13 @@ const Modal: React.FC<ModalProps> = ({
           alt={`Project Image ${selectedImageIndex + 1}`}
           className="w-[50vw] h-[40vh] object-contain"
         />
-        <div className="text-center font-pretendardExtraLight h-28">
-          <div className="mt-1">{comment[selectedImageIndex]}</div>
+        <div className="text-center h-28">
+          <div className="font-pretendard mt-1">
+            {comment[selectedImageIndex][0]}
+          </div>
+          <div className="font-pretendardExtraLight mt-7">
+            {comment[selectedImageIndex][1]}
+          </div>
         </div>
       </div>
     </div>
