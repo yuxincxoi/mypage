@@ -19,7 +19,7 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   return (
     <div
-      className="fixed top-0 left-0 right-0 bottom-0 bg-black backdrop-blur-lg bg-opacity-30 flex justify-center items-center z-50"
+      className="fixed top-0 left-0 right-0 bottom-0 bg-black backdrop-blur-xl bg-opacity-5 flex justify-center items-center z-50"
       onClick={onClose}
     >
       <div
@@ -48,8 +48,9 @@ const Modal: React.FC<ModalProps> = ({
         <img
           src={images[selectedImageIndex]}
           alt={`Project Image ${selectedImageIndex + 1}`}
-          className="w-[60vw] h-[60vh] object-contain"
+          className="w-[40vw] h-[40vh] object-contain"
         />
+        <div className="mt-10">기능</div>
       </div>
     </div>
   );
