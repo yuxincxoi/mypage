@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CloseModalBtn from "./CloseModalBtn";
 import ChevronBtn from "../img/ChevronBtn";
 
@@ -17,6 +17,20 @@ const Modal: React.FC<ModalProps> = ({
   onPrev,
   onNext,
 }) => {
+  // ESC 버튼 누르면 모달 닫기
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
   return (
     <div
       className="fixed top-0 left-0 right-0 bottom-0 bg-black backdrop-blur-xl bg-opacity-5 flex justify-center items-center z-50"
