@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import ChevronBtn from "./img/ChevronBtn";
+import Indicator from "./img/Indicator";
 
 const ProjectImg: React.FC<{
   images: string[];
@@ -90,44 +91,27 @@ const ProjectImg: React.FC<{
       {/* 좌우 화살표 (4장 이상일 때만 표시) */}
       {images.length > 3 && (
         <>
-          <button
-            aria-label="Previous Images"
-            className={`absolute left-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 text-black hover:text-gray-500 transition-colors duration-100 ${
-              startIndex <= 0 ? "hidden" : ""
-            }`}
+          <ChevronBtn
+            direction="left"
             onClick={handlePrev}
-            disabled={startIndex === 0}
-          >
-            <ChevronLeft />
-          </button>
-          <button
-            aria-label="Next Images"
-            className={`absolute right-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 text-black hover:text-gray-500 transition-colors duration-100 ${
-              startIndex + 3 >= images.length ? "hidden" : ""
-            }`}
+            isHidden={startIndex === 0}
+            className="text-black hover:text-gray-500"
+            strokeWidth={1}
+          />
+          <ChevronBtn
+            direction="right"
             onClick={handleNext}
-            disabled={startIndex + 3 >= images.length}
-          >
-            <ChevronRight />
-          </button>
+            isHidden={startIndex + 3 >= images.length}
+            className="text-black hover:text-gray-500"
+            strokeWidth={1}
+          />
         </>
       )}
 
-      {/* 인디케이터 */}
-      <div className="flex justify-center mt-4 space-x-2">
-        {Array.from({ length: Math.ceil(images.length - 2) }).map(
-          (_, index) => (
-            <div
-              key={index}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                index === startIndex
-                  ? " bg-gradient-to-r to-amber-200 from-red-300"
-                  : "bg-zinc-200"
-              } ${images.length <= 3 ? "hidden" : ""}`}
-            />
-          )
-        )}
-      </div>
+      <Indicator
+        total={Math.ceil(images.length - 2)}
+        activeIndex={startIndex}
+      />
     </div>
   );
 };

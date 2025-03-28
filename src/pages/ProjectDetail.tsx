@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import ProjectImg from "../components/project/ProjectImg";
 import Stacks from "../components/project/Stacks";
 import FadeInSection from "../FadeInSection";
