@@ -4,4 +4,5 @@ export interface ModalProps {
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
+  comment: string[];
 }

@@ -9,6 +9,7 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   onPrev,
   onNext,
+  comment,
 }) => {
   // ESC 버튼 누르면 모달 닫기
   useEffect(() => {
@@ -57,7 +58,9 @@ const Modal: React.FC<ModalProps> = ({
           alt={`Project Image ${selectedImageIndex + 1}`}
           className="w-[40vw] h-[40vh] object-contain"
         />
-        <div className="mt-10">기능</div>
+        <div className="mt-10">
+          <div className="mt-1">{comment[selectedImageIndex]}</div>
+        </div>
       </div>
     </div>
   );

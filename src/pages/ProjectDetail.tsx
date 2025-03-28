@@ -86,12 +86,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         </FadeInSection>
         <FadeInSection>
           <div className="mx-auto mt-32 w-[80%]">
-            {/* 주요 기능 */}
-            <Section
-              sectionTitle={projectDetailStatics.function}
-              isBasic={true}
-              para={projects.function}
-            />
             {/* 특징 */}
             <Section
               sectionTitle={projectDetailStatics.character}
@@ -152,6 +146,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             onClose={closeModal}
             onPrev={handlePrevImage}
             onNext={handleNextImage}
+            comment={projects.function}
           />
         )}
       </div>
