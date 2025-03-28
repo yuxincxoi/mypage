@@ -9,6 +9,7 @@ import DetailTitle from "../components/project/detail/DetailTitle";
 import Explanation from "../components/project/detail/Explanation";
 import Section from "../components/project/detail/section/Section";
 import MoreBtn from "../components/project/detail/MoreBtn";
+import Modal from "../components/project/modal/Modal";
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
@@ -146,59 +147,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
         )}
         {/* 이미지 모달 */}
         {isModalOpen && selectedImageIndex !== null && (
-          <div
-            className="fixed top-0 left-0 right-0 bottom-0 bg-black backdrop-blur-lg bg-opacity-30 flex justify-center items-center z-50"
-            onClick={closeModal}
-          >
-            <div
-              className="relative max-w-[90%] max-h-[90%] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()} // 모달 클릭 시 닫히지 않도록 방지
-            >
-              {/* 닫기 버튼 */}
-              <button
-                aria-label="Close Modal"
-                className="absolute -top-7 right-0 text-white hover:text-gray-300 transition-colors duration-100"
-                onClick={closeModal}
-              >
-                <X size={22} strokeWidth={2} />
-              </button>
-
-              {/* 좌우 화살표 */}
-              {projects.img.length > 1 && (
-                <>
-                  <button
-                    aria-label="Previous Images"
-                    className={`absolute left-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 text-white hover:text-gray-300 transition-colors duration-100 ${
-                      selectedImageIndex <= 0 ? "hidden" : ""
-                    }`}
-                    onClick={handlePrevImage}
-                    disabled={selectedImageIndex === 0}
-                  >
-                    <ChevronLeft size={32} strokeWidth={2} />
-                  </button>
-                  <button
-                    aria-label="Next Images"
-                    className={`absolute right-[-50px] top-1/2 transform -translate-y-1/2 px-3 py-1 text-white hover:text-gray-300 transition-colors duration-100 ${
-                      selectedImageIndex >= projects.img.length - 1
-                        ? "hidden"
-                        : ""
-                    }`}
-                    onClick={handleNextImage}
-                    disabled={selectedImageIndex === projects.img.length - 1}
-                  >
-                    <ChevronRight size={32} strokeWidth={2} />
-                  </button>
-                </>
-              )}
-
-              {/* 선택된 이미지 */}
-              <img
-                src={projects.img[selectedImageIndex]}
-                alt={`Project Image ${selectedImageIndex + 1}`}
-                className="w-[60vw] h-[60vh] object-contain"
-              />
-            </div>
-          </div>
+          <Modal
+            images={projects.img}
+            selectedImageIndex={selectedImageIndex}
+            onClose={closeModal}
+            onPrev={handlePrevImage}
+            onNext={handleNextImage}
+          />
         )}
       </div>
     </div>
