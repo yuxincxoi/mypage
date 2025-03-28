@@ -95,14 +95,14 @@ const ProjectImg: React.FC<{
             direction="left"
             onClick={handlePrev}
             isHidden={startIndex === 0}
-            className="text-black hover:text-gray-500"
+            className="top-1/2 text-black hover:text-gray-500"
             strokeWidth={1}
           />
           <ChevronBtn
             direction="right"
             onClick={handleNext}
             isHidden={startIndex + 3 >= images.length}
-            className="text-black hover:text-gray-500"
+            className="top-1/2 text-black hover:text-gray-500"
             strokeWidth={1}
           />
         </>
