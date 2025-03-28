@@ -1,13 +1,6 @@
 import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-interface ChevronBtnProps {
-  direction: "left" | "right";
-  onClick: () => void;
-  isHidden: boolean;
-  className?: string;
-  strokeWidth: number;
-}
+import { ChevronBtnProps } from "../../../interfaces/components/project/img/ChevronBtn.interface";
 
 const ChevronBtn: React.FC<ChevronBtnProps> = ({
   direction,

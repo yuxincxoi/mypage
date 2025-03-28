@@ -1,9 +1,6 @@
 import React from "react";
 import { X } from "lucide-react";
-
-interface CloseModalBtnProps {
-  onClose: () => void;
-}
+import { CloseModalBtnProps } from "../../../interfaces/components/project/modal/CloseModalBtn.interface";
 
 const CloseModalBtn: React.FC<CloseModalBtnProps> = ({ onClose }) => {
   return (

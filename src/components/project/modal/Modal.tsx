@@ -1,14 +1,7 @@
 import React, { useEffect } from "react";
 import CloseModalBtn from "./CloseModalBtn";
 import ChevronBtn from "../img/ChevronBtn";
-
-interface ModalProps {
-  images: string[];
-  selectedImageIndex: number;
-  onClose: () => void;
-  onPrev: () => void;
-  onNext: () => void;
-}
+import { ModalProps } from "../../../interfaces/components/project/modal/Modal.interface";
 
 const Modal: React.FC<ModalProps> = ({
   images,
