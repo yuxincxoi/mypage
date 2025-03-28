@@ -33,11 +33,15 @@ const Modal: React.FC<ModalProps> = ({
               direction="left"
               onClick={onPrev}
               isHidden={selectedImageIndex <= 0}
+              className="text-white hover:text-gray-300"
+              strokeWidth={2}
             />
             <ChevronBtn
               direction="right"
               onClick={onNext}
               isHidden={selectedImageIndex >= images.length - 1}
+              className="text-white hover:text-gray-300"
+              strokeWidth={2}
             />
           </>
         )}
