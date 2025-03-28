@@ -5,7 +5,7 @@ export interface Project {
   stack: string[];
   exp: string;
   img: string[];
-  function: string[];
+  function: string[][];
   character: string[];
   troubleShooting: {
     trouble: string;

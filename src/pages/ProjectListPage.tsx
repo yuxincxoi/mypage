@@ -27,10 +27,17 @@ const ProjectListPage: React.FC = () => {
   const [isDetailVisible, setIsDetailVisible] = useState(false);
   const [isListVisible, setIsListVisible] = useState(false);
 
-  const [projects, setProjects] = useState(
+  const [projects, setProjects] = useState<Project[]>(
     Array.from({ length: 10 }, (_, i) => {
       const key = `project_${i + 1}` as keyof typeof projectStatics;
-      return projectStatics[key];
+      const project = projectStatics[key];
+
+      return {
+        ...project,
+        function: project.function.map((item) =>
+          Array.isArray(item) ? item : [item]
+        ),
+      };
     })
   );
 
