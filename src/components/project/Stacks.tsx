@@ -39,7 +39,7 @@ const Stacks: React.FC<StacksProps> = ({ stacks }) => {
               {stack.name}
             </span>
             {hoveredIndex === index && (
-              <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-max px-3 py-1 text-xs bg-white text-black border-black rounded-md shadow-lg whitespace-nowrap">
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-max px-3 py-1 text-xs bg-white text-black border-black rounded-md shadow-lg whitespace-nowrap">
                 {stack.description}
               </div>
             )}
