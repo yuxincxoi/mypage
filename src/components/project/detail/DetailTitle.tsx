@@ -3,8 +3,11 @@ import { DetailTitleProps } from "../../../interfaces/components/project/detail/
 
 const DetailTitle: React.FC<DetailTitleProps> = ({ projects }) => {
   return (
-    <div className="text-4xl text-center font-pretendardBold">
-      {projects.title}
+    <div className="text-center">
+      <div className="text-4xl font-pretendardBold">{projects.title}</div>
+      <div className="text-sm font-pretendardExtraLight text-neutral-500">
+        {projects.subTitle}
+      </div>
     </div>
   );
 };
