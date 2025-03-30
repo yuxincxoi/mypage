@@ -28,15 +28,27 @@ const ProjectListPage: React.FC = () => {
   const [isListVisible, setIsListVisible] = useState(false);
 
   const [projects, setProjects] = useState<Project[]>(
-    Array.from({ length: 10 }, (_, i) => {
-      const key = `project_${i + 1}` as keyof typeof projectStatics;
-      const project = projectStatics[key];
+    Object.keys(projectStatics).map((key) => {
+      const project = projectStatics[key as keyof typeof projectStatics];
 
       return {
-        ...project,
-        function: project.function.map((item) =>
+        id: project.id,
+        title: project.title,
+        subTitle: project.subTitle,
+        type: project.type,
+        stack: project.stack || [],
+        exp: project.exp || "",
+        img: project.img || [],
+        function: project.function.map((item: string | string[]) =>
           Array.isArray(item) ? item : [item]
         ),
+        character: project.character || [],
+        troubleShooting: {
+          trouble: project.troubleShooting?.trouble || "",
+          shooting: project.troubleShooting?.shooting || "",
+          result: project.troubleShooting?.result || "",
+        },
+        comment: project.comment || "",
       };
     })
   );
@@ -163,6 +175,7 @@ const ProjectListPage: React.FC = () => {
               key={projects[index].id}
               projectId={projects[index].id}
               projectTitle={projects[index].title}
+              projectSubTitle={projects[index].subTitle}
               style={bubble.style}
               onClick={() => handleIconClick(projects[index].id)}
               isBlurred={shouldBlurIcon(projects[index].type)}

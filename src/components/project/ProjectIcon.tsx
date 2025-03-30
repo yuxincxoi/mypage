@@ -4,6 +4,7 @@ import { projectIconStatics } from "../../../statics/project/projectIcon.static"
 
 const ProjectIcon: React.FC<ProjectIconProps> = ({
   projectTitle,
+  projectSubTitle,
   projectId,
   style,
   onClick,
@@ -36,6 +37,7 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
         }`}
       >
         <p>{projectTitle}</p>
+        <p>{projectSubTitle}</p>
         <p className="mt-4">{projectIconStatics.showDetail}</p>
       </div>
     </div>
