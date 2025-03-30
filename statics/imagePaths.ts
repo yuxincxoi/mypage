@@ -5,7 +5,6 @@ export const imagePaths = {
     "/img/project1/img3.png",
     "/img/project1/img4.png",
     "/img/project1/img5.png",
-    "/img/project1/img6.png",
   ],
   project_2: [
     "/img/project2/img1.png",
@@ -22,15 +21,11 @@ export const imagePaths = {
     "/img/project3/img7.png",
     "/img/project3/img8.png",
     "/img/project3/img9.png",
-    "/img/project3/img10.png",
-    "/img/project3/img11.png",
-    "/img/project3/img12.png",
   ],
   project_6: [
     "/img/project6/img1.png",
     "/img/project6/img2.png",
     "/img/project6/img3.png",
-    "/img/project6/img4.png",
   ],
   project_7: [
     "/img/project7/img1.png",
@@ -44,6 +39,6 @@ export const imagePaths = {
     "/img/project8/img3.png",
     "/img/project8/img4.png",
   ],
-  project_9: ["/img/project9/img1.png", "/img/project9/img2.png"],
+  project_9: ["/img/project9/img1.png"],
   project_10: ["/img/project10/img1.png", "/img/project10/img2.png"],
 };
