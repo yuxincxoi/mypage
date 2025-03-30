@@ -58,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
           alt={`Project Image ${selectedImageIndex + 1}`}
           className="w-[50vw] h-[40vh] object-contain"
         />
-        <div className="w-[50vw] text-center h-28">
+        <div className="w-[50vw] whitespace-pre-wrap text-center h-28">
           <div className="font-pretendard mt-1">
             {comment[selectedImageIndex][0]}
           </div>
