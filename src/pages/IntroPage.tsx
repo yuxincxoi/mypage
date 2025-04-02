@@ -7,6 +7,7 @@ const IntroPage: React.FC = () => {
   const [messageState, setMessageState] = useState({
     first: false,
     second: false,
+    third: false,
     animationStage: 0, // 0: 기본 ".", 1: 콜론으로 변경 중, 2: 웃는 표정으로 변경 중
   });
 
@@ -19,26 +20,31 @@ const IntroPage: React.FC = () => {
 
     const firstTimeout = setTimeout(() => {
       setMessageState((prev) => ({ ...prev, first: true }));
-    }, 500);
+    }, 1000);
 
     const secondTimeout = setTimeout(() => {
       setMessageState((prev) => ({ ...prev, second: true }));
-    }, 1500);
+    }, 1800);
+
+    const thirdTimeout = setTimeout(() => {
+      setMessageState((prev) => ({ ...prev, third: true }));
+    }, 2600);
 
     // 두 번째 메시지가 표시된 후 애니메이션 시작
     const animStartTimeout = setTimeout(() => {
       setMessageState((prev) => ({ ...prev, animationStage: 1 }));
-    }, 2800);
+    }, 3700);
 
     // 콜론으로 변경 후 웃는 표정으로 변경
     const smileTimeout = setTimeout(() => {
       setMessageState((prev) => ({ ...prev, animationStage: 2 }));
-    }, 3200);
+    }, 4000);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(firstTimeout);
       clearTimeout(secondTimeout);
+      clearTimeout(thirdTimeout);
       clearTimeout(animStartTimeout);
       clearTimeout(smileTimeout);
     };
@@ -47,7 +53,7 @@ const IntroPage: React.FC = () => {
   // 애니메이션을 위한 텍스트 렌더링 함수
   const renderSecondMessage = () => {
     // 원본 텍스트에서 마지막 "." 부분을 제외한 부분
-    const textWithoutDot = introMessage.second.slice(0, -1);
+    const textWithoutDot = introMessage.third.slice(0, -1);
 
     // 애니메이션 단계에 따라 다른 내용 표시
     let animatedPart;
@@ -89,10 +95,10 @@ const IntroPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen mb-32 flex flex-col justify-center text-8xl font-bold">
+    <div className="w-full h-screen mb-32 flex flex-col justify-center text-7xl font-bold">
       <div className="overflow-hidden font-pretendardSemiBold">
         <div
-          className={`transform transition-transform duration-1000 ease-out ${
+          className={`transform transition-transform duration-1000 ease-out mb-4 ${
             messageState.first
               ? "translate-y-0 opacity-100"
               : "translate-y-full opacity-0"
@@ -101,8 +107,17 @@ const IntroPage: React.FC = () => {
           {introMessage.first}
         </div>
         <div
-          className={`transform transition-transform duration-1000 ease-out ${
+          className={`transform transition-transform duration-1000 ease-out mb-4 ${
             messageState.second
+              ? "translate-y-0 opacity-100"
+              : "opacity-0 invisible translate-y-full"
+          }`}
+        >
+          {introMessage.second}
+        </div>
+        <div
+          className={`transform transition-transform duration-1000 ease-out ${
+            messageState.third
               ? "translate-y-0 opacity-100"
               : "opacity-0 invisible translate-y-full"
           }`}
