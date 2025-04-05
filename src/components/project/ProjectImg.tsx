@@ -53,7 +53,7 @@ const ProjectImg: React.FC<{
   };
 
   return (
-    <div className="relative w-4/5 mx-auto mt-4" ref={carouselRef}>
+    <div className="relative w-4/5 mx-auto" ref={carouselRef}>
       {/* 이미지 컨테이너 */}
       <div
         className="overflow-hidden mx-auto"
