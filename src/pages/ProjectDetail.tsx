@@ -90,6 +90,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             <Section
               sectionTitle={projectDetailStatics.character}
               isBasic={true}
+              isChar={true}
               para={projects.character}
               className="mt-20"
             />
@@ -112,6 +113,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                     <Section
                       sectionTitle={projectDetailStatics.function}
                       isBasic={false}
+                      isChar={false}
                       subTitle={[
                         projectDetailStatics.troubleShooting.trouble,
                         projectDetailStatics.troubleShooting.shooting,
@@ -129,6 +131,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                     <Section
                       sectionTitle={projectDetailStatics.comment}
                       isBasic={true}
+                      isChar={false}
                       para={[projects.comment]}
                       className="mt-20"
                     />

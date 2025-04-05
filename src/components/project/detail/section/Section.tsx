@@ -9,6 +9,7 @@ const Section: React.FC<SectionProps> = ({
   className,
   sectionTitle,
   isBasic,
+  isChar,
   para,
   subTitle,
 }) => {
@@ -18,7 +19,7 @@ const Section: React.FC<SectionProps> = ({
         {sectionTitle}
       </p>
       {isBasic ? (
-        <BasicSubstance para={para} />
+        <BasicSubstance isChar={isChar} para={para} />
       ) : (
         <TroubleShootingSubstance subTitle={subTitle} para={para} />
       )}

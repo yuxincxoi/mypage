@@ -3,12 +3,12 @@ import { SubstanceProps } from "../../../../../interfaces/components/project/det
 import Paragraph from "./Paragraph";
 import SubTitle from "./SubTitle";
 
-export const BasicSubstance: React.FC<SubstanceProps> = ({ para }) => {
+export const BasicSubstance: React.FC<SubstanceProps> = ({ isChar, para }) => {
   return (
     <div className="p-1">
       {para.map((text, idx) => (
         <div key={idx} className="mt-1">
-          <Paragraph key={idx} para={text} />
+          <Paragraph key={idx} isChar={isChar} para={text} />
         </div>
       ))}
     </div>
