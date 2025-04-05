@@ -5,9 +5,9 @@ import SubTitle from "./SubTitle";
 
 export const BasicSubstance: React.FC<SubstanceProps> = ({ isChar, para }) => {
   return (
-    <div className="p-1">
+    <div className="mt-1">
       {para.map((text, idx) => (
-        <div key={idx} className="mt-1">
+        <div key={idx}>
           <Paragraph key={idx} isChar={isChar} para={text} />
         </div>
       ))}
@@ -20,7 +20,7 @@ export const TroubleShootingSubstance: React.FC<SubstanceProps> = ({
   para,
 }) => {
   return (
-    <div className="font-pretendard p-1">
+    <div className="mt-1">
       <SubTitle subTitle={subTitle[0]} />
       <Paragraph para={para[0]} />
       <SubTitle subTitle={subTitle[1]} className="mt-2" />
