@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { navStatics } from "../../statics/nav.static";
 
 const Nav: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const [documentHeight, setDocumentHeight] = useState<number>(0);
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const calculateNavRanges = () => {
     const isShortDocument = documentHeight <= 4000;
@@ -36,6 +38,12 @@ const Nav: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
+      setIsScrolling(true);
+
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 600);
     };
 
     const updateDocumentHeight = () => {
@@ -52,6 +60,7 @@ const Nav: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       resizeObserver.disconnect();
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     };
   }, []);
 
@@ -71,7 +80,14 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center space-y-8 justify-center px-3 py-5 font-pretendard">
+    <div
+      className={`
+        fixed right-8 top-1/2 transform -translate-y-1/2 z-50 
+        flex flex-col items-center space-y-8 justify-center px-3 py-5 font-pretendard 
+        transition-opacity duration-500 ease-in-out
+        ${isScrolling ? "opacity-100" : "opacity-0"}
+      `}
+    >
       {navItems.map((item) => (
         <div
           key={item.id}
