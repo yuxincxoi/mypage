@@ -23,9 +23,9 @@ export const TroubleShootingSubstance: React.FC<SubstanceProps> = ({
     <div className="font-pretendard p-1">
       <SubTitle subTitle={subTitle[0]} />
       <Paragraph para={para[0]} />
-      <SubTitle subTitle={subTitle[1]} />
+      <SubTitle subTitle={subTitle[1]} className="mt-2" />
       <Paragraph para={para[1]} />
-      <SubTitle subTitle={subTitle[2]} />
+      <SubTitle subTitle={subTitle[2]} className="mt-2" />
       <Paragraph para={para[2]} />
     </div>
   );

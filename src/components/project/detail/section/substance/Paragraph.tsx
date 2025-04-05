@@ -4,7 +4,7 @@ import { ParagraphProps } from "../../../../../interfaces/components/project/det
 const Paragraph: React.FC<ParagraphProps> = ({ isChar, para, className }) => {
   return (
     <ul className={`${isChar ? "list-disc list-outside marker:text-xs" : ""}`}>
-      <li className={`mb-4 font-pretendard ${className}`}>{para}</li>
+      <li className={`mb-2 font-pretendard ${className}`}>{para}</li>
     </ul>
   );
 };

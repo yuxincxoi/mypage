@@ -3,9 +3,7 @@ import { SubTitleProps } from "../../../../../interfaces/components/project/deta
 
 const SubTitle: React.FC<SubTitleProps> = ({ subTitle, className }) => {
   return (
-    <p
-      className={`font-pretendardSemiBold text-black text-lg mb-2 ${className}`}
-    >
+    <p className={`font-pretendardSemiBold text-black text-lg ${className}`}>
       {subTitle}
     </p>
   );
