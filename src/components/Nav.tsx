@@ -90,8 +90,8 @@ const Nav: React.FC = () => {
               rounded-full transition-all duration-300 ease-in-out
               ${
                 getActiveSection() === item.id
-                  ? "w-3 h-3 bg-gray-100 scale-125 shadow-lg"
-                  : "w-2 h-2 bg-gray-400"
+                  ? "w-3 h-3 bg-zinc-100 scale-125 shadow-lg"
+                  : "w-2 h-2 bg-zinc-200"
               }
             `}
           />
