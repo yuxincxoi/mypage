@@ -73,7 +73,7 @@ const ProjectListPage: React.FC = () => {
         setIsListVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.75, // 75% 이상 보일 때
+        threshold: 0.5, // 50% 이상 보일 때
       }
     );
 
