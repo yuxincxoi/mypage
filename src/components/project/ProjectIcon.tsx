@@ -11,27 +11,28 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
   isBlurred = false,
   projectType,
 }) => {
-  const radius = 110;
-  const centerX = 110;
-  const centerY = 104;
-
   return (
     <div
-      className={`w-80 h-60 rounded-md flex items-center justify-center flex-col group border-[1px] border-zinc-300 
+      className={`w-80 h-60 rounded-lg flex items-center justify-center flex-col group border-[1px] border-zinc-300 hover:shadow-lg transition-shadow duration-300
         ${
           isBlurred
             ? "opacity-90 blur-lg cursor-default"
             : "opacity-100 blur-none cursor-pointer"
-        } transition duration-1000 ease-in-out`}
-      style={{
-        ...style,
-        backgroundImage: `url(/img/project${projectId}/cover.png)`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+        } transition-opacity duration-1000 ease-in-out`}
       onClick={isBlurred ? undefined : onClick}
       data-type={projectType}
-    ></div>
+    >
+      <div className="w-full h-full p-8 relative">
+        <div className="font-pretendardSemiBold text-2xl text-black">
+          {projectTitle}
+        </div>
+        <div className="font-pretendardExtraLight text-md text-zinc-500">
+          {projectSubTitle}
+        </div>
+
+        <div className="w-16 h-16 bg-zinc-300 absolute bottom-10 right-10"></div>
+      </div>
+    </div>
   );
 };
 
