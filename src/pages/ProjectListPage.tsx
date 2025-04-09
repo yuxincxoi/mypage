@@ -49,7 +49,7 @@ const ProjectListPage: React.FC = () => {
       setSelectedProject(projectData);
       setIsProjectDetailVisible(true);
       window.scrollTo({
-        top: 1500,
+        top: 1900,
         left: 0,
         behavior: "smooth",
       });
