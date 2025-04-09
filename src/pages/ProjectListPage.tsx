@@ -122,7 +122,7 @@ const ProjectListPage: React.FC = () => {
       </FadeInSection>
       <div
         ref={listRef}
-        className="w-full flex flex-col items-center gap-4 mt-16"
+        className="w-full flex flex-col items-center gap-4 my-16"
       >
         <FadeInSection>
           {/* 첫 번째 줄 */}
