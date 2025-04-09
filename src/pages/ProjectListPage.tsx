@@ -126,7 +126,7 @@ const ProjectListPage: React.FC = () => {
       >
         <FadeInSection>
           {/* 첫 번째 줄 */}
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-4 w-[996px]">
             {projects.slice(0, 3).map((project) => (
               <ProjectIcon
                 key={project.id}
@@ -142,7 +142,7 @@ const ProjectListPage: React.FC = () => {
         </FadeInSection>
         <FadeInSection>
           {/* 두 번째 줄 */}
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-4 w-[996px]">
             {projects.slice(3, 6).map((project) => (
               <ProjectIcon
                 key={project.id}
@@ -158,7 +158,7 @@ const ProjectListPage: React.FC = () => {
         </FadeInSection>
         <FadeInSection>
           {/* 세 번째 줄 */}
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-4 w-[996px]">
             {projects.slice(6, 9).map((project) => (
               <ProjectIcon
                 key={project.id}
@@ -174,7 +174,7 @@ const ProjectListPage: React.FC = () => {
         </FadeInSection>
         <FadeInSection>
           {/* 네 번째 줄 */}
-          <div className="flex justify-start gap-4">
+          <div className="flex justify-start gap-4 w-[996px]">
             {projects.slice(9, 12).map((project) => (
               <ProjectIcon
                 key={project.id}
