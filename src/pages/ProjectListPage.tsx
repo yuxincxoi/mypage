@@ -143,7 +143,7 @@ const ProjectListPage: React.FC = () => {
         <FadeInSection>
           {/* 두 번째 줄 */}
           <div className="flex justify-center gap-4">
-            {projects.slice(3, 7).map((project) => (
+            {projects.slice(3, 6).map((project) => (
               <ProjectIcon
                 key={project.id}
                 projectId={project.id}
@@ -159,7 +159,23 @@ const ProjectListPage: React.FC = () => {
         <FadeInSection>
           {/* 세 번째 줄 */}
           <div className="flex justify-center gap-4">
-            {projects.slice(7, 10).map((project) => (
+            {projects.slice(6, 9).map((project) => (
+              <ProjectIcon
+                key={project.id}
+                projectId={project.id}
+                projectTitle={project.title}
+                projectSubTitle={project.subTitle}
+                onClick={() => handleIconClick(project.id)}
+                isBlurred={shouldBlurIcon(project.type)}
+                projectType={project.type}
+              />
+            ))}
+          </div>
+        </FadeInSection>
+        <FadeInSection>
+          {/* 네 번째 줄 */}
+          <div className="flex justify-start gap-4">
+            {projects.slice(9, 12).map((project) => (
               <ProjectIcon
                 key={project.id}
                 projectId={project.id}
