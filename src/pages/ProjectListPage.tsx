@@ -168,22 +168,59 @@ const ProjectListPage: React.FC = () => {
           isVisible={isListVisible}
         />
       </FadeInSection>
-      <FadeInSection>
-        <div ref={listRef} className="relative w-5/6 h-screen mx-auto mt-16">
-          {bubblePositions.map((bubble, index) => (
-            <ProjectIcon
-              key={projects[index].id}
-              projectId={projects[index].id}
-              projectTitle={projects[index].title}
-              projectSubTitle={projects[index].subTitle}
-              style={bubble.style}
-              onClick={() => handleIconClick(projects[index].id)}
-              isBlurred={shouldBlurIcon(projects[index].type)}
-              projectType={projects[index].type}
-            />
-          ))}
-        </div>
-      </FadeInSection>
+      <div
+        ref={listRef}
+        className="w-full flex flex-col items-center gap-4 mt-16"
+      >
+        <FadeInSection>
+          {/* 첫 번째 줄 */}
+          <div className="flex justify-center gap-4">
+            {projects.slice(0, 3).map((project) => (
+              <ProjectIcon
+                key={project.id}
+                projectId={project.id}
+                projectTitle={project.title}
+                projectSubTitle={project.subTitle}
+                onClick={() => handleIconClick(project.id)}
+                isBlurred={shouldBlurIcon(project.type)}
+                projectType={project.type}
+              />
+            ))}
+          </div>
+        </FadeInSection>
+        <FadeInSection>
+          {/* 두 번째 줄 */}
+          <div className="flex justify-center gap-4">
+            {projects.slice(3, 7).map((project) => (
+              <ProjectIcon
+                key={project.id}
+                projectId={project.id}
+                projectTitle={project.title}
+                projectSubTitle={project.subTitle}
+                onClick={() => handleIconClick(project.id)}
+                isBlurred={shouldBlurIcon(project.type)}
+                projectType={project.type}
+              />
+            ))}
+          </div>
+        </FadeInSection>
+        <FadeInSection>
+          {/* 세 번째 줄 */}
+          <div className="flex justify-center gap-4">
+            {projects.slice(7, 10).map((project) => (
+              <ProjectIcon
+                key={project.id}
+                projectId={project.id}
+                projectTitle={project.title}
+                projectSubTitle={project.subTitle}
+                onClick={() => handleIconClick(project.id)}
+                isBlurred={shouldBlurIcon(project.type)}
+                projectType={project.type}
+              />
+            ))}
+          </div>
+        </FadeInSection>
+      </div>
       {isProjectDetailVisible && selectedProject && (
         <div ref={detailRef}>
           <ProjectDetail projects={selectedProject} />
