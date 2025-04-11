@@ -16,6 +16,7 @@ const ProjectListPage: React.FC = () => {
   const listRef = useRef<HTMLDivElement>(null);
   const [isDetailVisible, setIsDetailVisible] = useState(false);
   const [isListVisible, setIsListVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   const [projects, setProjects] = useState<Project[]>(
     Object.keys(projectStatics).map((key) => {
@@ -111,8 +112,18 @@ const ProjectListPage: React.FC = () => {
     };
   }, [isProjectDetailVisible]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const columnCounts = [1, 2, 2, 2, 2, 1];
-  const yOffsets = [0, -90, 90, -180, -90, 0];
+  const yOffsets = [0, -90, 30, -180, -90, 0];
+  const baseOffset = 0;
+  const centerOffset = 300;
 
   const columns = [];
   let currentIndex = 0;
@@ -132,12 +143,17 @@ const ProjectListPage: React.FC = () => {
           isVisible={isListVisible}
         />
       </FadeInSection>
-      <div ref={listRef} className="flex gap-4 justify-center px-8">
+      <div ref={listRef} className="flex gap-2 justify-center px-8">
         {columns.map((column, colIdx) => (
           <div
             key={colIdx}
             className="flex flex-col gap-4"
-            style={{ transform: `translateY(${yOffsets[colIdx]}px)` }}
+            style={{
+              transform: `translateX(${
+                centerOffset + baseOffset * colIdx - scrollY * 0.5
+              }px) translateY(${yOffsets[colIdx]}px)`,
+              transition: "transform 0.1s ease-out",
+            }}
           >
             {column.map((project, idx) => (
               <ProjectIcon
@@ -145,8 +161,9 @@ const ProjectListPage: React.FC = () => {
                 projectId={project.id}
                 projectTitle={project.title}
                 projectSubTitle={project.subTitle}
-                projectType={project.type}
                 onClick={() => handleIconClick(project.id)}
+                isBlurred={shouldBlurIcon(project.type)}
+                projectType={project.type}
               />
             ))}
           </div>
