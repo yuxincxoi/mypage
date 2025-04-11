@@ -121,9 +121,9 @@ const ProjectListPage: React.FC = () => {
   }, []);
 
   const columnCounts = [1, 2, 2, 2, 2, 1];
-  const yOffsets = [0, -90, 30, -180, -90, 0];
-  const baseOffset = 0;
-  const centerOffset = 300;
+  const yOffsets = [0, -90, 0, -180, -90, 0];
+  const baseOffset = 20;
+  const centerOffset = 400;
 
   const columns = [];
   let currentIndex = 0;
@@ -143,32 +143,37 @@ const ProjectListPage: React.FC = () => {
           isVisible={isListVisible}
         />
       </FadeInSection>
-      <div ref={listRef} className="flex gap-2 justify-center px-8">
-        {columns.map((column, colIdx) => (
-          <div
-            key={colIdx}
-            className="flex flex-col gap-4"
-            style={{
-              transform: `translateX(${
-                centerOffset + baseOffset * colIdx - scrollY * 0.5
-              }px) translateY(${yOffsets[colIdx]}px)`,
-              transition: "transform 0.1s ease-out",
-            }}
-          >
-            {column.map((project, idx) => (
-              <ProjectIcon
-                key={idx}
-                projectId={project.id}
-                projectTitle={project.title}
-                projectSubTitle={project.subTitle}
-                onClick={() => handleIconClick(project.id)}
-                isBlurred={shouldBlurIcon(project.type)}
-                projectType={project.type}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
+      <FadeInSection>
+        <div
+          ref={listRef}
+          className="w-full h-[900px] pt-28 flex gap-1 justify-center px-8"
+        >
+          {columns.map((column, colIdx) => (
+            <div
+              key={colIdx}
+              className="flex flex-col gap-2"
+              style={{
+                transform: `translateX(${
+                  centerOffset + baseOffset * colIdx - scrollY * 0.5
+                }px) translateY(${yOffsets[colIdx]}px)`,
+                transition: "transform 0.1s ease-out",
+              }}
+            >
+              {column.map((project, idx) => (
+                <ProjectIcon
+                  key={idx}
+                  projectId={project.id}
+                  projectTitle={project.title}
+                  projectSubTitle={project.subTitle}
+                  onClick={() => handleIconClick(project.id)}
+                  isBlurred={shouldBlurIcon(project.type)}
+                  projectType={project.type}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </FadeInSection>
       {isProjectDetailVisible && selectedProject && (
         <div ref={detailRef}>
           <ProjectDetail projects={selectedProject} />
