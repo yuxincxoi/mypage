@@ -111,6 +111,18 @@ const ProjectListPage: React.FC = () => {
     };
   }, [isProjectDetailVisible]);
 
+  const columnCounts = [1, 2, 2, 2, 2, 1];
+  const yOffsets = [0, -90, 90, -180, -90, 0];
+
+  const columns = [];
+  let currentIndex = 0;
+
+  for (let i = 0; i < columnCounts.length; i++) {
+    const count = columnCounts[i];
+    columns.push(projects.slice(currentIndex, currentIndex + count));
+    currentIndex += count;
+  }
+
   return (
     <div>
       <FadeInSection>
@@ -120,74 +132,25 @@ const ProjectListPage: React.FC = () => {
           isVisible={isListVisible}
         />
       </FadeInSection>
-      <div
-        ref={listRef}
-        className="w-full flex flex-col items-center gap-4 my-16"
-      >
-        <FadeInSection>
-          {/* 첫 번째 줄 */}
-          <div className="flex justify-center gap-4 w-[996px]">
-            {projects.slice(0, 3).map((project) => (
+      <div ref={listRef} className="flex gap-4 justify-center px-8">
+        {columns.map((column, colIdx) => (
+          <div
+            key={colIdx}
+            className="flex flex-col gap-4"
+            style={{ transform: `translateY(${yOffsets[colIdx]}px)` }}
+          >
+            {column.map((project, idx) => (
               <ProjectIcon
-                key={project.id}
+                key={idx}
                 projectId={project.id}
                 projectTitle={project.title}
                 projectSubTitle={project.subTitle}
-                onClick={() => handleIconClick(project.id)}
-                isBlurred={shouldBlurIcon(project.type)}
                 projectType={project.type}
+                onClick={() => handleIconClick(project.id)}
               />
             ))}
           </div>
-        </FadeInSection>
-        <FadeInSection>
-          {/* 두 번째 줄 */}
-          <div className="flex justify-center gap-4 w-[996px]">
-            {projects.slice(3, 6).map((project) => (
-              <ProjectIcon
-                key={project.id}
-                projectId={project.id}
-                projectTitle={project.title}
-                projectSubTitle={project.subTitle}
-                onClick={() => handleIconClick(project.id)}
-                isBlurred={shouldBlurIcon(project.type)}
-                projectType={project.type}
-              />
-            ))}
-          </div>
-        </FadeInSection>
-        <FadeInSection>
-          {/* 세 번째 줄 */}
-          <div className="flex justify-center gap-4 w-[996px]">
-            {projects.slice(6, 9).map((project) => (
-              <ProjectIcon
-                key={project.id}
-                projectId={project.id}
-                projectTitle={project.title}
-                projectSubTitle={project.subTitle}
-                onClick={() => handleIconClick(project.id)}
-                isBlurred={shouldBlurIcon(project.type)}
-                projectType={project.type}
-              />
-            ))}
-          </div>
-        </FadeInSection>
-        <FadeInSection>
-          {/* 네 번째 줄 */}
-          <div className="flex justify-start gap-4 w-[996px]">
-            {projects.slice(9, 12).map((project) => (
-              <ProjectIcon
-                key={project.id}
-                projectId={project.id}
-                projectTitle={project.title}
-                projectSubTitle={project.subTitle}
-                onClick={() => handleIconClick(project.id)}
-                isBlurred={shouldBlurIcon(project.type)}
-                projectType={project.type}
-              />
-            ))}
-          </div>
-        </FadeInSection>
+        ))}
       </div>
       {isProjectDetailVisible && selectedProject && (
         <div ref={detailRef}>
