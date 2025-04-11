@@ -137,7 +137,7 @@ const ProjectListPage: React.FC = () => {
   return (
     <div>
       <FadeInSection>
-        <div className="mb-40 text-center">
+        <div className="mb-32 text-center">
           <div className="font-pretendardSemiBold text-xl">프로젝트</div>
           <div className="font-pretendardExtraLight text-3xl">
             저는 이런 것들을 좋아합니다
