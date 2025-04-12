@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import ProjectIcon from "../components/project/ProjectIcon";
 import TypeChechBox from "../components/project/TypeCheckBox";
 import ProjectDetail from "./ProjectDetail";
@@ -13,10 +13,10 @@ const ProjectListPage: React.FC = () => {
   const [isProjectDetailVisible, setIsProjectDetailVisible] =
     useState<boolean>(false);
   const detailRef = useRef<HTMLDivElement>(null); // ProjectDetail 요소의 ref
-  const listRef = useRef<HTMLDivElement>(null);
   const [isDetailVisible, setIsDetailVisible] = useState(false);
   const [isListVisible, setIsListVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const listRef = useRef<HTMLDivElement>(null);
 
   const [projects, setProjects] = useState<Project[]>(
     Object.keys(projectStatics).map((key) => {
@@ -112,13 +112,42 @@ const ProjectListPage: React.FC = () => {
     };
   }, [isProjectDetailVisible]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const useHorizontalScroll = (ref: React.RefObject<HTMLDivElement>) => {
+    const handleWheel = useCallback(
+      (e: WheelEvent) => {
+        const container = ref.current;
+
+        if (container) {
+          const delta = e.deltaY;
+          const maxScrollLeft = container.scrollWidth - container.clientWidth;
+          const isAtStart = container.scrollLeft === 0 && delta < 0;
+          const isAtEnd = container.scrollLeft >= maxScrollLeft && delta > 0;
+
+          if (!isAtStart && !isAtEnd) {
+            container.scrollLeft += delta;
+            e.preventDefault();
+          }
+        }
+      },
+      [ref]
+    );
+
+    useEffect(() => {
+      const container = ref.current;
+
+      if (container) {
+        container.addEventListener("wheel", handleWheel);
+
+        return () => {
+          container.removeEventListener("wheel", handleWheel);
+        };
+      }
+
+      return () => {};
+    }, [handleWheel]);
+  };
+
+  useHorizontalScroll(listRef);
 
   const columnCounts = [1, 2, 2, 2, 2, 1];
   const yOffsets = [0, -90, 0, -180, -90, 0];
@@ -137,7 +166,7 @@ const ProjectListPage: React.FC = () => {
   return (
     <div>
       <FadeInSection>
-        <div className="mb-32 text-center">
+        <div className="mb-14 text-center">
           <div className="font-pretendardSemiBold text-xl">프로젝트</div>
           <div className="font-pretendardExtraLight text-3xl">
             저는 이런 것들을 좋아합니다
@@ -154,7 +183,7 @@ const ProjectListPage: React.FC = () => {
       <FadeInSection>
         <div
           ref={listRef}
-          className="w-full h-[900px] pt-28 flex gap-1 justify-center px-8"
+          className="w-full h-[900px] pt-52 flex gap-1 justify-start px-8 overflow-x-auto whitespace-nowrap"
         >
           {columns.map((column, colIdx) => (
             <div
