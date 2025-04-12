@@ -13,7 +13,7 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
 }) => {
   return (
     <div
-      className={`w-60 h-72 rounded-lg flex items-center justify-center flex-col group border-[1px] border-zinc-300 hover:shadow-lg transition-shadow duration-300
+      className={`w-60 h-[270px] rounded-lg flex items-center justify-center flex-col group border-[1px] border-zinc-300 hover:shadow-lg transition-shadow duration-300 z-10
   ${
     isBlurred
       ? "opacity-90 blur-lg cursor-default"
@@ -24,7 +24,12 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
       onClick={isBlurred ? undefined : onClick}
       data-type={projectType}
     >
-      <div className="w-40 h-40 bg-zinc-300 absolute -bottom-10 -right-10 opacity-0 group-hover:opacity-100 ease-in-out transition-all duration-700 pointer-events-none z-20"></div>
+      <div
+        className="w-44 h-44 absolute bg-contain bg-no-repeat bg-center -bottom-6 -right-8 opacity-0 group-hover:opacity-100 ease-in-out transition-all duration-500 pointer-events-none z-20"
+        style={{
+          backgroundImage: `url(/img/project${projectId}/cover.png)`,
+        }}
+      ></div>
       <div className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
       <div className="w-full h-full p-8 relative z-10 overflow-hidden">
         <div className="font-pretendardSemiBold text-2xl text-black">
@@ -33,7 +38,12 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
         <div className="font-pretendardExtraLight text-md text-zinc-500">
           {projectSubTitle}
         </div>
-        <div className="w-40 h-40 bg-zinc-300 absolute -bottom-10 -right-10"></div>
+        <div
+          className="w-44 h-44 absolute -bottom-6 -right-8 bg-contain bg-no-repeat bg-center"
+          style={{
+            backgroundImage: `url(/img/project${projectId}/cover.png)`,
+          }}
+        ></div>
       </div>
     </div>
   );
