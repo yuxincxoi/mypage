@@ -183,7 +183,7 @@ const ProjectListPage: React.FC = () => {
       <FadeInSection>
         <div
           ref={listRef}
-          className="w-full h-[900px] pt-52 flex gap-1 justify-start px-8 overflow-x-auto whitespace-nowrap scrollbar-hide"
+          className="w-full h-[900px] pt-52 flex gap-1 justify-start px-8 overflow-x-auto whitespace-nowrap hide-scrollbar"
         >
           {columns.map((column, colIdx) => (
             <div
