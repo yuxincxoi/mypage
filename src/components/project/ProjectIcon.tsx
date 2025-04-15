@@ -30,7 +30,8 @@ const ProjectIcon: React.FC<ProjectIconProps> = ({
           backgroundImage: `url(/img/project${projectId}/cover.png)`,
         }}
       ></div>
-      <div className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-0 bg-amber-400 "></div>
+      <div className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-50 transition-opacity duration-500 z-[-1]"></div>
       <div className="w-full h-full px-6 py-5 relative z-10 overflow-hidden">
         <div className="font-pretendardSemiBold text-2xl text-black">
           {projectTitle}
