@@ -9,7 +9,7 @@ const TypeChechBox: React.FC<TypeCheckBoxProps> = ({
 }) => {
   return (
     <div
-      className={`flex w-72 text-zinc-500 bg-neutral-100 justify-between text-md px-2 py-2 rounded-full fixed top-5 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-500 ${
+      className={`flex w-72 text-zinc-500 bg-neutral-100 justify-between text-md px-2 py-2 rounded-full fixed bottom-5 left-1/2 transform -translate-x-1/2 z-50 transition-opacity duration-500 ${
         isVisible ? "opacity-95" : "opacity-0 pointer-events-none"
       }`}
     >
