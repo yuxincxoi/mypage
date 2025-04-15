@@ -167,10 +167,10 @@ const ProjectListPage: React.FC = () => {
       </FadeInSection>
       <div
         ref={sectionRef}
-        className="relative w-full h-screen overflow-hidden"
+        className="relative w-full h-screen overflow-hidden py-5"
       >
         <FadeInSection>
-          <div className="mt-10 text-center">
+          <div className="text-center">
             <div className="font-pretendardSemiBold text-xl">프로젝트</div>
             <div className="font-pretendardExtraLight text-3xl">
               저는 이런 것들을 좋아합니다
