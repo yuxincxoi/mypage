@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectIcon from "../components/project/ProjectIcon";
 import TypeChechBox from "../components/project/TypeCheckBox";
 import ProjectDetail from "./ProjectDetail";
@@ -6,6 +8,8 @@ import ScrollToProjectListBtn from "../components/ScrollToProjectListBtn";
 import FadeInSection from "../FadeInSection";
 import { projectStatics } from "../../statics/project/project.static";
 import { Project } from "../interfaces/components/project/Project.interface";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ProjectListPage: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("all");
@@ -17,6 +21,7 @@ const ProjectListPage: React.FC = () => {
   const [isListVisible, setIsListVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const listRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const [projects, setProjects] = useState<Project[]>(
     Object.keys(projectStatics).map((key) => {
@@ -112,42 +117,30 @@ const ProjectListPage: React.FC = () => {
     };
   }, [isProjectDetailVisible]);
 
-  const useHorizontalScroll = (ref: React.RefObject<HTMLDivElement>) => {
-    const handleWheel = useCallback(
-      (e: WheelEvent) => {
-        const container = ref.current;
+  useEffect(() => {
+    const section = sectionRef.current;
+    const container = listRef.current;
+    if (!section || !container) return;
 
-        if (container) {
-          const delta = e.deltaY;
-          const maxScrollLeft = container.scrollWidth - container.clientWidth;
-          const isAtStart = container.scrollLeft === 0 && delta < 0;
-          const isAtEnd = container.scrollLeft >= maxScrollLeft && delta > 0;
+    const scrollWidth = container.scrollWidth - window.innerWidth;
 
-          if (!isAtStart && !isAtEnd) {
-            container.scrollLeft += delta;
-            e.preventDefault();
-          }
-        }
+    gsap.to(container, {
+      x: () => `-${scrollWidth}px`,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${scrollWidth}`,
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
       },
-      [ref]
-    );
+    });
 
-    useEffect(() => {
-      const container = ref.current;
-
-      if (container) {
-        container.addEventListener("wheel", handleWheel);
-
-        return () => {
-          container.removeEventListener("wheel", handleWheel);
-        };
-      }
-
-      return () => {};
-    }, [handleWheel]);
-  };
-
-  useHorizontalScroll(listRef);
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
 
   const columnCounts = [1, 2, 2, 2, 2, 1];
   const yOffsets = [0, -90, 0, -180, -90, 0];
@@ -182,33 +175,35 @@ const ProjectListPage: React.FC = () => {
       </FadeInSection>
       <FadeInSection>
         <div
-          ref={listRef}
-          className="w-full h-[900px] pt-52 flex gap-1 justify-start px-8 overflow-x-auto whitespace-nowrap hide-scrollbar"
+          ref={sectionRef}
+          className="relative w-full h-screen overflow-hidden"
         >
-          {columns.map((column, colIdx) => (
-            <div
-              key={colIdx}
-              className="flex flex-col gap-2"
-              style={{
-                transform: `translateX(${
-                  centerOffset + baseOffset * colIdx - scrollY * 0.5
-                }px) translateY(${yOffsets[colIdx]}px)`,
-                transition: "transform 0.1s ease-out",
-              }}
-            >
-              {column.map((project, idx) => (
-                <ProjectIcon
-                  key={idx}
-                  projectId={project.id}
-                  projectTitle={project.title}
-                  projectSubTitle={project.subTitle}
-                  onClick={() => handleIconClick(project.id)}
-                  isBlurred={shouldBlurIcon(project.type)}
-                  projectType={project.type}
-                />
-              ))}
-            </div>
-          ))}
+          <div ref={listRef} className="flex gap-5 h-full pt-52 pl-80">
+            {columns.map((column, colIdx) => (
+              <div
+                key={colIdx}
+                className="flex flex-col gap-2 shrink-0"
+                style={{
+                  transform: `translateY(${yOffsets[colIdx]}px)`,
+                  transition: "transform 0.1s ease-out",
+                }}
+              >
+                {column.map((project, idx) => (
+                  <ProjectIcon
+                    key={idx}
+                    projectId={project.id}
+                    projectTitle={project.title}
+                    projectSubTitle={project.subTitle}
+                    onClick={() => handleIconClick(project.id)}
+                    isBlurred={shouldBlurIcon(project.type)}
+                    projectType={project.type}
+                  />
+                ))}
+              </div>
+            ))}
+            {/* 여백용 요소 */}
+            <div className="w-[400px] shrink-0" />
+          </div>
         </div>
       </FadeInSection>
       {isProjectDetailVisible && selectedProject && (
