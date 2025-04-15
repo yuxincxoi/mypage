@@ -5,7 +5,7 @@ const ScrollToProjectListBtn: React.FC<ScrollToProjectListBtnProps> = ({
   isVisible,
 }) => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 780, behavior: "smooth" });
+    window.scrollTo({ top: 925, behavior: "smooth" });
   };
 
   return (

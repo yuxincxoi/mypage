@@ -55,7 +55,7 @@ const ProjectListPage: React.FC = () => {
       setSelectedProject(projectData);
       setIsProjectDetailVisible(true);
       window.scrollTo({
-        top: 1900,
+        top: 2400,
         left: 0,
         behavior: "smooth",
       });
@@ -167,7 +167,7 @@ const ProjectListPage: React.FC = () => {
       </FadeInSection>
       <div
         ref={sectionRef}
-        className="relative w-full h-screen overflow-hidden py-5"
+        className="relative w-full h-screen overflow-hidden py-5 my-20"
       >
         <FadeInSection>
           <div className="text-center">
