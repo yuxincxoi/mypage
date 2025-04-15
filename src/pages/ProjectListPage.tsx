@@ -159,25 +159,25 @@ const ProjectListPage: React.FC = () => {
   return (
     <div>
       <FadeInSection>
-        <div className="mb-14 text-center">
-          <div className="font-pretendardSemiBold text-xl">프로젝트</div>
-          <div className="font-pretendardExtraLight text-3xl">
-            저는 이런 것들을 좋아합니다
-          </div>
-        </div>
-      </FadeInSection>
-      <FadeInSection>
         <TypeChechBox
           selectedType={selectedType}
           onTypeChange={handleTypeChange}
           isVisible={isListVisible}
         />
       </FadeInSection>
-      <FadeInSection>
-        <div
-          ref={sectionRef}
-          className="relative w-full h-screen overflow-hidden"
-        >
+      <div
+        ref={sectionRef}
+        className="relative w-full h-screen overflow-hidden"
+      >
+        <FadeInSection>
+          <div className="mt-10 text-center">
+            <div className="font-pretendardSemiBold text-xl">프로젝트</div>
+            <div className="font-pretendardExtraLight text-3xl">
+              저는 이런 것들을 좋아합니다
+            </div>
+          </div>
+        </FadeInSection>
+        <FadeInSection>
           <div ref={listRef} className="flex gap-5 h-full pt-52 pl-80">
             {columns.map((column, colIdx) => (
               <div
@@ -204,8 +204,8 @@ const ProjectListPage: React.FC = () => {
             {/* 여백용 요소 */}
             <div className="w-[400px] shrink-0" />
           </div>
-        </div>
-      </FadeInSection>
+        </FadeInSection>
+      </div>
       {isProjectDetailVisible && selectedProject && (
         <div ref={detailRef}>
           <ProjectDetail projects={selectedProject} />
