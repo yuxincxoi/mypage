@@ -202,7 +202,7 @@ const ProjectListPage: React.FC = () => {
               </div>
             ))}
             {/* 여백용 요소 */}
-            <div className="w-[400px] shrink-0" />
+            <div className="w-[300px] shrink-0" />
           </div>
         </FadeInSection>
       </div>
