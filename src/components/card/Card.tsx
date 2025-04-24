@@ -24,7 +24,7 @@ const Card = () => {
         {/* 앞면 */}
         <CardSide isBack={false}>
           <div>
-            <h2 className="text-3xl tracking-tight">
+            <h2 className="text-3xl tracking-tight text-center">
               {ContactMessage.backComment.map((item, index) => {
                 return (
                   <span
