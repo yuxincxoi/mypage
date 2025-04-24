@@ -24,21 +24,36 @@ const Card = () => {
         {/* 앞면 */}
         <CardSide isBack={false}>
           <div>
-            <h2 className="text-3xl font-pretendardSemiBold tracking-tight">
-              {ContactMessage.englishName}
+            <h2 className="text-3xl tracking-tight">
+              {ContactMessage.backComment.map((item, index) => {
+                return (
+                  <span
+                    key={index}
+                    className={
+                      index % 2 === 0
+                        ? "font-pretendardBold text-white"
+                        : "font-pretendardExtraLight text-zinc-100"
+                    }
+                  >
+                    {item}
+                  </span>
+                );
+              })}
             </h2>
-            <div className="mt-1 text-sm opacity-70 font-pretendardExtraLight">
-              {ContactMessage.job}
-            </div>
           </div>
         </CardSide>
 
         {/* 뒷면 */}
         <CardSide isBack={true}>
-          <div className="space-y-3">
-            <h2 className="text-2xl font-pretendardSemiBold">
-              {ContactMessage.koreanName}
-            </h2>
+          <div className="text-white">
+            <div className="flex mb-14">
+              <h2 className="text-2xl font-pretendardSemiBold mr-4">
+                {ContactMessage.koreanName}
+              </h2>
+              <h2 className="text-sm font-pretendardExtraLight leading-10">
+                {ContactMessage.englishName}
+              </h2>
+            </div>
 
             <div className="flex items-center space-x-2">
               <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -46,7 +61,7 @@ const Card = () => {
               </svg>
               <a
                 href={`https://${ContactMessage.githubAddress}`}
-                className="text-sm font-pretendardExtraLight hover:underline"
+                className="text-md font-pretendardExtraLight hover:underline"
               >
                 {ContactMessage.githubAddress}
               </a>
@@ -68,7 +83,7 @@ const Card = () => {
               </svg>
               <a
                 href={`mailto:${ContactMessage.email}`}
-                className="text-sm font-pretendardExtraLight hover:underline"
+                className="text-md font-pretendardExtraLight hover:underline"
               >
                 {ContactMessage.email}
               </a>
