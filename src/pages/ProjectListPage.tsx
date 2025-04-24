@@ -75,19 +75,21 @@ const ProjectListPage: React.FC = () => {
           isVisible={isListVisible}
         />
       </FadeInSection>
-      <ProjectIconGrid
-        projects={projects}
-        selectedType={selectedType}
-        onProjectClick={handleIconClick}
-        sectionRef={sectionRef}
-        listRef={listRef}
-      />
-      {isProjectDetailVisible && selectedProject && (
-        <div ref={detailRef}>
-          <ProjectDetail projects={selectedProject} />
-        </div>
-      )}
-      <ScrollToProjectListBtn isVisible={isDetailVisible} />
+      <FadeInSection>
+        <ProjectIconGrid
+          projects={projects}
+          selectedType={selectedType}
+          onProjectClick={handleIconClick}
+          sectionRef={sectionRef}
+          listRef={listRef}
+        />
+        {isProjectDetailVisible && selectedProject && (
+          <div ref={detailRef}>
+            <ProjectDetail projects={selectedProject} />
+          </div>
+        )}
+        <ScrollToProjectListBtn isVisible={isDetailVisible} />
+      </FadeInSection>
     </div>
   );
 };
