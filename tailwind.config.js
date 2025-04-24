@@ -8,6 +8,7 @@ module.exports = {
         pretendardSemiBold: ["Pretendard-SemiBold"],
         pretendardBold: ["Pretendard-Bold"],
         gumi: ["GumiRomanceTTF"],
+        ahn: ["KCC-Ahnchangho"],
       },
       keyframes: {
         float: {
@@ -35,5 +36,22 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".text-stroke": {
+          "-webkit-text-stroke": "1px black",
+        },
+        ".text-stroke-white": {
+          "-webkit-text-stroke": "1px white",
+        },
+        ".text-stroke-2": {
+          "-webkit-text-stroke": "2px black",
+        },
+        ".text-stroke-red": {
+          "-webkit-text-stroke": "1px red",
+        },
+      });
+    },
+  ],
 };
