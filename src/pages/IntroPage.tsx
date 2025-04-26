@@ -64,8 +64,9 @@ const IntroPage: React.FC = () => {
                           index - (introMessage.nameFirst.length - 1) / 2
                         }px) translateY(100px) scale(1.1)`,
                   transitionDelay: `${index * 100}ms`,
-                  fontSize: `${12 + Math.min(scrollY * 0.01, 5)}rem`,
-                  transition: hasAppeared ? "font-size ease" : "",
+                  fontSize: `${12 + Math.min(scrollY * 0.005, 5)}rem`,
+                  filter: `blur(${Math.min(scrollY * 0.05, 4)}px)`,
+                  transition: hasAppeared ? "font-size ease, filter ease" : "",
                 }}
               >
                 {char}
@@ -92,8 +93,11 @@ const IntroPage: React.FC = () => {
                             index - (introMessage.nameSecond.length - 1) / 2
                           }px) translateY(-100px) scale(1.1)`,
                     transitionDelay: `${totalIndex * 100}ms`,
-                    fontSize: `${12 + Math.min(scrollY * 0.01, 5)}rem`,
-                    transition: hasAppeared ? "font-size ease" : "",
+                    fontSize: `${12 + Math.min(scrollY * 0.005, 5)}rem`,
+                    filter: `blur(${Math.min(scrollY * 0.05, 4)}px)`,
+                    transition: hasAppeared
+                      ? "font-size ease, filter ease"
+                      : "",
                   }}
                 >
                   {char}
