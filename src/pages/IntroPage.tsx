@@ -6,6 +6,7 @@ const IntroPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [visibleChars, setVisibleChars] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+  const [hasAppeared, setHasAppeared] = useState(false);
   const totalChars =
     introMessage.nameFirst.length + introMessage.nameSecond.length;
 
@@ -19,10 +20,19 @@ const IntroPage: React.FC = () => {
       } else {
         clearInterval(interval);
       }
-    }, 10);
+    }, 80);
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (visibleChars === totalChars) {
+      const timer = setTimeout(() => {
+        setHasAppeared(true);
+      });
+      return () => clearTimeout(timer);
+    }
+  }, [visibleChars, totalChars]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +64,8 @@ const IntroPage: React.FC = () => {
                           index - (introMessage.nameFirst.length - 1) / 2
                         }px) translateY(100px) scale(1.1)`,
                   transitionDelay: `${index * 100}ms`,
+                  fontSize: `${12 + Math.min(scrollY * 0.01, 5)}rem`,
+                  transition: hasAppeared ? "font-size ease" : "",
                 }}
               >
                 {char}
@@ -80,6 +92,8 @@ const IntroPage: React.FC = () => {
                             index - (introMessage.nameSecond.length - 1) / 2
                           }px) translateY(-100px) scale(1.1)`,
                     transitionDelay: `${totalIndex * 100}ms`,
+                    fontSize: `${12 + Math.min(scrollY * 0.01, 5)}rem`,
+                    transition: hasAppeared ? "font-size ease" : "",
                   }}
                 >
                   {char}
