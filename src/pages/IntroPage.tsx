@@ -5,6 +5,7 @@ import { introMessage } from "../../statics/intro.static";
 const IntroPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [visibleChars, setVisibleChars] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
   const totalChars =
     introMessage.nameFirst.length + introMessage.nameSecond.length;
 
@@ -23,12 +24,21 @@ const IntroPage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="w-full h-screen mb-40 pb-32 flex flex-col justify-center">
-      <div className="font-pretendardBold text-[250px] font-extrabold leading-[230px] tracking-tight text-white text-stroke whitespace-pre-wrap relative">
+      <div className="font-pretendardBold text-[200px] font-extrabold leading-[200px] tracking-tight text-white text-stroke whitespace-pre-wrap relative">
         <div className="relative">
           {/* 첫 번째 파트 */}
-          <div className="relative h-[230px] overflow-hidden flex justify-center">
+          <div className="relative h-[200px] overflow-hidden flex justify-center">
             {introMessage.nameFirst.split("").map((char, index) => (
               <div
                 key={`first-${index}`}
@@ -52,7 +62,7 @@ const IntroPage: React.FC = () => {
           </div>
 
           {/* 두 번째 파트 */}
-          <div className="relative h-[230px] overflow-hidden flex justify-center">
+          <div className="relative h-[200px] overflow-hidden flex justify-center">
             {introMessage.nameSecond.split("").map((char, index) => {
               const totalIndex = index + introMessage.nameFirst.length;
               return (
@@ -80,7 +90,13 @@ const IntroPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="font-ahn text-center tracking-wider text-md text-5xl absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div
+        className="w-full font-ahn text-center tracking-wider text-4xl absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        // style={{
+        //   fontSize: `${3 + Math.min(scrollY * 0.01, 5)}rem`,
+        //   transition: "font-size ease",
+        // }}
+      >
         <div>{introMessage.job}</div>
       </div>
 

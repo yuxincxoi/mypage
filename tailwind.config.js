@@ -40,7 +40,7 @@ module.exports = {
     function ({ addUtilities }) {
       addUtilities({
         ".text-stroke": {
-          "-webkit-text-stroke": "1px black",
+          "-webkit-text-stroke": "1px theme('colors.zinc.400')",
         },
         ".text-stroke-white": {
           "-webkit-text-stroke": "1px white",
