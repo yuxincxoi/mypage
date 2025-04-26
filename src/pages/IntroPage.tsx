@@ -4,15 +4,89 @@ import { introMessage } from "../../statics/intro.static";
 
 const IntroPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [visibleChars, setVisibleChars] = useState(0);
+  const totalChars =
+    introMessage.nameFirst.length + introMessage.nameSecond.length;
+
+  // const firstHalf = introMessage.name.substring(0, 5);
+  // const secondHalf = introMessage.name.substring(5);
+
+  useEffect(() => {
+    let currentChar = 0;
+
+    const interval = setInterval(() => {
+      if (currentChar < totalChars) {
+        setVisibleChars(currentChar + 1);
+        currentChar++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 20); // 각 글자가 나타나는 간격을 조절할 수 있습니다
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="w-full h-screen mb-40 pb-32 flex flex-col justify-center">
-      <div className="font-pretendardBold text-center text-[250px] font-extrabold leading-[230px] tracking-tight text-white text-stroke whitespace-pre-wrap">
-        {introMessage.name}
+      <div className="font-pretendardBold text-[250px] font-extrabold leading-[230px] tracking-tight text-white text-stroke whitespace-pre-wrap relative">
+        <div className="relative">
+          {/* 첫 번째 파트 (상단으로 올라오는 애니메이션) */}
+          <div className="relative h-[230px] overflow-hidden flex justify-center">
+            {introMessage.nameFirst.split("").map((char, index) => (
+              <div
+                key={`first-${index}`}
+                className="relative transform transition-all duration-1000 ease-out"
+                style={{
+                  opacity: index < visibleChars ? 1 : 0,
+                  transform:
+                    index < visibleChars
+                      ? `translateX(${
+                          index - (introMessage.nameSecond.length - 1) / 2
+                        }px)`
+                      : `translateX(${
+                          index - (introMessage.nameSecond.length - 1) / 2
+                        }px) translateY(50px)`,
+                  transitionDelay: `${index * 100}ms`,
+                }}
+              >
+                {char}
+              </div>
+            ))}
+          </div>
+
+          {/* 두 번째 파트 (하단으로 올라오는 애니메이션) */}
+          <div className="relative h-[230px] overflow-hidden flex justify-center">
+            {introMessage.nameSecond.split("").map((char, index) => {
+              const totalIndex = index + introMessage.nameFirst.length;
+              return (
+                <div
+                  key={`second-${index}`}
+                  className="relative transform transition-all duration-1000 ease-out"
+                  style={{
+                    opacity: index < visibleChars ? 1 : 0,
+                    transform:
+                      index < visibleChars
+                        ? `translateX(${
+                            index - (introMessage.nameSecond.length - 1) / 2
+                          }px)`
+                        : `translateX(${
+                            index - (introMessage.nameSecond.length - 1) / 2
+                          }px) translateY(-50px)`,
+                    transitionDelay: `${totalIndex * 100}ms`,
+                  }}
+                >
+                  {char}
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
+
       <div className="font-ahn text-center tracking-wider text-md text-5xl absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div>{introMessage.job}</div>
       </div>
+
       <div
         className={`transition-opacity duration-300 ${
           isVisible ? "opacity-100" : "opacity-0"
