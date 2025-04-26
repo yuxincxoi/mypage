@@ -8,9 +8,6 @@ const IntroPage: React.FC = () => {
   const totalChars =
     introMessage.nameFirst.length + introMessage.nameSecond.length;
 
-  // const firstHalf = introMessage.name.substring(0, 5);
-  // const secondHalf = introMessage.name.substring(5);
-
   useEffect(() => {
     let currentChar = 0;
 
@@ -21,7 +18,7 @@ const IntroPage: React.FC = () => {
       } else {
         clearInterval(interval);
       }
-    }, 20); // 각 글자가 나타나는 간격을 조절할 수 있습니다
+    }, 10);
 
     return () => clearInterval(interval);
   }, []);
@@ -30,7 +27,7 @@ const IntroPage: React.FC = () => {
     <div className="w-full h-screen mb-40 pb-32 flex flex-col justify-center">
       <div className="font-pretendardBold text-[250px] font-extrabold leading-[230px] tracking-tight text-white text-stroke whitespace-pre-wrap relative">
         <div className="relative">
-          {/* 첫 번째 파트 (상단으로 올라오는 애니메이션) */}
+          {/* 첫 번째 파트 */}
           <div className="relative h-[230px] overflow-hidden flex justify-center">
             {introMessage.nameFirst.split("").map((char, index) => (
               <div
@@ -54,7 +51,7 @@ const IntroPage: React.FC = () => {
             ))}
           </div>
 
-          {/* 두 번째 파트 (하단으로 올라오는 애니메이션) */}
+          {/* 두 번째 파트 */}
           <div className="relative h-[230px] overflow-hidden flex justify-center">
             {introMessage.nameSecond.split("").map((char, index) => {
               const totalIndex = index + introMessage.nameFirst.length;
