@@ -48,7 +48,7 @@ const IntroPage: React.FC = () => {
       <div className="font-pretendardBold text-[200px] font-extrabold leading-[200px] tracking-tight text-white text-stroke whitespace-pre-wrap relative">
         <div className="relative">
           {/* 첫 번째 파트 */}
-          <div className="relative h-[200px] overflow-hidden flex justify-center">
+          <div className="relative h-[190px] overflow-hidden flex justify-center">
             {introMessage.nameFirst.split("").map((char, index) => (
               <div
                 key={`first-${index}`}
@@ -75,7 +75,7 @@ const IntroPage: React.FC = () => {
           </div>
 
           {/* 두 번째 파트 */}
-          <div className="relative h-[200px] overflow-hidden flex justify-center">
+          <div className="relative h-[190px] overflow-hidden flex justify-center">
             {introMessage.nameSecond.split("").map((char, index) => {
               const totalIndex = index + introMessage.nameFirst.length;
               return (
@@ -109,7 +109,7 @@ const IntroPage: React.FC = () => {
       </div>
 
       <div
-        className="w-full font-ahn text-center tracking-wider text-4xl absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="w-full font-dos text-center tracking-wider text-4xl absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         // style={{
         //   fontSize: `${3 + Math.min(scrollY * 0.01, 5)}rem`,
         //   transition: "font-size ease",
