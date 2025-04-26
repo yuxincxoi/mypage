@@ -9,6 +9,7 @@ module.exports = {
         pretendardBold: ["Pretendard-Bold"],
         gumi: ["GumiRomanceTTF"],
         ahn: ["KCC-Ahnchangho"],
+        dos: ["DOSGothic"],
       },
       keyframes: {
         float: {
