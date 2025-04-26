@@ -35,17 +35,17 @@ const IntroPage: React.FC = () => {
             {introMessage.nameFirst.split("").map((char, index) => (
               <div
                 key={`first-${index}`}
-                className="relative transform transition-all duration-1000 ease-out"
+                className="relative transform transition-all duration-500 ease-out"
                 style={{
                   opacity: index < visibleChars ? 1 : 0,
                   transform:
                     index < visibleChars
                       ? `translateX(${
-                          index - (introMessage.nameSecond.length - 1) / 2
-                        }px)`
+                          index - (introMessage.nameFirst.length - 1) / 2
+                        }px) scale(1)`
                       : `translateX(${
-                          index - (introMessage.nameSecond.length - 1) / 2
-                        }px) translateY(50px)`,
+                          index - (introMessage.nameFirst.length - 1) / 2
+                        }px) translateY(100px) scale(1.1)`,
                   transitionDelay: `${index * 100}ms`,
                 }}
               >
@@ -61,17 +61,17 @@ const IntroPage: React.FC = () => {
               return (
                 <div
                   key={`second-${index}`}
-                  className="relative transform transition-all duration-1000 ease-out"
+                  className="relative transform transition-all duration-500 ease-out"
                   style={{
                     opacity: index < visibleChars ? 1 : 0,
                     transform:
                       index < visibleChars
                         ? `translateX(${
                             index - (introMessage.nameSecond.length - 1) / 2
-                          }px)`
+                          }px) scale(1)`
                         : `translateX(${
                             index - (introMessage.nameSecond.length - 1) / 2
-                          }px) translateY(-50px)`,
+                          }px) translateY(-100px) scale(1.1)`,
                     transitionDelay: `${totalIndex * 100}ms`,
                   }}
                 >
