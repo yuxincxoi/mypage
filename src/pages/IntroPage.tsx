@@ -29,7 +29,7 @@ const IntroPage: React.FC = () => {
     if (visibleChars === totalChars) {
       const timer = setTimeout(() => {
         setHasAppeared(true);
-      });
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [visibleChars, totalChars]);
@@ -83,9 +83,9 @@ const IntroPage: React.FC = () => {
                   key={`second-${index}`}
                   className="relative transform transition-all duration-500 ease-out"
                   style={{
-                    opacity: index < visibleChars ? 1 : 0,
+                    opacity: totalIndex < visibleChars ? 1 : 0,
                     transform:
-                      index < visibleChars
+                      totalIndex < visibleChars
                         ? `translateX(${
                             index - (introMessage.nameSecond.length - 1) / 2
                           }px) scale(1)`
