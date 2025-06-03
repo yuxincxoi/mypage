@@ -86,7 +86,7 @@ const Nav: React.FC = () => {
         fixed right-8 top-1/2 transform -translate-y-1/2 z-50 
         flex flex-col items-center justify-center px-3 py-5 font-pretendard 
         transition-all duration-500 ease-in-out
-        ${isScrolling ? "space-y-8" : "space-y-3"}
+        ${isScrolling || isHovered ? "space-y-8" : "space-y-3"}
       `}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
