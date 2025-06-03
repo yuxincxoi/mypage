@@ -14,9 +14,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
-    null
-  );
 
   // 모달 상태에 따른 스크롤 제어
   useEffect(() => {
@@ -46,28 +43,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   };
 
   const openModal = () => {
-    setSelectedImageIndex(0);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedImageIndex(null);
-  };
-
-  const handlePrevImage = () => {
-    if (selectedImageIndex !== null && selectedImageIndex > 0) {
-      setSelectedImageIndex(selectedImageIndex - 1);
-    }
-  };
-
-  const handleNextImage = () => {
-    if (
-      selectedImageIndex !== null &&
-      selectedImageIndex < projects.img.length - 1
-    ) {
-      setSelectedImageIndex(selectedImageIndex + 1);
-    }
   };
 
   return (
@@ -137,13 +117,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             </FadeInSection>
           )}
           {/* 이미지 모달 */}
-          {isModalOpen && selectedImageIndex !== null && (
+          {isModalOpen && (
             <Modal
               images={projects.img}
-              selectedImageIndex={selectedImageIndex}
               onClose={closeModal}
-              onPrev={handlePrevImage}
-              onNext={handleNextImage}
               comment={projects.function}
             />
           )}

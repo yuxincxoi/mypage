@@ -1,16 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CloseModalBtn from "./CloseModalBtn";
 import ChevronBtn from "../img/ChevronBtn";
 import { ModalProps } from "../../../interfaces/components/project/modal/Modal.interface";
 
-const Modal: React.FC<ModalProps> = ({
-  images,
-  selectedImageIndex,
-  onClose,
-  onPrev,
-  onNext,
-  comment,
-}) => {
+const Modal: React.FC<ModalProps> = ({ images, onClose, comment }) => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+
+  const handlePrevImage = () => {
+    if (selectedImageIndex !== null && selectedImageIndex > 0) {
+      setSelectedImageIndex(selectedImageIndex - 1);
+    }
+  };
+
+  const handleNextImage = () => {
+    if (selectedImageIndex !== null && selectedImageIndex < images.length - 1) {
+      setSelectedImageIndex(selectedImageIndex + 1);
+    }
+  };
+
   // ESC 버튼 누르면 모달 닫기
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -39,14 +46,14 @@ const Modal: React.FC<ModalProps> = ({
           <>
             <ChevronBtn
               direction="left"
-              onClick={onPrev}
+              onClick={handlePrevImage}
               isHidden={selectedImageIndex <= 0}
               className="top-[20vh] text-neutral-400 hover:text-neutral-500"
               strokeWidth={2}
             />
             <ChevronBtn
               direction="right"
-              onClick={onNext}
+              onClick={handleNextImage}
               isHidden={selectedImageIndex >= images.length - 1}
               className="top-[20vh] text-neutral-400 hover:text-neutral-500"
               strokeWidth={2}
