@@ -6,6 +6,7 @@ const Nav: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const [documentHeight, setDocumentHeight] = useState<number>(0);
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const calculateNavRanges = () => {
@@ -85,8 +86,10 @@ const Nav: React.FC = () => {
         fixed right-8 top-1/2 transform -translate-y-1/2 z-50 
         flex flex-col items-center justify-center px-3 py-5 font-pretendard 
         transition-all duration-500 ease-in-out
-        ${isScrolling ? "opacity-100 space-y-8" : "opacity-0 space-y-3"}
+        ${isScrolling ? "space-y-8" : "space-y-3"}
       `}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {navItems.map((item) => (
         <div
@@ -97,7 +100,11 @@ const Nav: React.FC = () => {
           onClick={() => handleScrollTo(item.scrollTo)}
         >
           {(activeItem === item.id || getActiveSection() === item.id) && (
-            <div className="absolute left-[-80px] text-gray-500 font-normal text-sm px-2 rounded transition-all duration-300 ease-in-out top-[-5px]">
+            <div
+              className={`absolute left-[-80px] text-gray-500 font-normal text-sm px-2 rounded transition-all duration-300 ease-in-out top-[-5px] ${
+                isScrolling || isHovered ? "opacity-100" : "opacity-0"
+              }`}
+            >
               {item.label}
             </div>
           )}
