@@ -3,7 +3,7 @@ import { ExplanationProps } from "../../../interfaces/components/project/detail/
 
 const Explanation: React.FC<ExplanationProps> = ({ projects }) => {
   return (
-    <div className="mt-10 mb-7 flex justify-center items-center whitespace-pre-wrap font-pretendard text-center">
+    <div className="mt-10 mb-7 flex items-center whitespace-pre-wrap font-pretendard">
       {projects.exp}
     </div>
   );

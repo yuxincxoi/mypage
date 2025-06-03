@@ -14,8 +14,10 @@ const Section: React.FC<SectionProps> = ({
   subTitle,
 }) => {
   return (
-    <div className={`grid grid-cols-[1fr_5fr] gap-10 ${className}`}>
-      <p className="text-3xl font-pretendardBold text-black">{sectionTitle}</p>
+    <div className={`${className}`}>
+      <p className="text-3xl font-pretendardBold text-black mb-4">
+        {sectionTitle}
+      </p>
       {isBasic ? (
         <BasicSubstance isChar={isChar} para={para} />
       ) : (

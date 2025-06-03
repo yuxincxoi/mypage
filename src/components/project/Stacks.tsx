@@ -24,7 +24,7 @@ const Stacks: React.FC<StacksProps> = ({ stacks }) => {
   };
 
   return (
-    <div className="mt-4 flex flex-wrap justify-center gap-4">
+    <div className="mt-3 flex flex-wrap gap-4">
       {stacks.map((stackName, index) => {
         const stack = getStackInfo(stackName);
 
