@@ -78,10 +78,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
           <DetailTitle projects={projects} /> {/* 프로젝트 제목 */}
         </div>
         <div>
-          <Stacks stacks={projects.stack} /> {/* 프로젝트 스택 */}
-          <Explanation projects={projects} /> {/* 프로젝트 설명 */}
           <ProjectImg images={projects.img} onClick={openModal} />{" "}
           {/* 프로젝트 사진 */}
+          <Stacks stacks={projects.stack} /> {/* 프로젝트 스택 */}
+          <Explanation projects={projects} /> {/* 프로젝트 설명 */}
           <FadeInSection>
             <div>
               {/* 특징 */}
