@@ -72,86 +72,84 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   };
 
   return (
-    <div className="w-[95%] mx-auto bg-zinc-50 text-zinc-800 py-32 rounded-3xl">
-      <div className="w-5/6 mx-auto">
-        <FadeInSection>
-          <div className="w-[20%] h-[2px] mx-auto mb-4 bg-gradient-to-l from-cyan-300 to-amber-400 via-red-400"></div>
-          <div>
-            <DetailTitle projects={projects} /> {/* 프로젝트 제목 */}
-            <Stacks stacks={projects.stack} /> {/* 프로젝트 스택 */}
-            <Explanation projects={projects} /> {/* 프로젝트 설명 */}
-            <ProjectImg images={projects.img} onClick={openModal} />{" "}
-            {/* 프로젝트 사진 */}
-          </div>
-        </FadeInSection>
-        <FadeInSection>
-          <div className="mx-auto mt-32 w-[80%]">
-            {/* 특징 */}
-            <Section
-              sectionTitle={projectDetailStatics.character}
-              isBasic={true}
-              isChar={true}
-              para={projects.character}
-              className="mt-20"
-            />
-          </div>
-        </FadeInSection>
-        {(projects.troubleShooting || projects.comment) && (
+    <div className="mx-auto bg-zinc-50 text-zinc-800 py-32 rounded-3xl">
+      <div className="w-[90%] mx-auto flex">
+        <div className="w-[30%]">
+          <DetailTitle projects={projects} /> {/* 프로젝트 제목 */}
+        </div>
+        <div>
+          <Stacks stacks={projects.stack} /> {/* 프로젝트 스택 */}
+          <Explanation projects={projects} /> {/* 프로젝트 설명 */}
+          <ProjectImg images={projects.img} onClick={openModal} />{" "}
+          {/* 프로젝트 사진 */}
           <FadeInSection>
-            <div className="mt-28">
-              {/* 더보기 버튼 */}
-              {!isMoreSectionOpen && (
-                <MoreBtn
-                  isButtonVisible={isButtonVisible}
-                  handleMoreSectionOpen={handleMoreSectionOpen}
-                />
-              )}
-              {isMoreSectionOpen && (
-                <div className="w-[80%] mx-auto transition-all duration-300">
-                  {/* 트러블슈팅 */}
-                  {projects.troubleShooting && (
-                    <Section
-                      sectionTitle={projectDetailStatics.function}
-                      isBasic={false}
-                      isChar={false}
-                      subTitle={[
-                        projectDetailStatics.troubleShooting.trouble,
-                        projectDetailStatics.troubleShooting.shooting,
-                        projectDetailStatics.troubleShooting.result,
-                      ]}
-                      para={[
-                        projects.troubleShooting.trouble,
-                        projects.troubleShooting.shooting,
-                        projects.troubleShooting.result,
-                      ]}
-                    />
-                  )}
-                  {/* 회고 */}
-                  {projects.comment && (
-                    <Section
-                      sectionTitle={projectDetailStatics.comment}
-                      isBasic={true}
-                      isChar={false}
-                      para={[projects.comment]}
-                      className="mt-20"
-                    />
-                  )}
-                </div>
-              )}
+            <div>
+              {/* 특징 */}
+              <Section
+                sectionTitle={projectDetailStatics.character}
+                isBasic={true}
+                isChar={true}
+                para={projects.character}
+              />
             </div>
           </FadeInSection>
-        )}
-        {/* 이미지 모달 */}
-        {isModalOpen && selectedImageIndex !== null && (
-          <Modal
-            images={projects.img}
-            selectedImageIndex={selectedImageIndex}
-            onClose={closeModal}
-            onPrev={handlePrevImage}
-            onNext={handleNextImage}
-            comment={projects.function}
-          />
-        )}
+          {(projects.troubleShooting || projects.comment) && (
+            <FadeInSection>
+              <div className="mt-20">
+                {/* 더보기 버튼 */}
+                {!isMoreSectionOpen && (
+                  <MoreBtn
+                    isButtonVisible={isButtonVisible}
+                    handleMoreSectionOpen={handleMoreSectionOpen}
+                  />
+                )}
+                {isMoreSectionOpen && (
+                  <div className="mx-auto transition-all duration-300">
+                    {/* 트러블슈팅 */}
+                    {projects.troubleShooting && (
+                      <Section
+                        sectionTitle={projectDetailStatics.function}
+                        isBasic={false}
+                        isChar={false}
+                        subTitle={[
+                          projectDetailStatics.troubleShooting.trouble,
+                          projectDetailStatics.troubleShooting.shooting,
+                          projectDetailStatics.troubleShooting.result,
+                        ]}
+                        para={[
+                          projects.troubleShooting.trouble,
+                          projects.troubleShooting.shooting,
+                          projects.troubleShooting.result,
+                        ]}
+                      />
+                    )}
+                    {/* 회고 */}
+                    {projects.comment && (
+                      <Section
+                        sectionTitle={projectDetailStatics.comment}
+                        isBasic={true}
+                        isChar={false}
+                        para={[projects.comment]}
+                        className="mt-20"
+                      />
+                    )}
+                  </div>
+                )}
+              </div>
+            </FadeInSection>
+          )}
+          {/* 이미지 모달 */}
+          {isModalOpen && selectedImageIndex !== null && (
+            <Modal
+              images={projects.img}
+              selectedImageIndex={selectedImageIndex}
+              onClose={closeModal}
+              onPrev={handlePrevImage}
+              onNext={handleNextImage}
+              comment={projects.function}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
