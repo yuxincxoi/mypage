@@ -83,15 +83,15 @@ const Nav: React.FC = () => {
     <div
       className={`
         fixed right-8 top-1/2 transform -translate-y-1/2 z-50 
-        flex flex-col items-center space-y-8 justify-center px-3 py-5 font-pretendard 
-        transition-opacity duration-500 ease-in-out
-        ${isScrolling ? "opacity-100" : "opacity-0"}
+        flex flex-col items-center justify-center px-3 py-5 font-pretendard 
+        transition-all duration-500 ease-in-out
+        ${isScrolling ? "opacity-100 space-y-8" : "opacity-0 space-y-3"}
       `}
     >
       {navItems.map((item) => (
         <div
           key={item.id}
-          className="relative flex flex-col items-center cursor-pointer"
+          className="relative flex flex-col items-center cursor-pointer transition-all duration-500 ease-in-out"
           onMouseEnter={() => setActiveItem(item.id)}
           onMouseLeave={() => setActiveItem(null)}
           onClick={() => handleScrollTo(item.scrollTo)}
