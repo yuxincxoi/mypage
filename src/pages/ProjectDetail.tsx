@@ -52,7 +52,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
 
   return (
     <div className="mx-auto bg-zinc-50 text-zinc-800 py-32 rounded-3xl">
-      <div className="w-[90%] mx-auto flex">
+      <div className="w-[80%] mx-auto flex">
         <div className="w-[30%]">
           <DetailTitle projects={projects} /> {/* 프로젝트 제목 */}
         </div>
