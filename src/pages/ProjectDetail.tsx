@@ -8,9 +8,11 @@ import DetailTitle from "../components/project/detail/DetailTitle";
 import Explanation from "../components/project/detail/Explanation";
 import Section from "../components/project/detail/section/Section";
 import Modal from "../components/project/modal/Modal";
+import { Project } from "../interfaces/components/project/Project.interface";
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // 모달 상태에 따른 스크롤 제어
   useEffect(() => {
@@ -26,7 +28,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
     };
   }, [isModalOpen]);
 
-  const openModal = () => {
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
     setIsModalOpen(true);
   };
 
@@ -91,23 +94,23 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             </FadeInSection>
             <FadeInSection>
               <div>
-                <ProjectImg onClick={openModal} /> {/* 프로젝트 사진 */}
+                <ProjectImg onClick={() => openModal(project)} />
+                {/* 프로젝트 사진 */}
                 {/* 깃허브 */}
                 {/* url */}
                 {/* 회고 */}
               </div>
             </FadeInSection>
-            {/* 이미지 모달 */}
-            {isModalOpen && (
-              <Modal
-                images={project.img}
-                onClose={closeModal}
-                comment={project.function}
-              />
-            )}
           </div>
         </div>
       ))}
+      {isModalOpen && selectedProject && (
+        <Modal
+          images={selectedProject.img}
+          onClose={closeModal}
+          comment={selectedProject.function}
+        />
+      )}
     </div>
   );
 };
