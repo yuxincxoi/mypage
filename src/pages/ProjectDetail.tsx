@@ -62,7 +62,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             {/* 프로젝트 제목 */}
           </div>
           <div className="w-auto pl-10">
-            <ProjectImg onClick={openModal} /> {/* 프로젝트 사진 */}
             <Stacks stacks={project.stack} /> {/* 프로젝트 스택 */}
             <Explanation projects={project} /> {/* 프로젝트 설명 */}
             <FadeInSection>
@@ -77,8 +76,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                 />
               </div>
             </FadeInSection>
-            {(project.troubleShooting || project.comment) && (
-              <FadeInSection>
+            <FadeInSection>
+              {(project.troubleShooting || project.comment) && (
                 <div>
                   {/* 트러블슈팅 */}
                   {project.troubleShooting && (
@@ -110,8 +109,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                     />
                   )}
                 </div>
-              </FadeInSection>
-            )}
+              )}
+            </FadeInSection>
+            <FadeInSection>
+              <div>
+                <ProjectImg onClick={openModal} /> {/* 프로젝트 사진 */}
+                {/* 깃허브 */}
+                {/* url */}
+                {/* 회고 */}
+              </div>
+            </FadeInSection>
             {/* 이미지 모달 */}
             {isModalOpen && (
               <Modal
