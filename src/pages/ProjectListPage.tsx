@@ -14,7 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ProjectListPage: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>("all");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isProjectDetailVisible, setIsProjectDetailVisible] =
     useState<boolean>(false);
   const listRef = useRef<HTMLDivElement>(null);
@@ -25,7 +24,6 @@ const ProjectListPage: React.FC = () => {
   const handleIconClick = (projectId: number) => {
     const projectData = projects.find((p) => p.id === projectId);
     if (projectData) {
-      setSelectedProject(projectData);
       setIsProjectDetailVisible(true);
       window.scrollTo({
         top: 2400,
@@ -59,9 +57,9 @@ const ProjectListPage: React.FC = () => {
           sectionRef={sectionRef}
           listRef={listRef}
         />
-        {isProjectDetailVisible && selectedProject && (
+        {isProjectDetailVisible && (
           <div ref={detailRef}>
-            <ProjectDetail projects={selectedProject} />
+            <ProjectDetail projects={projects} />
           </div>
         )}
         <ScrollToProjectListBtn isVisible={isDetailVisible} />

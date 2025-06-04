@@ -52,80 +52,82 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
 
   return (
     <div className="mx-auto bg-zinc-50 text-zinc-800 py-32 rounded-3xl">
-      <div className="w-[80%] mx-auto flex">
-        <div className="w-[30%]">
-          <DetailTitle projects={projects} /> {/* 프로젝트 제목 */}
-        </div>
-        <div>
-          <ProjectImg onClick={openModal} /> {/* 프로젝트 사진 */}
-          <Stacks stacks={projects.stack} /> {/* 프로젝트 스택 */}
-          <Explanation projects={projects} /> {/* 프로젝트 설명 */}
-          <FadeInSection>
-            <div>
-              {/* 특징 */}
-              <Section
-                sectionTitle={projectDetailStatics.character}
-                isBasic={true}
-                isChar={true}
-                para={projects.character}
-              />
-            </div>
-          </FadeInSection>
-          {(projects.troubleShooting || projects.comment) && (
+      {projects.map((project) => (
+        <div className="w-[80%] mx-auto flex">
+          <div className="w-[30%]">
+            <DetailTitle projects={project} /> {/* 프로젝트 제목 */}
+          </div>
+          <div>
+            <ProjectImg onClick={openModal} /> {/* 프로젝트 사진 */}
+            <Stacks stacks={project.stack} /> {/* 프로젝트 스택 */}
+            <Explanation projects={project} /> {/* 프로젝트 설명 */}
             <FadeInSection>
-              <div className="mt-20">
-                {/* 더보기 버튼 */}
-                {!isMoreSectionOpen && (
-                  <MoreBtn
-                    isButtonVisible={isButtonVisible}
-                    handleMoreSectionOpen={handleMoreSectionOpen}
-                  />
-                )}
-                {isMoreSectionOpen && (
-                  <div className="mx-auto transition-all duration-300">
-                    {/* 트러블슈팅 */}
-                    {projects.troubleShooting && (
-                      <Section
-                        sectionTitle={projectDetailStatics.function}
-                        isBasic={false}
-                        isChar={false}
-                        subTitle={[
-                          projectDetailStatics.troubleShooting.trouble,
-                          projectDetailStatics.troubleShooting.shooting,
-                          projectDetailStatics.troubleShooting.result,
-                        ]}
-                        para={[
-                          projects.troubleShooting.trouble,
-                          projects.troubleShooting.shooting,
-                          projects.troubleShooting.result,
-                        ]}
-                      />
-                    )}
-                    {/* 회고 */}
-                    {projects.comment && (
-                      <Section
-                        sectionTitle={projectDetailStatics.comment}
-                        isBasic={true}
-                        isChar={false}
-                        para={[projects.comment]}
-                        className="mt-20"
-                      />
-                    )}
-                  </div>
-                )}
+              <div>
+                {/* 특징 */}
+                <Section
+                  sectionTitle={projectDetailStatics.character}
+                  isBasic={true}
+                  isChar={true}
+                  para={project.character}
+                />
               </div>
             </FadeInSection>
-          )}
-          {/* 이미지 모달 */}
-          {isModalOpen && (
-            <Modal
-              images={projects.img}
-              onClose={closeModal}
-              comment={projects.function}
-            />
-          )}
+            {(project.troubleShooting || project.comment) && (
+              <FadeInSection>
+                <div className="mt-20">
+                  {/* 더보기 버튼 */}
+                  {!isMoreSectionOpen && (
+                    <MoreBtn
+                      isButtonVisible={isButtonVisible}
+                      handleMoreSectionOpen={handleMoreSectionOpen}
+                    />
+                  )}
+                  {isMoreSectionOpen && (
+                    <div className="mx-auto transition-all duration-300">
+                      {/* 트러블슈팅 */}
+                      {project.troubleShooting && (
+                        <Section
+                          sectionTitle={projectDetailStatics.function}
+                          isBasic={false}
+                          isChar={false}
+                          subTitle={[
+                            projectDetailStatics.troubleShooting.trouble,
+                            projectDetailStatics.troubleShooting.shooting,
+                            projectDetailStatics.troubleShooting.result,
+                          ]}
+                          para={[
+                            project.troubleShooting.trouble,
+                            project.troubleShooting.shooting,
+                            project.troubleShooting.result,
+                          ]}
+                        />
+                      )}
+                      {/* 회고 */}
+                      {project.comment && (
+                        <Section
+                          sectionTitle={projectDetailStatics.comment}
+                          isBasic={true}
+                          isChar={false}
+                          para={[project.comment]}
+                          className="mt-20"
+                        />
+                      )}
+                    </div>
+                  )}
+                </div>
+              </FadeInSection>
+            )}
+            {/* 이미지 모달 */}
+            {isModalOpen && (
+              <Modal
+                images={project.img}
+                onClose={closeModal}
+                comment={project.function}
+              />
+            )}
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
