@@ -6,9 +6,9 @@ import TypeChechBox from "../components/project/TypeCheckBox";
 import ProjectDetail from "./ProjectDetail";
 import ScrollToProjectListBtn from "../components/ScrollToProjectListBtn";
 import FadeInSection from "../FadeInSection";
-import { projectStatics } from "../../statics/project/project.static";
 import { Project } from "../interfaces/components/project/Project.interface";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
+import { getNormalizedProjects } from "../utils/normalizeProjects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,31 +20,7 @@ const ProjectListPage: React.FC = () => {
   const listRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const detailRef = useRef<HTMLDivElement>(null);
-  const [projects, setProjects] = useState<Project[]>(
-    Object.keys(projectStatics).map((key) => {
-      const project = projectStatics[key as keyof typeof projectStatics];
-
-      return {
-        id: project.id,
-        title: project.title,
-        subTitle: project.subTitle,
-        type: project.type,
-        stack: project.stack || [],
-        exp: project.exp || "",
-        img: project.img || [],
-        function: project.function.map((item: string | string[]) =>
-          Array.isArray(item) ? item : [item]
-        ),
-        character: project.character || [],
-        troubleShooting: {
-          trouble: project.troubleShooting?.trouble || "",
-          shooting: project.troubleShooting?.shooting || "",
-          result: project.troubleShooting?.result || "",
-        },
-        comment: project.comment || "",
-      };
-    })
-  );
+  const [projects, setProjects] = useState<Project[]>(getNormalizedProjects());
 
   const handleIconClick = (projectId: number) => {
     const projectData = projects.find((p) => p.id === projectId);
