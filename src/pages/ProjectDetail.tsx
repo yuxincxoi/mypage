@@ -98,16 +98,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                       className="mt-20"
                     />
                   )}
-                  {/* 회고 */}
-                  {project.comment && (
-                    <Section
-                      sectionTitle={projectDetailStatics.comment}
-                      isBasic={true}
-                      isChar={false}
-                      para={[project.comment]}
-                      className="mt-20"
-                    />
-                  )}
                 </div>
               )}
             </FadeInSection>
