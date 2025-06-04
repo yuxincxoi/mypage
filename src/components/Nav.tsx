@@ -102,7 +102,7 @@ const Nav: React.FC = () => {
           {(activeItem === item.id || getActiveSection() === item.id) && (
             <div
               className={`absolute left-[-80px] text-gray-500 font-normal text-sm px-2 rounded transition-all duration-300 ease-in-out top-[-5px] ${
-                isScrolling || isHovered ? "opacity-100" : "opacity-0"
+                isHovered ? "opacity-100" : "opacity-0"
               }`}
             >
               {item.label}
