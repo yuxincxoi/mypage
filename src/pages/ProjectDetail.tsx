@@ -82,7 +82,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                   {/* 트러블슈팅 */}
                   {project.troubleShooting && (
                     <Section
-                      sectionTitle={projectDetailStatics.function}
+                      sectionTitle={projectDetailStatics.troubleShooting.title}
                       isBasic={false}
                       isChar={false}
                       subTitle={[
