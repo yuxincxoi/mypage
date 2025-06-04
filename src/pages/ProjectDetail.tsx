@@ -51,7 +51,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
   };
 
   return (
-    <div className="mx-auto bg-zinc-50 text-zinc-800 py-32 rounded-3xl">
+    <div className="mx-auto text-zinc-800 py-32 rounded-3xl">
       {projects.map((project) => (
         <div className="w-[65%] mx-auto flex relative mb-40">
           <div className="w-[260px] pr-10 shrink-0">
