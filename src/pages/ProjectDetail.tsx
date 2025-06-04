@@ -54,14 +54,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
     <div className="mx-auto text-zinc-800 py-32 rounded-3xl">
       {projects.map((project) => (
         <div className="w-[65%] mx-auto flex relative mb-40">
-          <div className="w-[260px] pr-10 shrink-0">
+          <div className="w-[260px] pr-10 shrink-0 border-r-[1px]">
             <DetailTitle
               projects={project}
               className="sticky top-32 whitespace-pre-wrap"
             />
             {/* 프로젝트 제목 */}
           </div>
-          <div className="w-auto pl-10">
+          <div className="w-auto pl-16">
             <Stacks stacks={project.stack} /> {/* 프로젝트 스택 */}
             <Explanation projects={project} /> {/* 프로젝트 설명 */}
             <FadeInSection>
