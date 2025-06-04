@@ -72,7 +72,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                   isBasic={true}
                   isChar={true}
                   para={project.character}
-                  className="mt-20"
+                  className="mt-14"
                 />
               </div>
             </FadeInSection>
@@ -95,7 +95,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                         project.troubleShooting.shooting,
                         project.troubleShooting.result,
                       ]}
-                      className="mt-20"
+                      className="mt-14"
                     />
                   )}
                 </div>
