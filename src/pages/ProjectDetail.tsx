@@ -7,12 +7,9 @@ import { projectDetailStatics } from "../../statics/project/projectDetail.static
 import DetailTitle from "../components/project/detail/DetailTitle";
 import Explanation from "../components/project/detail/Explanation";
 import Section from "../components/project/detail/section/Section";
-import MoreBtn from "../components/project/detail/MoreBtn";
 import Modal from "../components/project/modal/Modal";
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
-  const [isMoreSectionOpen, setIsMoreSectionOpen] = useState(false);
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // 모달 상태에 따른 스크롤 제어
@@ -28,19 +25,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
       document.body.style.overflow = "auto";
     };
   }, [isModalOpen]);
-
-  // 새로운 프로젝트 선택 시 상태 초기화
-  useEffect(() => {
-    setIsMoreSectionOpen(false);
-    setIsButtonVisible(true);
-  }, [projects]);
-
-  const handleMoreSectionOpen = () => {
-    setIsButtonVisible(false);
-    setTimeout(() => {
-      setIsMoreSectionOpen(true);
-    });
-  };
 
   const openModal = () => {
     setIsModalOpen(true);
