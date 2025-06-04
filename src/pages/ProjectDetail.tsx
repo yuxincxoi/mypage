@@ -79,46 +79,35 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             </FadeInSection>
             {(project.troubleShooting || project.comment) && (
               <FadeInSection>
-                <div className="mt-20">
-                  {/* 더보기 버튼 */}
-                  {!isMoreSectionOpen && (
-                    <MoreBtn
-                      isButtonVisible={isButtonVisible}
-                      handleMoreSectionOpen={handleMoreSectionOpen}
+                <div>
+                  {/* 트러블슈팅 */}
+                  {project.troubleShooting && (
+                    <Section
+                      sectionTitle={projectDetailStatics.function}
+                      isBasic={false}
+                      isChar={false}
+                      subTitle={[
+                        projectDetailStatics.troubleShooting.trouble,
+                        projectDetailStatics.troubleShooting.shooting,
+                        projectDetailStatics.troubleShooting.result,
+                      ]}
+                      para={[
+                        project.troubleShooting.trouble,
+                        project.troubleShooting.shooting,
+                        project.troubleShooting.result,
+                      ]}
+                      className="mt-20"
                     />
                   )}
-                  {isMoreSectionOpen && (
-                    <div className="mx-auto transition-all duration-300">
-                      {/* 트러블슈팅 */}
-                      {project.troubleShooting && (
-                        <Section
-                          sectionTitle={projectDetailStatics.function}
-                          isBasic={false}
-                          isChar={false}
-                          subTitle={[
-                            projectDetailStatics.troubleShooting.trouble,
-                            projectDetailStatics.troubleShooting.shooting,
-                            projectDetailStatics.troubleShooting.result,
-                          ]}
-                          para={[
-                            project.troubleShooting.trouble,
-                            project.troubleShooting.shooting,
-                            project.troubleShooting.result,
-                          ]}
+                  {/* 회고 */}
+                  {project.comment && (
+                    <Section
+                      sectionTitle={projectDetailStatics.comment}
+                      isBasic={true}
+                      isChar={false}
+                      para={[project.comment]}
                       className="mt-20"
-                        />
-                      )}
-                      {/* 회고 */}
-                      {project.comment && (
-                        <Section
-                          sectionTitle={projectDetailStatics.comment}
-                          isBasic={true}
-                          isChar={false}
-                          para={[project.comment]}
-                          className="mt-20"
-                        />
-                      )}
-                    </div>
+                    />
                   )}
                 </div>
               </FadeInSection>
