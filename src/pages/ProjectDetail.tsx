@@ -55,7 +55,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
       {projects.map((project) => (
         <div className="w-[65%] mx-auto flex relative mb-40">
           <div className="w-[260px] pr-10 shrink-0">
-            <DetailTitle projects={project} className="sticky top-32" />
+            <DetailTitle
+              projects={project}
+              className="sticky top-32 whitespace-pre-wrap"
+            />
             {/* 프로젝트 제목 */}
           </div>
           <div className="w-auto pl-10">
