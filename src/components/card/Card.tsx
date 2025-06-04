@@ -46,7 +46,7 @@ const Card = () => {
         {/* 뒷면 */}
         <CardSide isBack={true}>
           <div className="text-white">
-            <div className="flex mb-14">
+            <div className="flex mb-8">
               <h2 className="text-2xl font-pretendardSemiBold mr-4">
                 {ContactMessage.koreanName}
               </h2>
@@ -64,6 +64,16 @@ const Card = () => {
                 className="text-md font-pretendardExtraLight hover:underline"
               >
                 {ContactMessage.githubAddress}
+              </a>
+            </div>
+
+            <div className="flex space-x-2">
+              <div className="h-4 w-4 text-center">B.</div>
+              <a
+                href={`https://${ContactMessage.blogAddress}`}
+                className="text-md font-pretendardExtraLight hover:underline"
+              >
+                {ContactMessage.blogAddress}
               </a>
             </div>
 

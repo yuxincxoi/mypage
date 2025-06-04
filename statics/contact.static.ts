@@ -12,4 +12,5 @@ export const ContactMessage = {
   englishName: "Choi Yu Jin",
   githubAddress: "github.com/yuxincxoi",
   email: "yjyj774@gmail.com",
+  blogAddress: "yuxincxoi-dev.vercel.app",
 };
