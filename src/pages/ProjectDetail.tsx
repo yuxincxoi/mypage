@@ -41,7 +41,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
     <div className="mx-auto text-zinc-800 py-32 rounded-3xl">
       {projects.map((project) => (
         <div className="w-[65%] mx-auto flex relative mb-40">
-          <div className="w-[260px] pr-10 shrink-0 border-r-[1px] self-start sticky top-32">
+          <div className="w-[260px] pr-10 shrink-0 self-start sticky top-32">
             <div>
               {/* 프로젝트 제목 */}
               <DetailTitle projects={project} className="whitespace-pre-wrap" />
@@ -76,7 +76,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
               </div>
             </div>
           </div>
-          <div className="w-auto pl-16">
+          <div className="w-auto pl-16 border-l">
             <FadeInSection>
               <Stacks stacks={project.stack} /> {/* 프로젝트 스택 */}
             </FadeInSection>
