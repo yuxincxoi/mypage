@@ -57,13 +57,13 @@ const ProjectListPage: React.FC = () => {
           sectionRef={sectionRef}
           listRef={listRef}
         />
-        {isProjectDetailVisible && (
-          <div ref={detailRef}>
-            <ProjectDetail projects={projects} />
-          </div>
-        )}
-        <ScrollToProjectListBtn isVisible={isDetailVisible} />
       </FadeInSection>
+      {isProjectDetailVisible && (
+        <div ref={detailRef}>
+          <ProjectDetail projects={projects} />
+        </div>
+      )}
+      <ScrollToProjectListBtn isVisible={isDetailVisible} />
     </div>
   );
 };
