@@ -4,7 +4,8 @@ import Indicator from "./img/Indicator";
 
 const ProjectImg: React.FC<{
   onClick: () => void;
-}> = ({ onClick }) => {
+  className?: string;
+}> = ({ onClick, className }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
   const [gapWidth, setGapWidth] = useState(0);
@@ -12,10 +13,7 @@ const ProjectImg: React.FC<{
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div
-      className="relative w-[90%]"
-      ref={carouselRef}
-      onClick={() => onClick()}
+    <div className={`${className}`} ref={carouselRef} onClick={() => onClick()}>
     >
       이미지 보기
     </div>
