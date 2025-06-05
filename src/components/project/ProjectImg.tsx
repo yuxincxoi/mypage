@@ -15,7 +15,7 @@ const ProjectImg: React.FC<{
   return (
     <div className={`${className}`} ref={carouselRef} onClick={() => onClick()}>
       <div className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        이미지 보기
+        .
       </div>
     </div>
   );

@@ -45,33 +45,33 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             <div>
               {/* 프로젝트 제목 */}
               <DetailTitle projects={project} className="whitespace-pre-wrap" />
-              {/* 프로젝트 사진 */}
-              <ProjectImg
-                onClick={() => openModal(project)}
-                className="mt-4 bg-green-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group"
-              />
-              {/* 깃허브 */}
-              <div className="mt-2 bg-pink-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group">
-                <div className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  Github
+
+              {/* 프로젝트 사진, 깃허브, url, 회고, 문서 */}
+              <div className="w-full h-9 mt-4 bg-zinc-50 rounded-xl shadow-inner flex">
+                {/* 프로젝트 사진 */}
+                <ProjectImg
+                  onClick={() => openModal(project)}
+                  className="flex-1 px-2 py-2 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center"
+                />
+
+                {/* 깃허브 */}
+                <div className="flex-1 px-2 py-1 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center">
+                  .
                 </div>
-              </div>
-              {/* url */}
-              <div className="mt-2 bg-yellow-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group">
-                <div className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  URL
+
+                {/* url */}
+                <div className="flex-1 px-2 py-1 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center">
+                  .
                 </div>
-              </div>
-              {/* 회고 */}
-              <div className="mt-2 bg-blue-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group">
-                <div className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  회고
+
+                {/* 회고 */}
+                <div className="flex-1 px-2 py-1 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center">
+                  .
                 </div>
-              </div>
-              {/* 문서 */}
-              <div className="mt-2 bg-purple-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group">
-                <div className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  문서
+
+                {/* 문서 */}
+                <div className="flex-1 px-2 py-1 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center">
+                  .
                 </div>
               </div>
             </div>
