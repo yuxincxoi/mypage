@@ -41,12 +41,40 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
     <div className="mx-auto text-zinc-800 py-32 rounded-3xl">
       {projects.map((project) => (
         <div className="w-[65%] mx-auto flex relative mb-40">
-          <div className="w-[260px] pr-10 shrink-0 border-r-[1px]">
-            <DetailTitle
-              projects={project}
-              className="sticky top-32 whitespace-pre-wrap"
-            />
-            {/* 프로젝트 제목 */}
+          <div className="w-[260px] pr-10 shrink-0 border-r-[1px] self-start sticky top-32">
+            <div>
+              {/* 프로젝트 제목 */}
+              <DetailTitle projects={project} className="whitespace-pre-wrap" />
+              {/* 프로젝트 사진 */}
+              <ProjectImg
+                onClick={() => openModal(project)}
+                className="mt-4 bg-green-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group"
+              />
+              {/* 깃허브 */}
+              <div className="mt-2 bg-pink-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group">
+                <div className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  Github
+                </div>
+              </div>
+              {/* url */}
+              <div className="mt-2 bg-yellow-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group">
+                <div className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  URL
+                </div>
+              </div>
+              {/* 회고 */}
+              <div className="mt-2 bg-blue-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group">
+                <div className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  회고
+                </div>
+              </div>
+              {/* 문서 */}
+              <div className="mt-2 bg-purple-100 w-4 h-4 rounded-full hover:w-[100px] hover:h-6 transition-all duration-500 overflow-hidden group">
+                <div className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  문서
+                </div>
+              </div>
+            </div>
           </div>
           <div className="w-auto pl-16">
             <FadeInSection>
@@ -91,15 +119,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                   )}
                 </div>
               )}
-            </FadeInSection>
-            <FadeInSection>
-              <div>
-                <ProjectImg onClick={() => openModal(project)} />
-                {/* 프로젝트 사진 */}
-                {/* 깃허브 */}
-                {/* url */}
-                {/* 회고 */}
-              </div>
             </FadeInSection>
           </div>
         </div>
