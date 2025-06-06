@@ -4,7 +4,7 @@ import { DetailBtnProps } from "../../../interfaces/components/project/detail/De
 
 const DetailBtn: React.FC<DetailBtnProps> = ({ project, openModal }) => {
   return (
-    <div className="w-full h-9 mt-4 bg-zinc-50 rounded-xl shadow-inner flex">
+    <div className="w-60 h-9 mb-10 bg-zinc-50 rounded-xl shadow-inner flex">
       {/* 프로젝트 사진 */}
       <ProjectImg
         onClick={() => openModal(project)}
