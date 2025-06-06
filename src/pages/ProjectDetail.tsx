@@ -47,9 +47,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
           </div>
           <div className="w-auto pl-16 border-l">
             <FadeInSection>
-              <DetailBtnBar project={project} openModal={openModal} />
-            </FadeInSection>
-            <FadeInSection>
               <Stacks stacks={project.stack} /> {/* 프로젝트 스택 */}
             </FadeInSection>
             <FadeInSection>
@@ -91,6 +88,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
                   )}
                 </div>
               )}
+            </FadeInSection>
+            <FadeInSection>
+              <DetailBtnBar project={project} openModal={openModal} />
             </FadeInSection>
           </div>
         </div>

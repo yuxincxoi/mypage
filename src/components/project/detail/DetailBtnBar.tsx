@@ -4,7 +4,7 @@ import DetailBtn from "./DetailBtn";
 
 const DetailBtnBar: React.FC<DetailBtnBarProps> = ({ project, openModal }) => {
   return (
-    <div className="w-60 h-9 mb-10 bg-zinc-50 rounded-xl shadow-inner flex">
+    <div className="w-60 h-9 mt-10 bg-zinc-50 rounded-xl shadow-inner flex">
       {/* 프로젝트 사진 */}
       <DetailBtn onClick={() => openModal(project)} isFirst={true} />
 
