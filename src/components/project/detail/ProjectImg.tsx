@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import ChevronBtn from "./img/ChevronBtn";
-import Indicator from "./img/Indicator";
+import ChevronBtn from "../img/ChevronBtn";
+import Indicator from "../img/Indicator";
 
 const ProjectImg: React.FC<{
   onClick: () => void;

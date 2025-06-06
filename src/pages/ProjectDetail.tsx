@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Stacks from "../components/project/Stacks";
+import Stacks from "../components/project/detail/Stacks";
 import FadeInSection from "../FadeInSection";
-import { ProjectDetailProps } from "../interfaces/components/project/ProjectDetail.interface";
+import { ProjectDetailProps } from "../interfaces/components/project/detail/ProjectDetail.interface";
 import { projectDetailStatics } from "../../statics/project/projectDetail.static";
 import DetailTitle from "../components/project/detail/DetailTitle";
 import Explanation from "../components/project/detail/Explanation";

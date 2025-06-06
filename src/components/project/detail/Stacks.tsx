@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { stackStatics } from "../../../statics/project/stack.static";
-import { StacksProps } from "../../interfaces/components/project/Stacks.interface";
+import { stackStatics } from "../../../../statics/project/stack.static";
+import { StacksProps } from "../../../interfaces/components/project/detail/Stacks.interface";
 
 const Stacks: React.FC<StacksProps> = ({ stacks }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

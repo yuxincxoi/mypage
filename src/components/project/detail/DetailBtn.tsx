@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectImg from "../ProjectImg";
+import ProjectImg from "./ProjectImg";
 import { DetailBtnProps } from "../../../interfaces/components/project/detail/DetailBtn.interface";
 
 const DetailBtn: React.FC<DetailBtnProps> = ({ project, openModal }) => {
