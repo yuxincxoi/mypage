@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ProjectImg from "../components/project/ProjectImg";
 import Stacks from "../components/project/Stacks";
 import FadeInSection from "../FadeInSection";
 import { ProjectDetailProps } from "../interfaces/components/project/ProjectDetail.interface";
@@ -7,6 +6,7 @@ import { projectDetailStatics } from "../../statics/project/projectDetail.static
 import DetailTitle from "../components/project/detail/DetailTitle";
 import Explanation from "../components/project/detail/Explanation";
 import Section from "../components/project/detail/section/Section";
+import DetailBtn from "../components/project/detail/DetailBtn";
 import Modal from "../components/project/modal/Modal";
 import { Project } from "../interfaces/components/project/Project.interface";
 
@@ -45,35 +45,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
             <div>
               {/* 프로젝트 제목 */}
               <DetailTitle projects={project} className="whitespace-pre-wrap" />
-
-              {/* 프로젝트 사진, 깃허브, url, 회고, 문서 */}
-              <div className="w-full h-9 mt-4 bg-zinc-50 rounded-xl shadow-inner flex">
-                {/* 프로젝트 사진 */}
-                <ProjectImg
-                  onClick={() => openModal(project)}
-                  className="flex-1 px-2 py-2 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center"
-                />
-
-                {/* 깃허브 */}
-                <div className="flex-1 px-2 py-1 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center">
-                  .
-                </div>
-
-                {/* url */}
-                <div className="flex-1 px-2 py-1 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center">
-                  .
-                </div>
-
-                {/* 회고 */}
-                <div className="flex-1 px-2 py-1 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center">
-                  .
-                </div>
-
-                {/* 문서 */}
-                <div className="flex-1 px-2 py-1 hover:bg-zinc-100 cursor-pointer border-r border-zinc-200 last:border-r-0 flex items-center justify-center">
-                  .
-                </div>
-              </div>
+              <DetailBtn project={project} openModal={openModal} />
             </div>
           </div>
           <div className="w-auto pl-16 border-l">
