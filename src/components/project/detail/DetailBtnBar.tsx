@@ -1,8 +1,8 @@
 import React from "react";
 import ProjectImg from "./ProjectImg";
-import { DetailBtnProps } from "../../../interfaces/components/project/detail/DetailBtn.interface";
+import { DetailBtnBarProps } from "../../../interfaces/components/project/detail/DetailBtn.interface";
 
-const DetailBtn: React.FC<DetailBtnProps> = ({ project, openModal }) => {
+const DetailBtnBar: React.FC<DetailBtnBarProps> = ({ project, openModal }) => {
   return (
     <div className="w-60 h-9 mb-10 bg-zinc-50 rounded-xl shadow-inner flex">
       {/* 프로젝트 사진 */}
@@ -34,4 +34,4 @@ const DetailBtn: React.FC<DetailBtnProps> = ({ project, openModal }) => {
   );
 };
 
-export default DetailBtn;
+export default DetailBtnBar;

@@ -6,7 +6,7 @@ import { projectDetailStatics } from "../../statics/project/projectDetail.static
 import DetailTitle from "../components/project/detail/DetailTitle";
 import Explanation from "../components/project/detail/Explanation";
 import Section from "../components/project/detail/section/Section";
-import DetailBtn from "../components/project/detail/DetailBtn";
+import DetailBtnBar from "../components/project/detail/DetailBtnBar";
 import Modal from "../components/project/modal/Modal";
 import { Project } from "../interfaces/components/project/Project.interface";
 
@@ -47,7 +47,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projects }) => {
           </div>
           <div className="w-auto pl-16 border-l">
             <FadeInSection>
-              <DetailBtn project={project} openModal={openModal} />
+              <DetailBtnBar project={project} openModal={openModal} />
             </FadeInSection>
             <FadeInSection>
               <Stacks stacks={project.stack} /> {/* 프로젝트 스택 */}
