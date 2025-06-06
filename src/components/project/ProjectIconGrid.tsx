@@ -3,16 +3,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectIcon from "./ProjectIcon";
 import { Project } from "../../interfaces/components/project/Project.interface";
+import { ProjectIconGridProps } from "../../interfaces/components/project/PrjectIconGrid.interface";
 
 gsap.registerPlugin(ScrollTrigger);
-
-interface ProjectIconGridProps {
-  projects: Project[];
-  selectedType: string;
-  onProjectClick: (projectId: number) => void;
-  sectionRef: React.RefObject<HTMLDivElement>;
-  listRef: React.RefObject<HTMLDivElement>;
-}
 
 const ProjectIconGrid: React.FC<ProjectIconGridProps> = ({
   projects,

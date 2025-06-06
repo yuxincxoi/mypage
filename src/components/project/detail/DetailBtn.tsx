@@ -1,11 +1,6 @@
 import React from "react";
 import ProjectImg from "../ProjectImg";
-import { Project } from "../../../interfaces/components/project/Project.interface";
-
-interface DetailBtnProps {
-  project: Project;
-  openModal: (project: Project) => void;
-}
+import { DetailBtnProps } from "../../../interfaces/components/project/detail/DetailBtn.interface";
 
 const DetailBtn: React.FC<DetailBtnProps> = ({ project, openModal }) => {
   return (
