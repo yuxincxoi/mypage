@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        aggro: ["SBAggroB"],
         pretendard: ["Pretendard-Regular"],
         pretendardExtraLight: ["Pretendard-ExtraLight"],
         pretendardSemiBold: ["Pretendard-SemiBold"],

@@ -1,7 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fastly.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css");
 
+@font-face {
+  font-family: "SBAggroB";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
   font-family: "DOSGothic";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff")
@@ -51,6 +59,10 @@
     format("woff2");
   font-weight: thin;
   font-style: normal;
+}
+
+.font-galmuri {
+  font-family: "Galmuri9", sans-serif;
 }
 
 .hide-scrollbar {
