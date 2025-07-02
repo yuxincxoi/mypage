@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ScrollIndicator from "../components/ScrollIndicator";
+import SplashScreen from "../components/intro/SplashScreen";
 import { introMessage } from "../../statics/intro.static";
 import DotImages from "../components/intro/DotImages";
 
 const IntroPage: React.FC = () => {
+  const [showSplash, setShowSplash] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
   const [visibleChars, setVisibleChars] = useState(0);
   const [scrollY, setScrollY] = useState(0);
@@ -43,6 +45,14 @@ const IntroPage: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (showSplash) {
+    return (
+      <div className="w-full h-screen bg-white">
+        <SplashScreen onFinish={() => setShowSplash(false)} />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-screen mb-40 pb-32 flex flex-col justify-center relative">
