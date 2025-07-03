@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { introMessage } from "../../../statics/intro.static";
 import SplashScreen from "./SplashScreen";
 
@@ -8,6 +8,7 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
   const [isComplete, setIsComplete] = useState(false);
   const [currentSentence, setCurrentSentence] = useState(0);
   const [showSplash, setShowSplash] = useState(true);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const sentences = [
     introMessage.introFirst,
@@ -29,7 +30,11 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.key === "Enter" || event.key === " ") {
         if (isTyping) {
-          // 타이핑 중이면 즉시 완성
+          // interval 정리 후 문장 완성
+          if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+          }
           setVisibleChars(sentences[currentSentence].length);
           setIsTyping(false);
         } else if (currentSentence < sentences.length - 1) {
@@ -63,10 +68,18 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
         } else {
           setIsTyping(false);
           clearInterval(interval);
+          intervalRef.current = null;
         }
       }, 80);
 
-      return () => clearInterval(interval);
+      intervalRef.current = interval;
+
+      return () => {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+        }
+      };
     }
   }, [currentSentence, showSplash]);
 
@@ -81,14 +94,14 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
       >
         <div className="font-dos text-lg tracking-tighter whitespace-pre-wrap relative text-center">
           {text.split("").map((char, index) => {
-            const shouldShow = index < displayLength;
+            const shouldShow = isTyping ? index < displayLength : true;
             return (
               <span
                 key={index}
                 className={`inline-block transition-opacity duration-300 ease-out ${
                   shouldShow ? "opacity-100" : "opacity-0"
                 }`}
-                style={{ transitionDelay: `${index * 30}ms` }}
+                style={isTyping ? { transitionDelay: `${index * 30}ms` } : {}}
               >
                 {shouldShow ? char : ""}
               </span>
