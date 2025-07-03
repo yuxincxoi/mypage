@@ -91,35 +91,34 @@ const IntroPage: React.FC = () => {
     );
   }
 
-  const renderSentence = (text: string, sentenceIndex: number) => {
-    if (sentenceIndex > currentSentence) return null;
-
-    const isCurrentSentence = sentenceIndex === currentSentence;
-    const displayLength = isCurrentSentence ? visibleChars : text.length;
-    const opacity = isComplete ? 1 : sentenceIndex < currentSentence ? 0.6 : 1;
+  const renderSentence = (text: string) => {
+    const displayLength = visibleChars;
+    const isFinished = !isTyping && !isComplete;
 
     return (
       <div
-        key={sentenceIndex}
-        className="relative flex justify-center"
-        style={{ opacity }}
+        className="mx-auto flex items-center justify-center relative overflow-hidden"
+        style={{ borderRadius: "8px" }}
       >
-        {text.split("").map((char, index) => {
-          const shouldShow = index < displayLength;
-          return (
-            <div
-              key={`${sentenceIndex}-${index}`}
-              className={`relative transform transition-all duration-300 ease-out ${
-                shouldShow ? "opacity-100" : "opacity-0"
-              }`}
-              style={{
-                transitionDelay: `${index * 30}ms`,
-              }}
-            >
-              {shouldShow ? char : ""}
-            </div>
-          );
-        })}
+        <div className="font-dos text-lg tracking-tighter whitespace-pre-wrap relative text-center">
+          {text.split("").map((char, index) => {
+            const shouldShow = index < displayLength;
+            return (
+              <span
+                key={index}
+                className={`inline-block transition-opacity duration-300 ease-out ${
+                  shouldShow ? "opacity-100" : "opacity-0"
+                }`}
+                style={{ transitionDelay: `${index * 30}ms` }}
+              >
+                {shouldShow ? char : ""}
+              </span>
+            );
+          })}
+          {isFinished && (
+            <span className="inline-block ml-5 animate-pulse">▼</span>
+          )}
+        </div>
       </div>
     );
   };
@@ -129,9 +128,9 @@ const IntroPage: React.FC = () => {
       <DotImages />
 
       {/* 메인 텍스트 영역 */}
-      <div className="font-pretendardBold text-md tracking-tight whitespace-pre-wrap relative">
-        <div className="relative">
-          {sentences.map((sentence, index) => renderSentence(sentence, index))}
+      <div className="font-pretendardBold text-md tracking-tight whitespace-pre-wrap relative w-[800px] h-40 bg-white mx-auto border-2 border-zinc-100">
+        <div className="relative top-[40%]">
+          {renderSentence(sentences[currentSentence])}
         </div>
       </div>
 
