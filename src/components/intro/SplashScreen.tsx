@@ -10,11 +10,11 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
   useEffect(() => {
     const appearTimer = setTimeout(() => {
       setVisible(false);
-    }, 1000); // 3초간 표시
+    }, 1500);
 
     const finishTimer = setTimeout(() => {
       onFinish(); // 사라진 뒤 IntroPage로 전환
-    }, 1500); // 1초 후 전환
+    }, 2500);
 
     return () => {
       clearTimeout(appearTimer);
@@ -28,7 +28,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="text-2xl tracking-widest font-aggro font-extrabold animate-pulse">
+      <div className="text-2xl tracking-widest font-aggro font-extrabold animate-pulse scale-x-90">
         CHOiYUJiN
       </div>
     </div>
