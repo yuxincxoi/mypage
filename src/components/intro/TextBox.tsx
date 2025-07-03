@@ -27,8 +27,12 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
 
   // 키보드 이벤트 처리
   useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === "Enter" || event.key === " ") {
+    const handleKeyPress = (event: KeyboardEvent | MouseEvent) => {
+      if (
+        (event instanceof KeyboardEvent &&
+          (event.key === "Enter" || event.key === " ")) ||
+        event instanceof MouseEvent
+      ) {
         if (isTyping) {
           // interval 정리 후 문장 완성
           if (intervalRef.current) {
@@ -49,7 +53,11 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
     };
 
     window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
+    window.addEventListener("click", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+      window.removeEventListener("click", handleKeyPress);
+    };
   }, [isTyping, currentSentence, sentences, isComplete, onComplete]);
 
   // 타이핑 효과
