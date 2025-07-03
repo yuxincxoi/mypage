@@ -141,7 +141,7 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
         </div>
       ) : (
         <div
-          className={`font-pretendardBold text-md tracking-tight whitespace-pre-wrap relative w-[800px] h-40 bg-white mx-auto border-2 border-zinc-100 transition-opacity duration-700 ${
+          className={`font-pretendardBold text-md tracking-tight whitespace-pre-wrap relative w-[800px] h-40 bg-white mx-auto border-2 border-zinc-100 transition-opacity duration-700 z-50 ${
             isComplete ? "opacity-0" : "opacity-100"
           }`}
         >

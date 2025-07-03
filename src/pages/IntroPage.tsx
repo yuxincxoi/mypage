@@ -9,6 +9,15 @@ const IntroPage: React.FC = () => {
 
   return (
     <div className="w-full h-screen mb-40 pb-32 flex flex-col justify-center relative">
+      {isComplete ? (
+        <div className="absolute inset-0 flex top-[40%] justify-center pointer-events-none z-10">
+          <h1 className="text-5xl font-dos text-zinc-700">
+            Hello Yujin's world
+          </h1>
+        </div>
+      ) : (
+        ""
+      )}
       <DotImages />
 
       {/* 메인 텍스트 영역 */}
