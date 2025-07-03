@@ -24,7 +24,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 transition-opacity duration-1000 ${
+      className={`fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 transition-opacity duration-1000 bg-white ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
