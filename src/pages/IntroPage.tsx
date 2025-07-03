@@ -6,17 +6,6 @@ import TextBox from "../components/intro/TextBox";
 const IntroPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  // 스크롤 효과
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="w-full h-screen mb-40 pb-32 flex flex-col justify-center relative">
