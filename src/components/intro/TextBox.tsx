@@ -25,6 +25,19 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
     }
   }, [showSplash]);
 
+  // intro에서 스크롤 방지
+  useEffect(() => {
+    if (!isComplete) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isComplete]);
+
   // 키보드 이벤트 처리
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent | MouseEvent) => {
@@ -96,10 +109,7 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
     const isFinished = !isTyping && !isComplete;
 
     return (
-      <div
-        className="mx-auto flex items-center justify-center relative overflow-hidden"
-        style={{ borderRadius: "8px" }}
-      >
+      <div className="mx-auto flex items-center justify-center relative overflow-hidden">
         <div className="font-dos text-lg tracking-tighter whitespace-pre-wrap relative text-center">
           {text.split("").map((char, index) => {
             const shouldShow = isTyping ? index < displayLength : true;
@@ -130,7 +140,11 @@ const TextBox = ({ onComplete }: { onComplete: () => void }) => {
           <SplashScreen onFinish={() => setShowSplash(false)} />
         </div>
       ) : (
-        <div className="font-pretendardBold text-md tracking-tight whitespace-pre-wrap relative w-[800px] h-40 bg-white mx-auto border-2 border-zinc-100">
+        <div
+          className={`font-pretendardBold text-md tracking-tight whitespace-pre-wrap relative w-[800px] h-40 bg-white mx-auto border-2 border-zinc-100 transition-opacity duration-700 ${
+            isComplete ? "opacity-0" : "opacity-100"
+          }`}
+        >
           <div className="relative top-[40%]">
             {renderSentence(sentences[currentSentence])}
           </div>
