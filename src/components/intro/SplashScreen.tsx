@@ -28,7 +28,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="text-2xl tracking-widest font-aggro font-extrabold animate-pulse scale-x-90">
+      <div className="text-2xl tracking-widest font-shirik font-extrabold animate-pulse scale-x-90">
         CHOiYUJiN
       </div>
     </div>
