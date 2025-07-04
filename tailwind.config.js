@@ -11,6 +11,7 @@ module.exports = {
         gumi: ["GumiRomanceTTF"],
         ahn: ["KCC-Ahnchangho"],
         dos: ["DOSGothic"],
+        shirik: ["Shrikhand"],
       },
       keyframes: {
         float: {

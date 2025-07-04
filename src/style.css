@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fastly.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css");
+@import url("https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Manufacturing+Consent&family=Shrikhand&display=swap");
 
 @font-face {
   font-family: "SBAggroM";
