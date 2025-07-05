@@ -17,7 +17,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
         }
         return prev + 2;
       });
-    }, 60);
+    }, 30);
 
     const appearTimer = setTimeout(() => {
       setVisible(false);
